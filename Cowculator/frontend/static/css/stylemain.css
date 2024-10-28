@@ -24,7 +24,7 @@ header {
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 70vh;
+    min-height: 150vh;
     display: flex;
 }
 
@@ -51,6 +51,7 @@ header {
 .menu .navbar ul li {
     position: relative;
     float: left;
+    
 
 }
 
