@@ -7,7 +7,7 @@ app = Flask(__name__, template_folder= "frontend/templates")
 
 @app.route("/")
 def indx_render():
-    return render_template('LoginSignUp.html')
+    return render_template('my_cattle.html')
 
 
 
