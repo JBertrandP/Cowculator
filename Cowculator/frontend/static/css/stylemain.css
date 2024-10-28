@@ -23,7 +23,7 @@ margin: 0 auto;
     background-image: linear-gradient(
         rgba(0,0,0,0.7),
         rgba(0,0,0,0.7)),
-        url(images/cowie.jpg);
+        url(/Cowculator/frontend/static/images/CowsRendered_GIF.gif);
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: cover;
