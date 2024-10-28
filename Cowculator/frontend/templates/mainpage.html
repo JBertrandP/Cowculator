@@ -12,7 +12,7 @@
                 
                 <input type="checkbox" id="menu" />
                 <label for="menu">
-                        <img src="  {{  url_for ( 'static', filename = 'images/CowsRendered_GIF.gif' )}} " class ="menu-icono"  alt="">
+                        <img src="Cowculator\frontend\static\images\CowsRendered_GIF.gif" class ="menu-icono"  alt="">
                 </label>
 
                 <nav class="navbar">
@@ -41,7 +41,7 @@
     </header>
 
 <section class="cow">
-    <img class="cow-img" src="images/vacaaa.png" alt="" width="300">
+    <img class="cow-img" src="{{ url_for('static', filename = 'images/vacaa.png')}}" alt="" width="300">
 
     <div class="cow-content container">
 
@@ -49,7 +49,7 @@
                <div class="cow-group">
 
             <div class="cow-1">
-                <img src="images/herefordcow.png">
+                <img src="{{ url_for('static', filename = 'images/herefordcow.png')}}">
                 <h3>Hereford</h3>
                 <p>
                     Lorem ipsum dolor sit amet consectetur 
