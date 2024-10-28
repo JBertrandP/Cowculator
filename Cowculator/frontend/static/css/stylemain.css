@@ -19,18 +19,16 @@ margin: 0 auto;
 
 }
 
-.header {
-    background-image: linear-gradient(
-        rgba(0,0,0,0.7),
-        rgba(0,0,0,0.7)),
-        url(/Cowculator/frontend/static/images/CowsRendered_GIF.gif);
+header {
+    background-image: url(/Cowculator/frontend/static/images/CowsRendered_GIF.gif);
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 70vh;
+    min-height: 150vh;
     display: flex;
-    align-items: center;
 }
+
+
 
 .menu{
 
@@ -53,6 +51,7 @@ margin: 0 auto;
 .menu .navbar ul li {
     position: relative;
     float: left;
+    
 
 }
 
