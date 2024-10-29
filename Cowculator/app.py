@@ -6,11 +6,15 @@ from flask import Flask, request, render_template, redirect, url_for
 
 app = Flask(__name__, template_folder= "frontend/templates", static_folder= "frontend/static")  
 
+
+
 @app.route("/")
 def mainpage_render():
     return render_template('mainpage.html')
 
 
+
+"""""
 @app.route("/login_signup")
 def login_signup_render():
     return render_template("LoginSignUp.html")
@@ -26,7 +30,7 @@ def signup_post():
 
 
 
-
+"""""
 
 
 if __name__ == ("__main__"):
