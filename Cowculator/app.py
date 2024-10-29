@@ -1,5 +1,5 @@
-# Main Flask application 
-from backend import db_methods
+#Main Flask application 
+#from backend import db_methods
 from flask import Flask, request, render_template, redirect, url_for
 
 
@@ -16,6 +16,8 @@ def login_signup_render():
     return render_template("LoginSignUp.html")
 
 
+
+"""
 @app.route("login_post")
 def login_post():
     return
@@ -24,7 +26,7 @@ def login_post():
 def signup_post():
     return
 
-
+"""
 
 
 
