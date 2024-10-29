@@ -69,30 +69,6 @@ def select_all():
         print(f"Error al conectarse: {e}")
 
 
-"""""
-User = "Liam"
-Correo = "juancho2@gmail.com"
-Contraseña = "juancho"
-
-
-if is_usuario(User,Correo,Contraseña):
-    
-    print("Accede a la pagina")
-
-else:
-
-    print(f"El usuario {User} es invalido")
-
-    print("Signup")
-    User = input("Introduce un usuario: ")
-    Correo = input("Introduce tu correo: ")
-    Contraseña = input("Introduce una contraseña: ")
-
-    add_user(User,Correo,Contraseña)
-    select_all()
-
-
-"""""
 
 
 
@@ -100,37 +76,5 @@ else:
 
 
 
-
-
-
-
-
-
-""""
-
-#funciones necesarias para connexion e interaccion
-
-
-
-    try:
-        conn = db_connection()
-        cursor = conn.cursor()
-
-        query = (f" ")
-
-        cursor.close()
-        conn.close()
-
-    except Exception as e:
-        # Print the exception for debugging purposes
-        print(f"Error al conectarse: {e}")
-
-
-
-
-
-
-
-"""
 
 
