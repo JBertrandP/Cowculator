@@ -1,4 +1,4 @@
-from db_connection import db_connection
+import db_connection
 
 def is_usuario(user,correo,contraseña):
 
