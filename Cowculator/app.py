@@ -12,6 +12,9 @@ app = Flask(__name__, template_folder= "frontend/templates", static_folder= "fro
 def mainpage_render():
     return render_template('mainpage.html')
 
+@app.route("/signup")
+def signup_render():
+    return render_template("LoginSignUp.html")
 
 
 """""
