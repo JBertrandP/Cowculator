@@ -46,21 +46,21 @@
         </div>
         <div class="toggle-container">
             <div class="toggle">
-                <div class="toggle-panel toggle-left">
+                <div class="toggle-panel toggle-right">
                     <h1>Welcome Back!</h1>
                     <p>Enter your personal details to use all of Cowculator features</p>
-                    <button class="hidden" id="login">Sign In</button>
+                    <button class="hidden" id="register">Sign In</button>
                 </div>
-                <div class="toggle-panel toggle-right">
+                <div class="toggle-panel toggle-left">
                     <h1>Hello, Friend!</h1>
                     <p>Register with your personal details to use all of Cowculator features</p>
-                    <button class="hidden" id="register">Sign Up</button>
+                    <button class="hidden" id="login">Sign Up</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="frontend/static/js/scriptLoginSignUp.js"></script>
+    <script src="{{ url_for('static', filename = 'js/scriptLoginSignUp.js')}}"></script>
 </body>
 
 </html>
