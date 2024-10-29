@@ -19,9 +19,6 @@ def mainpage_render():
 def login_signup_render():
     return render_template("LoginSignUp.html")
 
-
-
-"""
 @app.route("login_post")
 def login_post():
     return
@@ -32,7 +29,6 @@ def signup_post():
 
 """
 
-"""""
 
 
 if __name__ == ("__main__"):
