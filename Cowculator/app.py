@@ -17,10 +17,6 @@ def signup_render():
     return render_template("LoginSignUp.html")
 
 
-
-
-
-
 """""
 @app.route("/login_signup")
 def login_signup_render():

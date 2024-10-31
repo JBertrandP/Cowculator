@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Cattle</title>
-    <link rel="stylesheet" href="stylesmy_cattle.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/stylesmy_cattle.css')}}">
     <!-- Añade librerías para 3D como Three.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
@@ -52,7 +52,7 @@
         <div class="cow-list">
             <h2>My Cattle</h2>
             <div class="cow-card">
-                <img src="brangus.png" alt="Cow Image">
+                <img src="/static/images/brangus.png" alt="Cow Image">
                 <div class="cow-details">
                     <h4>Cow Name: Daisy</h4>
                     <p>Age: 3 years</p>
@@ -62,7 +62,7 @@
                 </div>
             </div>
             <div class="cow-card">
-                <img src="charolais.png" alt="Cow Image">
+                <img src="/static/images/charolais.png" alt="Cow Image">
                 <div class="cow-details">
                     <h4>Cow Name: Bella</h4>
                     <p>Age: 5 years</p>
