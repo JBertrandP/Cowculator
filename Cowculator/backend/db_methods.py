@@ -29,7 +29,7 @@ def add_user(user,correo,contraseña):
         conn = db_connect()
         cursor = conn.cursor()
 
-        query = (f" exec add_usuario '{user}','{correo}','{contraseña}' ")
+        query = (f"insert into Users( Username,Email,PasswordHash) values ('{user}','{correo}','{contraseña}')  ")
         cursor.execute(query)
 
         conn.commit()
