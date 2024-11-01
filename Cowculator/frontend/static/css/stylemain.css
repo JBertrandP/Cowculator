@@ -51,23 +51,25 @@ header {
 .menu .navbar ul li {
     position: relative;
     float: left;
-    
+
 
 }
 
 .menu .navbar ul li a {
 
     font-size: 18px;
-    padding: 20px;
+    padding: 10px;
     color: #FFFDFC;
     display: block;
     font-weight: 600;
 }
 
 
+
+
 .menu .navbar ul li a:hover {
 
-    color: #b8b2b0;
+    color: #3eb626;
 }
 
 #menu {
@@ -184,6 +186,11 @@ padding: 0 25px;
     color:#323337;
     font-size: 20px;
     margin-bottom: 15px;
+}
+
+footer{
+    background-color: #5e3128;
+    color: aliceblue;
 }
 
 .services {
