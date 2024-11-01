@@ -3,12 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>myranch</title>
 </head>
 <body>
+      <h1>Bienvenido a tu rancho {{user}}</h1>
+      <link rel="stylesheet" href="/Cowculator/frontend/static/css/myranch.css">
+      <h2>Agregar Dirección del Rancho</h2>
+      <form id="ranchForm">
+          <label for="street">Calle:</label>
+          <input type="text" id="street" name="street" required><br>
+  
+          <label for="city">Ciudad:</label>
+          <input type="text" id="city" name="city" required><br>
+  
+          <label for="state">Estado:</label>
+          <input type="text" id="state" name="state" required><br>
+  
+          <label for="zipcode">Código Postal:</label>
+          <input type="text" id="zipcode" name="zipcoWde" required><br>
+  
+          <button type="button" onclick="submitAddress()">Guardar Dirección</button>
+      </form>
     
+      <a href="/mycattle">MyCattle</a>
 
-    <h1>Bienvenido a tu rancho {{user}}</h1>
+      <script>
+          function submitAddress() {
+             
+              const street = document.getElementById('street').value;
+              const city = document.getElementById('city').value;
+              const state = document.getElementById('state').value;
+              const zipcode = document.getElementById('zipcode').value;
+  
+             
+              const addressData = {
+                  street: street,
+                  city: city,
+                  state: state,
+                  zipcode: zipcode
+              };
+  
+              
+              console.log("Datos de la dirección:", addressData);
+              alert("Dirección guardada correctamente!");
+          }
+      </script>
     
 </body>
 </html>

@@ -189,8 +189,9 @@ padding: 0 25px;
 }
 
 footer{
-    background-color: #5e3128;
-    color: aliceblue;
+    background-image: linear-gradient(rgba(84, 173, 70, 0.7), rgba(84, 173, 70, 0.7)), url(/static/images/coow.jpg);
+    color: black;
+    padding: 20px;
 }
 
 .services {

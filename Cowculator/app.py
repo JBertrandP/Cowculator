@@ -53,6 +53,10 @@ def myranch_render():
     user = request.args.get('user') 
     return render_template('myranch.html',user = user)
 
+@app.route('/mycattle')
+def mycattle_render():
+    return render_template("my_cattle.html")
+
 
 
 
