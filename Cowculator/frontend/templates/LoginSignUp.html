@@ -29,7 +29,7 @@
             </form>
         </div>
         <div class="form-container sign-in">
-            <form>
+            <form action = "/login_post" method="post">
                 <h1>Log In</h1>
                 <div class="social-icons">
                     <a href="#" class="icon"><i class="fa-brands fa-google"></i></a>
@@ -37,11 +37,11 @@
                     <a href="#" class="icon"><i class="fa-brands fa-instagram"></i></a>
                     <a href="#" class="icon"><i class="fa-brands fa-x-twitter"></i></a>
                 </div>
-                <span>or use your email password</span>
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
-                <a href="#">Forgot Your Password?</a>
-                <button>Log In</button>
+                <span>{{status}}</span>
+                <input name = "email" type="email" placeholder="Email">
+                <input name = "password" type="password" placeholder="Password">
+                <a href="#">Forgot Your Password? </a>
+                <button type="submit">Log In</button>
             </form>
         </div>
         <div class="toggle-container">

@@ -9,7 +9,7 @@ Password = '123'
 
 conection_string = 'DRIVER={ODBC Driver 17 for SQL Server}; SERVER=DAZUR; DATABASE=Cowculator; UID={'+User+'}; PWD={'+Password+'}'
 
-def db_connection():
+def db_connect():
     try:
         conexion = pyodbc.connect(conection_string)
         print("Conexion Exitosa")

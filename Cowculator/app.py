@@ -1,6 +1,7 @@
 #Main Flask application 
 #from backend import db_methods
 from flask import Flask, request, render_template, redirect, url_for
+from backend import db_methods
 
 
 
@@ -14,7 +15,28 @@ def mainpage_render():
 
 @app.route("/signup")
 def signup_render():
-    return render_template("LoginSignUp.html")
+    status = request.args.get('status')
+    return render_template("LoginSignUp.html",status = status)
+
+@app.route("/login_post", methods = ["POST"])
+def login_post():
+    email = request.form['email']
+    password = request.form['password']
+
+
+
+    if(db_methods.is_usuario(email,password)):
+        return redirect(url_for('myranch_render',user = email))
+    else:
+        return redirect(url_for("signup_render",status = 'Invalid Email or Password'))
+
+
+
+@app.route('/myranch')
+def myranch_render():
+    
+    user = request.args.get('user') 
+    return render_template('myranch.html',user = user)
 
 
 """""
@@ -22,9 +44,6 @@ def signup_render():
 def login_signup_render():
     return render_template("LoginSignUp.html")
 
-@app.route("login_post")
-def login_post():
-    return
 
 @app.route("signup_post")
 def signup_post():

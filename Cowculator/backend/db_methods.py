@@ -1,20 +1,21 @@
-from db_connection import db_connection
+from backend.db_connection import db_connect
 
-def is_usuario(user,correo,contraseña):
+def is_usuario(correo,contraseña):
 
     try:
-        conn = db_connection()
+        conn = db_connect()
         cursor = conn.cursor()
 
         query = (f""" 
-        select * from Users where '{user}' = Username and '{correo}' = Email and '{contraseña}' = PasswordHash 
+        select * from Users where '{correo}' = Email and '{contraseña}' = PasswordHash 
 
         """)
         result = cursor.execute(query)
+        row = result.fetchall()
 
         cursor.close()
         conn.close()
-        return result
+        return row
     except Exception as e:
         # Print the exception for debugging purposes
         print(f"Error al conectarse: {e}")
@@ -25,7 +26,7 @@ def is_usuario(user,correo,contraseña):
 
 def add_user(user,correo,contraseña):
     try:
-        conn = db_connection()
+        conn = db_connect()
         cursor = conn.cursor()
 
         query = (f" exec add_usuario '{user}','{correo}','{contraseña}' ")
@@ -42,7 +43,7 @@ def add_user(user,correo,contraseña):
 
 def select_all():
     try:
-        conn = db_connection()
+        conn = db_connect()
         cursor = conn.cursor()
 
         query = (f" select * from Users ")
@@ -60,9 +61,6 @@ def select_all():
     except Exception as e:
         # Print the exception for debugging purposes
         print(f"Error al conectarse: {e}")
-
-
-print( is_usuario( 'Juanito','juan@gmail.com','qqqqqq'))
 
 
 
