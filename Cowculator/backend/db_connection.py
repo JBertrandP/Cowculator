@@ -2,20 +2,21 @@
 import pyodbc
 
 
+remote_server = 'DESKTOP-3GEP4NK'  # e.g., '192.168.1.100' or 'myremoteserver.com'
+port = '1433'  # or your specific port number
+database = 'Prueba'  # e.g., 'mydb'
+username = 'Cowculator'  # e.g., 'sa'
+password = '123'  # e.g., 'your_password'
 
-User = 'Cowculator'
-Password = '123'
 
-
-conection_string = 'DRIVER={ODBC Driver 17 for SQL Server}; SERVER=DAZUR; DATABASE=Cowculator; UID={'+User+'}; PWD={'+Password+'}'
+connection_string = f'DRIVER={{ODBC Driver 17 for SQL Server}};SERVER={remote_server},{port};DATABASE={database};UID={username};PWD={password}'
 
 def db_connect():
     try:
-        conexion = pyodbc.connect(conection_string)
+        conexion = pyodbc.connect(connection_string)
         print("Conexion Exitosa")
         return conexion
 
     except Exception as e:
         
         print(f"Error al conectarse: {e}")
-

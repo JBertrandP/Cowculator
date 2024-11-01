@@ -1,4 +1,4 @@
-from backend.db_connection import db_connect
+from db_connection import db_connect
 
 def is_usuario(correo,contraseña):
 
@@ -65,4 +65,4 @@ def select_all():
 
 
 
-
+print(select_all())
