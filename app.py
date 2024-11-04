@@ -56,6 +56,16 @@ def myranch_render():
         user = ''
         return render_template('myranch.html',user = user)
 
+
+@app.route('/formmyranch')
+def frommyranch_render():
+   return render_template('Formmyranch.html')
+
+
+
+
+
+
 @app.route('/mycattle')
 def mycattle_render():
     return render_template("my_cattle.html")
