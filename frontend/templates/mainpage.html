@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mainpage</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/stylemain.css')}}">
+    <link rel="stylesheet" href="/static/css/stylemain.css">
+</head>
+<body>
+    <header class="header">
+        <div  class="menu container">
+                
+                <input type="checkbox" id="menu" />
+                <label for="menu">
+                        <img src="{{ url_for('static', filename = 'images/CowsRendered_GIF.gif')}}" class ="menu-icono"  alt="">
+                        <img src="/static/images/CowsRendered_GIF.gif" class ="menu-icono"  alt="">
+                </label>
+
+                <nav class="navbar">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#AboutUs">Contact Us</a></li> 
+                        <li><a href="/signuplogin" >Sign Up</a></li>
+                    </ul>
+                    
+                </nav>
+
+        </div>
+
+        <div class="header-content container">
+
+            <h1>COWCULATOR</h1>
+            <P>We are an association who seeks to cover and ameliorate the 
+                needs of cattle owners, making the process of diagnosing one’s 
+                cattle much cheaper, easier and faster.
+            </P>
+        </div>
+
+    </header>
+
+<section class="cow">
+    <img class="cow-img" src="{{ url_for('static', filename = 'images/vacaa.png')}}" alt="" width="300">
+
+    <div class="cow-content container">
+
+        <h2>Los distintos tipos de ganado vacuno en Chihuahua</h2>
+            <div class="cow-group">
+
+                <div class="cow-1">
+                    <img src="{{ url_for('static', filename = 'images/herefordcow.png')}}">
+                        <h3>Hereford</h3>
+                            <p> 
+                                Lorem ipsum dolor sit amet consectetur 
+                                adipisicing elit.
+                                Magni qui ipsa 
+                                similique repudiandae 
+                                soluta rem 
+                                rerum 
+                            </p>
+                </div>
+
+                <div class="cow-1">
+                    <img src="{{ url_for('static', filename = 'images/Angus.png')}}">
+                    <h3>Angus</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Magni qui ipsa similique 
+                            repudiandae
+                            soluta rem
+                            rerum 
+                            exercitationem 
+                        </p>
+                </div>
+
+                <div class="cow-1">
+                    <img src="{{ url_for('static', filename = 'images/brangus.png')}}">
+                    <h3>Brangus</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Magni qui ipsa similique
+                            repudiandae soluta rem rerum 
+                            exercitationem maxime 
+                            reprehenderit minima facere porro
+                        </p>
+                </div>
+
+                <div class="cow-1">
+                    <img src="{{ url_for('static', filename = 'images/charolais.png')}}">
+                    <h3>Charolais</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Magni qui ipsa similique
+                            repudiandae soluta rem rerum 
+                            exercitationem maxime 
+                            reprehenderit minima facere porro
+                        </p>
+                </div>
+
+                <div class="cow-1">
+                    <img src="{{ url_for('static', filename = 'images/salers.jpg')}}">
+                    <h3>Salers Limousin</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Magni qui ipsa similique
+                            repudiandae soluta rem rerum 
+                            exercitationem maxime 
+                            reprehenderit minima facere porro
+                        </p>
+                </div>
+
+            </div>
+
+    </div>
+</section>
+
+<footer>
+    <article id="AboutUs">
+        <h1>About Us</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Magni qui ipsa similique repudiandae soluta rem rerum exercitationem
+            maxime reprehenderit minima facere porro Lorem ipsum dolor sit amet consectetur
+            adipisicing elit.
+            <menu>
+                <li><a href="#">ajfkja</a></li>
+                <li><a href="#">sjvkja</a></li>
+                <li><a href="#">q3hfncks </a></li>
+                <li><a href="#">wvbruhakjfj </a></li>
+                <li><a href="#">yeboi</a></li>
+            </menu>
+            Magni qui ipsa similique repudiandae soluta rem rerum exercitationem
+            maxime reprehenderit minima facere porro Lorem ipsum dolor sit amet consectetur
+            adipisicing elit.
+            Magni qui ipsa similique repudiandae soluta rem rerum exercitationem
+            maxime reprehenderit minima facere porro Lorem ipsum dolor sit amet consectetur
+            adipisicing elit.
+            Magni qui ipsa similique repudiandae soluta rem rerum exercitationem
+            maxime reprehenderit minima facere porro Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Magni qui ipsa similique repudiandae soluta rem rerum exercitationem
+            maxime reprehenderit minima facere porro Lorem ipsum dolor sit amet consectetur
+            adipisicing elit.
+        </p>
+    </article>
+</footer>
