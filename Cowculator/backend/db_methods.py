@@ -1,4 +1,4 @@
-from db_connection import db_connect
+from backend.db_connection import db_connect
 
 def is_usuario(correo,contraseña):
 

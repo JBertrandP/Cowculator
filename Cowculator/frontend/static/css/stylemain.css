@@ -28,8 +28,6 @@ header {
     display: flex;
 }
 
-
-
 .menu{
 
     position: absolute;
@@ -51,8 +49,6 @@ header {
 .menu .navbar ul li {
     position: relative;
     float: left;
-
-
 }
 
 .menu .navbar ul li a {
@@ -62,10 +58,8 @@ header {
     color: #FFFDFC;
     display: block;
     font-weight: 600;
+    margin-bottom: 20px;
 }
-
-
-
 
 .menu .navbar ul li a:hover {
 
@@ -76,8 +70,6 @@ header {
 
     display: none;
 }
-
-
 
 .menu-icono {
 
@@ -101,7 +93,7 @@ header {
     line-height: 80px;
     color: #F9FAFC;
     text-transform: uppercase;
-    margin-bottom: 35px;
+    margin-top: 35px;
 }
 
 .header-content p {
@@ -133,7 +125,6 @@ header {
     position: relative;
 
 }
-
 
 .cow-content {
 
@@ -168,7 +159,6 @@ header {
 
 padding: 0 25px;
 }
-
 
 .cow-1 img {
     width: 180px;
