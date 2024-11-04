@@ -7,7 +7,7 @@
 </head>
 <body>
       <h1>Bienvenido a tu rancho {{user}}</h1>
-      <link rel="stylesheet" href="/Cowculator/frontend/static/css/myranch.css">
+      <link rel="stylesheet" href="{{ url_for('static', filename = 'css/myranch.css')}}">>
       <h2>Agregar Dirección del Rancho</h2>
       <form id="ranchForm">
           <label for="street">Calle:</label>
