@@ -49,9 +49,12 @@ def login_post():
 
 @app.route('/myranch')
 def myranch_render():
-    
-    user = request.args.get('user') 
-    return render_template('myranch.html',user = user)
+    if request.args.get('user') :
+        user = request.args.get('user') 
+        return render_template('myranch.html',user = user)
+    else: 
+        user = ''
+        return render_template('myranch.html',user = user)
 
 @app.route('/mycattle')
 def mycattle_render():
