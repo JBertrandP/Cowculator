@@ -1,9 +1,9 @@
-from backend.db_connection import db_connect
+from . import db_connection
 
 def is_usuario(correo,contraseña):
 
     try:
-        conn = db_connect()
+        conn = db_connection.db_connect()
         cursor = conn.cursor()
 
         query = (f""" 
@@ -26,7 +26,7 @@ def is_usuario(correo,contraseña):
 
 def add_user(user,correo,contraseña):
     try:
-        conn = db_connect()
+        conn = db_connection.db_connect()
         cursor = conn.cursor()
 
         query = (f"insert into Users( Username,Email,PasswordHash) values ('{user}','{correo}','{contraseña}')  ")
@@ -43,7 +43,7 @@ def add_user(user,correo,contraseña):
 
 def select_all():
     try:
-        conn = db_connect()
+        conn = db_connection.db_connect()
         cursor = conn.cursor()
 
         query = (f" select * from Users ")
@@ -62,3 +62,5 @@ def select_all():
         # Print the exception for debugging purposes
         print(f"Error al conectarse: {e}")
 
+
+print(select_all())
