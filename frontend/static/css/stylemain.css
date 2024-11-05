@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -8,28 +8,29 @@
     list-style: none;
 }
 
-body{
-
+body {
     font-family: 'Poppins', sans-serif;
 }
 
 .container {
-max-width: 1200px;
-margin: 0 auto;
-
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 header {
     background-image: url(/static/images/CowsRendered_GIF.gif);
-    background-position: center bottom;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 150vh;
+    min-height: 100vh;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #FFFDFC;
 }
 
-.menu{
-
+.menu {
     position: absolute;
     top: 0;
     left: 0;
@@ -37,58 +38,45 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 20px;
 }
 
 .logo {
-
     color: #FFFDFC;
     font-size: 25px;
     font-weight: 800;
 }
 
-.menu .navbar ul li {
-    position: relative;
-    float: left;
+.menu .navbar ul {
+    display: flex;
 }
 
 .menu .navbar ul li a {
-
     font-size: 18px;
     padding: 10px;
     color: #FFFDFC;
     display: block;
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-right: 20px;
 }
 
 .menu .navbar ul li a:hover {
-
     color: #3eb626;
 }
 
 #menu {
-
     display: none;
 }
 
 .menu-icono {
-
     width: 25px;
 }
 
-.menu label {
-
-    cursor: pointer;
-    display: none;
-}
-
 .header-content {
-     text-align: center;
-
+    text-align: center;
 }
 
 .header-content h1 {
-
     font-size: 75px;
     line-height: 80px;
     color: #F9FAFC;
@@ -97,101 +85,41 @@ header {
 }
 
 .header-content p {
-
     font-size: 16px;
     color: #C5C5C5;
-    padding: 0 250px;
+    padding: 0 50px;
     margin-bottom: 25px;
 }
 
 .btn-1 {
-
     display: inline-block;
     padding: 11px 35px;
     background-color: #5e3e37;
-    color:#F9FAFC;
+    color: #F9FAFC;
     text-transform: uppercase;
 }
 
 .btn-1:hover {
-
-    background-color: #7f5e58 ;
+    background-color: #7f5e58;
 }
 
 .cow {
-
-    padding:  100px 0;
+    padding: 100px 0;
     background-color: #E1E2E6;
-    position: relative;
-
-}
-
-.cow-content {
-
-    text-align: center;
-}
-
-.cow-content h2 {
-
-    font-size: 55px;
-    line-height: 70px;
-    color: #323337;
-    padding: 0 250px;
-    margin-bottom: 15px;
-}
-
-.txt-p {
-
-    font-size: 16px;
-    color: #414247;
-    padding: 0 250px;
-    margin-bottom: 35px;
-}
-
-.cow-group {
-
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 50px;
+    justify-content: center;
+    align-items: center;
 }
 
-.cow-1 img {
-
-padding: 0 25px;
+.cow-gif img {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
 }
 
-.cow-1 img {
-    width: 180px;
-}
-
-.cow-img {
-
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
-.cow-1 h3 {
-
-    color:#323337;
-    font-size: 20px;
-    margin-bottom: 15px;
-}
-
-footer{
+footer {
     background-image: linear-gradient(rgba(84, 173, 70, 0.7), rgba(84, 173, 70, 0.7)), url(/static/images/coow.jpg);
     color: black;
-    padding: 20px;
-}
-
-.services {
-
-    background-image: linear-gradient(
-        rgba(0, 0, 0, 0.7),
-        rgba(0, 0, 0, 0.7)),
-        url(images/coow.jpg);
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-attachment: fixed;
+    padding: 200px;
+    text-align: center;
 }
