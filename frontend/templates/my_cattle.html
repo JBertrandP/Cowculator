@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Cattle</title>
     <link rel="stylesheet" href="{{ url_for('static', filename = 'css/stylesmy_cattle.css')}}">
-    <!-- Añade librerías para 3D como Three.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
     <!-- Header Section -->
@@ -42,10 +40,12 @@
             </div>
         </div>
 
-        <!-- Corral 3D -->
+        <!-- Corral GIF -->
         <div class="cow-corrall">
             <h2> Cattle</h2>
-            <div id="corral-3d" style="width: 100%; height: 400px;"></div>
+            <div id="corral-gif">
+                <img src="/static/images/CowCarrosel.gif" alt="Corral GIF" style="width: 100%; height: 400px;">
+            </div>
         </div>
 
         <!-- Cows List Section -->
@@ -81,31 +81,5 @@
             </ul>
         </div>
     </section>
-
-    <script>
-        // Añade el código para cargar el corral 3D con Three.js
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 400, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, 400);
-        document.getElementById('corral-3d').appendChild(renderer.domElement);
-
-        // Añade objetos al corral (vacuno, suelo, etc.)
-        const geometry = new THREE.BoxGeometry();
-        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-        const cube = new THREE.Mesh(geometry, material);
-        scene.add(cube);
-
-        camera.position.z = 5;
-
-        function animate() {
-            requestAnimationFrame(animate);
-            cube.rotation.x += 0.01;
-            cube.rotation.y += 0.01;
-            renderer.render(scene, camera);
-        }
-        animate();
-    </script>
 </body>
 </html>
-
