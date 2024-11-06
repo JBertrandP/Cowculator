@@ -69,7 +69,7 @@ header {
 }
 
 .menu-icono {
-    width: 80px;
+    width: 85px;
 }
 
 .header-content {
@@ -116,6 +116,12 @@ header {
 .cowtxt h1 {
     font-size: 69px;
     line-height: 90px;
+    color: #F9FAFC;
+}
+
+.cowtxt p {
+    font-size: 23px;
+    line-height: 45px;
     color: #F9FAFC;
 }
 

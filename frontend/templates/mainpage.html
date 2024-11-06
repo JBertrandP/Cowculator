@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename = 'css/stylemain.css')}}">
 </head>
 <body>
+    <article id="Home">
     <header class="header">
         <div class="menu container">
             <input type="checkbox" id="menu" />
@@ -15,9 +16,9 @@
             </label>
             <nav class="navbar">
                 <ul>
-                    <li><a href="#">Home</a></li>
+                    <li><a href="#Home">Home</a></li>
                     <li><a href="#">Services</a></li>
-                    <li><a href="#">Features</a></li>
+                    <li><a href="#Ourcows">OurCows</a></li>
                     <li><a href="#AboutUs">Contact Us</a></li> 
                     <li><a href="/signuplogin">Sign Up</a></li>
                 </ul>
@@ -28,18 +29,21 @@
             <p>We are an association who seeks to cover and ameliorate the needs of cattle owners, making the process of diagnosing one’s cattle much cheaper, easier and faster.</p>
         </div>
     </header>
-
-    <section class="cow">
-        <section class="cowtxt">
-            <h1>Common Cows</h1>
-                <ol>-Hereford &nbsp&nbsp&nbsp -Angus</ol>
-                <ol>-Brangus &nbsp&nbsp&nbsp  -Charolais</ol>
-                <ol>-Salers &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp -Limousin</ol>
-        </section>    
-            <div class="cow-gif">
-                <img src="{{ url_for('static', filename = 'images/CowCarrosel.gif')}}" alt="Cattle GIF" class="full-gif">
-            </div>
-    </section>
+    </article>
+    <article id="Ourcows">
+        <section class="cow">
+            <section class="cowtxt">
+                <h1>Our Cows&nbsp&nbsp&nbsp&nbsp&nbsp</h1>
+                <p>The cows we manage are:</p>
+                    <ol>-Hereford &nbsp&nbsp&nbsp -Angus</ol>
+                    <ol>-Brangus &nbsp&nbsp&nbsp  -Charolais</ol>
+                    <ol>-Salers &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp -Limousin</ol>
+            </section>    
+                <div class="cow-gif">
+                    <img src="{{ url_for('static', filename = 'images/CowCarrosel.gif')}}" alt="Cattle GIF" class="full-gif">
+                </div>
+        </section>
+    </article>
 
     <footer>
         <article id="AboutUs">
