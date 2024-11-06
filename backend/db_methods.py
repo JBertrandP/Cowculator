@@ -62,5 +62,3 @@ def select_all():
         # Print the exception for debugging purposes
         print(f"Error al conectarse: {e}")
 
-
-print(select_all())

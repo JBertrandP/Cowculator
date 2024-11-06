@@ -1,12 +1,14 @@
 #Main Flask application 
 #from backend import db_methods
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for,session
 from backend import db_methods
+
 
 
 
 app = Flask(__name__, template_folder= "frontend/templates", static_folder= "frontend/static")  
 
+app.secret_key = "hello"
 
 
 @app.route("/")
@@ -49,12 +51,14 @@ def login_post():
 
 @app.route('/myranch')
 def myranch_render():
+    
+
     if request.args.get('user') :
         user = request.args.get('user') 
         return render_template('myranch.html',user = user)
     else: 
         user = ''
-        return render_template('myranch.html',user = user)
+        return redirect(url_for('signuplogin_render'))
 
 
 @app.route('/formmyranch')
