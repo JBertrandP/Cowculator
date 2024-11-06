@@ -1,6 +1,5 @@
-#Main Flask application 
-#from backend import db_methods
 from flask import Flask, request, render_template, redirect, url_for,session
+from werkzeug.security import generate_password_hash,check_password_hash
 from backend import db_methods
 
 
@@ -28,9 +27,13 @@ def signup_post():
     email = request.form['email']
     password = request.form['password']
 
-    if( not (db_methods.is_usuario(email,password))):
-        db_methods.add_user(user,email,password)
+    if( not (db_methods.is_usuario(email,password)) ):
+        db_methods.add_user(user,email,generate_password_hash(password))
         return redirect(url_for('myranch_render',user = user))
+
+
+def hash_password(password):
+    return generate_password_hash(password)
 
 
 
@@ -40,13 +43,17 @@ def login_post():
     email = request.form['email']
     password = request.form['password']
 
-
-
-    if(db_methods.is_usuario(email,password)):
+    password_hash = db_methods.get_hash(email)
+    
+    if db_methods.is_usuario(email)  is not None and check_password_hash(password_hash,password):
         return redirect(url_for('myranch_render',user = email))
     else:
-        return redirect(url_for("signup_render",status = 'Invalid Email or Password'))
+        return redirect(url_for("signuplogin_render"))
 
+
+
+def verify_password(stored_password_hash, provided_password):
+    return check_password_hash(stored_password_hash, provided_password)
 
 
 @app.route('/myranch')
@@ -72,9 +79,7 @@ def frommyranch_render():
 
 @app.route('/mycattle')
 def mycattle_render():
-    return render_template("my_cattle.html")
-
-
+    return render_template("MyCattle.html")
 
 
 if __name__ == ("__main__"):
