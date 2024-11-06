@@ -27,9 +27,11 @@ def signup_post():
     email = request.form['email']
     password = request.form['password']
 
-    if( not (db_methods.is_usuario(email,password)) ):
+    if( not (db_methods.is_usuario(email)) ):
         db_methods.add_user(user,email,generate_password_hash(password))
         return redirect(url_for('myranch_render',user = user))
+    else:
+        return redirect(url_for('signuplogin_render'))
 
 
 def hash_password(password):
