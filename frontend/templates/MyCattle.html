@@ -8,7 +8,7 @@
     <link rel="stylesheet"  type="text/css"    href="StyleMyCattle.css">
 
     <link rel="stylesheet"
-        href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+        href="{{ url_for('static', filename = 'css/StyleMyCattle.css')}}">
 
      <link
      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
@@ -48,9 +48,9 @@
             <a href="#" class="ctaa"><i class="ri-play-fill"></i>que agrego aqui?</a>
         </div>
 
-
+        
         <div class="model-img">
-            <img src="images/cowcattle.png" height="600px">
+            <img src="{{ url_for('static', filename = 'images/cowcattle.png')}}" height="600px">
 
         </div>
 
@@ -66,12 +66,12 @@
 
     </div>
 
-    <div class="scroll-down">
+    <div class="scroll-down">   
         <a href=""><i class="ri-arrow-down-s-fill"></i></a>
     </div>
 
     <script src="https://unpkg.com/scrollreveal"></script>
 
-    <script src="ScriptMyCattle.js"> </script>
+    <script src="{{ url_for('static', filename = 'js/ScriptMyCattle.js')}}"> </script>
 </body>
 </html>
