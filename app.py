@@ -51,15 +51,15 @@ def login_post():
 
 @app.route('/myranch')
 def myranch_render():
-    
-
+    return render_template('myranch.html')
+    """
     if request.args.get('user') :
         user = request.args.get('user') 
         return render_template('myranch.html',user = user)
     else: 
         user = ''
         return redirect(url_for('signuplogin_render'))
-
+    """
 
 @app.route('/formmyranch')
 def frommyranch_render():

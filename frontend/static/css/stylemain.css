@@ -69,10 +69,11 @@ header {
 }
 
 .menu-icono {
-    width: 25px;
+    width: 80px;
 }
 
 .header-content {
+    margin-top: -110px;
     text-align: center;
 }
 
@@ -81,7 +82,7 @@ header {
     line-height: 80px;
     color: #F9FAFC;
     text-transform: uppercase;
-    margin-top: 35px;
+    margin: auto;
 }
 
 .header-content p {
@@ -104,22 +105,34 @@ header {
 }
 
 .cow {
-    padding: 100px 0;
-    background-color: #E1E2E6;
+    padding: 100px;
+    background-color:black;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 20%;
+}
+
+.cowtxt h1 {
+    font-size: 69px;
+    line-height: 90px;
+    color: #F9FAFC;
+}
+
+.cowtxt ol {
+    font-size: 20px;
+    line-height: 45px;
+    color: #F9FAFC;
 }
 
 .cow-gif img {
-    width: 100%;
-    max-width: 1300px;
+    margin-left: 20%;
+    width: 80%;
     height: auto;
 }
 
 footer {
     background-image: linear-gradient(rgba(84, 173, 70, 0.7), rgba(84, 173, 70, 0.7)), url(/static/images/coow.jpg);
     color: black;
-    padding: 200px;
-    text-align: center;
+    padding: 20px;
 }
