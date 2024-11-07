@@ -12,6 +12,8 @@ app.secret_key = "hello"
 
 @app.route("/")
 def mainpage_render():
+
+    session['user'] = {'user_id':None , 'username': None, 'email' : None  }
     return render_template('mainpage.html')
 
 @app.route("/signuplogin")
@@ -23,14 +25,21 @@ def signuplogin_render():
 
 @app.route('/signup_post', methods = ['POST'])
 def signup_post():
-    user = request.form['user']
+    username = request.form['user']
     email = request.form['email']
     password = request.form['password']
 
     if( not (db_methods.is_usuario(email)) ):
-        db_methods.add_user(user,email,generate_password_hash(password))
-        session['user'] = request.form['user']
-        return redirect(url_for('myranch_render',user = user))
+        db_methods.add_user(username,email,generate_password_hash(password))
+
+        user_id = db_methods.get_userData(email)[0]
+        
+        session['user']['user_id'] = user_id
+        session['user']['email'] = email
+        session['user']['username'] = username
+        
+        
+        return redirect(url_for('myranch_render',user = username))
     else:
         return redirect(url_for('signuplogin_render'))
 
@@ -50,8 +59,15 @@ def login_post():
     
     if db_methods.is_usuario(email)  is not None and check_password_hash(password_hash,password):
 
-        user = db_methods.get_userData(email)[1]
-        return redirect(url_for('myranch_render',user = user))
+        user_id = db_methods.get_userData(email)[0]
+        username = db_methods.get_userData(email)[1]
+        email = db_methods.get_userData(email)[2]
+
+        session['user']['user_id'] = user_id
+        session['user']['email'] =  email
+        session['user']['username'] =  username
+        
+        return redirect(url_for('myranch_render',user = username))
     else:
         return redirect(url_for("signuplogin_render"))
 
@@ -72,11 +88,24 @@ def myranch_render():
 def frommyranch_render():
    return render_template('Formmyranch.html')
 
-@app.route('/myranch_post')
-def myranch_post():
+@app.route('/formmyranch_post')
+def formmyranch_post():
+
     name = request.form['name']
     location = request.json
-    image = request.files['image']
+    user_id = session.get('user',{}).get('user_id')
+    image = request.files['image'].read()
+
+    db_methods.add_ranch(name,location,user_id,image)
+
+
+
+
+    
+
+
+
+
 
     
 

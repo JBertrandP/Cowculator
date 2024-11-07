@@ -113,5 +113,31 @@ def select_all():
         print(f"Error al conectarse: {e}")
 
 
+
+
+
+
+def add_ranch(name,location,user_id,image):
+    try:
+        conn = db_connection.db_connect()
+        cursor = conn.cursor()
+
+        query = (f""" 
+        insert into MyRanch(FarmName,Location,OwnerID,FarmImage) values ( '{name}','{location}',{user_id},{image})
+        """)
+        cursor.execute(query)
+
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        return 
+
+    except Exception as e:
+        # Print the exception for debugging purposes
+        print(f"Error al conectarse: {e}")
+
+
 #add_user("Test","test@test.com","abcdefg")
 #print(select_all())
