@@ -29,6 +29,7 @@ def signup_post():
 
     if( not (db_methods.is_usuario(email)) ):
         db_methods.add_user(user,email,generate_password_hash(password))
+        session['user'] = request.form['user']
         return redirect(url_for('myranch_render',user = user))
     else:
         return redirect(url_for('signuplogin_render'))
@@ -48,7 +49,9 @@ def login_post():
     password_hash = db_methods.get_hash(email)
     
     if db_methods.is_usuario(email)  is not None and check_password_hash(password_hash,password):
-        return redirect(url_for('myranch_render',user = email))
+
+        user = db_methods.get_userData(email)[1]
+        return redirect(url_for('myranch_render',user = user))
     else:
         return redirect(url_for("signuplogin_render"))
 
@@ -60,15 +63,10 @@ def verify_password(stored_password_hash, provided_password):
 
 @app.route('/myranch')
 def myranch_render():
-    return render_template('myranch.html')
-    """
-    if request.args.get('user') :
-        user = request.args.get('user') 
-        return render_template('myranch.html',user = user)
-    else: 
-        user = ''
-        return redirect(url_for('signuplogin_render'))
-    """
+
+    user = request.args.get('user')
+    return render_template('myranch.html',user = user)
+  
 
 @app.route('/formmyranch')
 def frommyranch_render():

@@ -67,6 +67,30 @@ def get_hash(email):
         print(f"Error al conectarse: {e}")
 
 
+def get_userData(email):
+    try:
+        conn = db_connection.db_connect()
+        cursor = conn.cursor()
+
+        query = (f""" select * from Users where Email = '{email}'
+
+ """)
+        result = cursor.execute(query)
+
+        row = cursor.fetchone()
+        
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        return row
+
+    except Exception as e:
+        # Print the exception for debugging purposes
+        print(f"Error al conectarse: {e}")
+
+
 def select_all():
     try:
         conn = db_connection.db_connect()
