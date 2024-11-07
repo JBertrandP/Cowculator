@@ -66,14 +66,7 @@ def myranch_render():
 
     user = request.args.get('user')
     return render_template('myranch.html',user = user)
-    """
-    if request.args.get('user') :
-        user = request.args.get('user') 
-        return render_template('myranch.html',user = user)
-    else: 
-        user = ''
-        return redirect(url_for('signuplogin_render'))
-    """
+  
 
 @app.route('/formmyranch')
 def frommyranch_render():

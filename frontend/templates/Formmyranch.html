@@ -65,43 +65,17 @@ p {
       <p class="col-12 text-center"><a href="/mycattle" >MyCattle</a></p>
     </div>
       <form id="ranchForm">
-          <label for="street">Calle:</label>
+          <label for="street">Name</label>
           <input type="text" id="street" name="street" required><br>
   
-          <label for="city">Ciudad:</label>
+          <label for="city">Location</label>
           <input type="text" id="city" name="city" required><br>
   
-          <label for="state">Estado:</label>
-          <input type="text" id="state" name="state" required><br>
-  
-          <label for="zipcode">Código Postal:</label>
-          <input type="text" id="zipcode" name="zipcoWde" required><br>
-  
-          <button type="button" onclick="submitAddress()">Guardar Dirección</button>
+          <button type="button" onclick="submitAddress()">Add Ranch</button>
       </form>
     
 
-      <script>
-          function submitAddress() {
-             
-              const street = document.getElementById('street').value;
-              const city = document.getElementById('city').value;
-              const state = document.getElementById('state').value;
-              const zipcode = document.getElementById('zipcode').value;
-  
-             
-              const addressData = {
-                  street: street,
-                  city: city,
-                  state: state,
-                  zipcode: zipcode
-              };
-  
-              
-              console.log("Datos de la dirección:", addressData);
-              alert("Dirección guardada correctamente!");
-          }
-      </script>
+      
     
 </body>
 </html>
