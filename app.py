@@ -72,7 +72,13 @@ def myranch_render():
 def frommyranch_render():
    return render_template('Formmyranch.html')
 
+@app.route('/myranch_post')
+def myranch_post():
+    name = request.form['name']
+    location = request.json
+    image = request.files['image']
 
+    
 
 
 

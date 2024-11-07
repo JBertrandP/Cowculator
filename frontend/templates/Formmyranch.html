@@ -58,20 +58,20 @@ p {
                 <input type="file" id="fileElem" accept="image/*" onchange="handleFiles(this.files)">
                 <form action="/upload" method="POST" enctype="multipart/form-data">
                     <input type="file" id="file" name="file" accept="image/*">
-                    <input type="submit" value="Upload">
                 </form>
             </form>
         </div> <script src="{{ url_for('static', filename = '/js/script.js')}}"></script>
+
       <p class="col-12 text-center"><a href="/mycattle" >MyCattle</a></p>
     </div>
-      <form id="ranchForm">
+      <form id="ranchForm" action="/myranch_post" method="post">
           <label for="street">Name</label>
-          <input type="text" id="street" name="street" required><br>
+          <input type="text" id="street" name="name" required><br>
   
           <label for="city">Location</label>
-          <input type="text" id="city" name="city" required><br>
+          <input type="text" id="city" name="location" required><br>
   
-          <button type="button" onclick="submitAddress()">Add Ranch</button>
+          <button type="submit" >Add Ranch</button>
       </form>
     
 
