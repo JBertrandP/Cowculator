@@ -46,18 +46,25 @@ header {
     font-size: 25px;
     font-weight: 800;
 }
+.navbar {
+    position: fixed; /* Fija la navbar en la parte superior */
+     
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
 
-.menu .navbar ul {
-    display: flex;
+}
+.navbar ul {
+   
+    display: flex;;
+    margin-left: 600px;
 }
 
-.menu .navbar ul li a {
+.navbar ul li a {
     font-size: 18px;
     padding: 10px;
-    color: #FFFDFC;
+    color: #fdfdfd;
     display: block;
     font-weight: 600;
-    margin-right: 20px;
+    margin-right: 20px
 }
 
 .menu .navbar ul li a:hover {
