@@ -15,11 +15,53 @@
         background-position: center;;
         background-size: cover;
     }
+    
+.row {
+    margin: auto;
+    padding: 10%;
+}
+
+#drop-area {
+    border: 2px dashed #ccc;
+    border-radius: 20px;
+    width: 80%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+#drop-area.highlight {
+    border-color: rgb(81, 255, 0);
+}
+
+.my-form {
+    margin-bottom: 10px;
+}
+
+#fileElem {
+    display: none;
+}
+
+p {
+    margin: 0;
+    font-size: 1.2em;
+}
 </style>
 <body>
     
     <div class="row">
-      <h1 class="col-12">Create your ranch {{user}}</h1>
+        <h1>Create a new ranch</h1>
+        <div id="drop-area">
+            <form class="my-form">
+                <p>Drag and drop your image here or click to select</p>
+                <input type="file" id="fileElem" accept="image/*" onchange="handleFiles(this.files)">
+                <form action="/upload" method="POST" enctype="multipart/form-data">
+                    <input type="file" id="file" name="file" accept="image/*">
+                    <input type="submit" value="Upload">
+                </form>
+            </form>
+        </div> <script src="{{ url_for('static', filename = '/js/script.js')}}"></script>
       <p class="col-12 text-center"><a href="/mycattle" >MyCattle</a></p>
     </div>
       <form id="ranchForm">
