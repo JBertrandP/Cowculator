@@ -49,7 +49,39 @@ p {
 }
 </style>
 <body>
-    
+
+
+    <form action="/" method="post" enctype="multipart/form-data">
+       
+        <label for="imageInput">Upload Image:</label>
+        <input type="file" id="imageInput" name="imageInput" accept="image/*" required>
+        <br><br>
+
+
+        <label for="textInput">Name</label>
+        <input type="text" id="textInput" name="textInput" required>
+        <br><br>
+
+        
+        <label for="textInput">Location</label>
+        <input type="text" id="textInput" name="textInput" required>
+        <br><br>
+
+
+        <input type="submit" value="Submit">
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+    <!---
     <div class="row">
         <h1>Create a new ranch</h1>
         <div id="drop-area">
@@ -75,7 +107,7 @@ p {
       </form>
     
 
-      
+    -->
     
 </body>
 </html>
