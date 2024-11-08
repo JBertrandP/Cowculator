@@ -50,7 +50,7 @@ def get_hash(email):
         query = (f""" select PasswordHash from Users where Email = '{email}'
 
  """)
-        result = cursor.execute(query)
+        cursor.execute(query)
 
         row = cursor.fetchone()
         
@@ -59,7 +59,6 @@ def get_hash(email):
         cursor.close()
         conn.close()
 
-        print(row[0])
         return row[0]
 
     except Exception as e:
@@ -122,10 +121,12 @@ def add_ranch(name,location,user_id,image):
         conn = db_connection.db_connect()
         cursor = conn.cursor()
 
-        query = (f""" 
-        insert into MyRanch(FarmName,Location,OwnerID,FarmImage) values ( '{name}','{location}',{user_id},{image})
+        query = (""" 
+        insert into MyRanch(FarmName,Location,OwnerID,FarmImage) values ( ?, ?, ?, ? ) 
         """)
-        cursor.execute(query)
+
+
+        cursor.execute(query,(name,location,user_id,image))
 
 
         conn.commit()

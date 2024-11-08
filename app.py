@@ -13,41 +13,13 @@ app.secret_key = "hello"
 @app.route("/")
 def mainpage_render():
 
-    session['user'] = {'user_id':None , 'username': None, 'email' : None  }
+    
+
     return render_template('mainpage.html')
 
 @app.route("/signuplogin")
 def signuplogin_render():
-    status = request.args.get('status')
-    return render_template("LoginSignUp.html",status = status)
-
-
-
-@app.route('/signup_post', methods = ['POST'])
-def signup_post():
-    username = request.form['user']
-    email = request.form['email']
-    password = request.form['password']
-
-    if( not (db_methods.is_usuario(email)) ):
-        db_methods.add_user(username,email,generate_password_hash(password))
-
-        user_id = db_methods.get_userData(email)[0]
-        
-        session['user']['user_id'] = user_id
-        session['user']['email'] = email
-        session['user']['username'] = username
-        
-        
-        return redirect(url_for('myranch_render',user = username))
-    else:
-        return redirect(url_for('signuplogin_render'))
-
-
-def hash_password(password):
-    return generate_password_hash(password)
-
-
+    return render_template("LoginSignUp.html")
 
 
 @app.route("/login_post", methods = ["POST"])
@@ -63,11 +35,14 @@ def login_post():
         username = db_methods.get_userData(email)[1]
         email = db_methods.get_userData(email)[2]
 
+        session['user'] = {'user_id' : None , 'email' : None , 'username' : None}
+        
         session['user']['user_id'] = user_id
         session['user']['email'] =  email
         session['user']['username'] =  username
         
-        return redirect(url_for('myranch_render',user = username))
+        print(session)
+        return redirect(url_for('myranch_render'))
     else:
         return redirect(url_for("signuplogin_render"))
 
@@ -77,26 +52,69 @@ def verify_password(stored_password_hash, provided_password):
     return check_password_hash(stored_password_hash, provided_password)
 
 
+@app.route('/signup_post', methods = ['POST'])
+def signup_post():
+    username = request.form['user']
+    email = request.form['email']
+    password = request.form['password']
+
+    if( not (db_methods.is_usuario(email)) ):
+        db_methods.add_user(username,email,generate_password_hash(password))
+
+        user_id = db_methods.get_userData(email)[0]
+        
+        session['user'] = {'user_id' : None , 'email' : None , 'username' : None}
+        
+        session['user']['user_id'] = user_id
+        session['user']['email'] = email
+        session['user']['username'] = username
+        
+        
+        return redirect(url_for('myranch_render'))
+    else:
+        return redirect(url_for('signuplogin_render'))
+
+
+def hash_password(password):
+    return generate_password_hash(password)
+
+
+
+
+
+
 @app.route('/myranch')
 def myranch_render():
+    print(session)
 
-    user = request.args.get('user')
-    return render_template('myranch.html',user = user)
+    username = session['user']['username']
+    return render_template('myranch.html',user = username)
   
 
 @app.route('/formmyranch')
 def frommyranch_render():
+   
    return render_template('Formmyranch.html')
 
-@app.route('/formmyranch_post')
+@app.route('/formmyranch_post', methods = ['POST','GET'])
 def formmyranch_post():
 
     name = request.form['name']
-    location = request.json
-    user_id = session.get('user',{}).get('user_id')
-    image = request.files['image'].read()
+    location = request.form['location']
+    user_id = session['user']['user_id']
+    image = request.files['image']
+
+
+
+    if image is None:
+        image = url_for('static', filename = 'images/dogallemand.jpg').read()
+    else:
+        image = image.read()
+    
 
     db_methods.add_ranch(name,location,user_id,image)
+
+    return redirect(url_for('myranch_render'))
 
 
 
@@ -115,6 +133,8 @@ def formmyranch_post():
 @app.route('/mycattle')
 def mycattle_render():
     return render_template("MyCattle.html")
+
+
 
 
 if __name__ == ("__main__"):
