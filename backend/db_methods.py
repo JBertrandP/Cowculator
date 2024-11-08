@@ -74,7 +74,7 @@ def get_userData(email):
         query = (f""" select * from Users where Email = '{email}'
 
  """)
-        result = cursor.execute(query)
+        cursor.execute(query)
 
         row = cursor.fetchone()
         

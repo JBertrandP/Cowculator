@@ -12,9 +12,6 @@ app.secret_key = "hello"
 
 @app.route("/")
 def mainpage_render():
-
-    
-
     return render_template('mainpage.html')
 
 @app.route("/signuplogin")
@@ -64,7 +61,7 @@ def signup_post():
         user_id = db_methods.get_userData(email)[0]
         
         session['user'] = {'user_id' : None , 'email' : None , 'username' : None}
-        
+
         session['user']['user_id'] = user_id
         session['user']['email'] = email
         session['user']['username'] = username
@@ -77,10 +74,6 @@ def signup_post():
 
 def hash_password(password):
     return generate_password_hash(password)
-
-
-
-
 
 
 @app.route('/myranch')
@@ -115,18 +108,6 @@ def formmyranch_post():
     db_methods.add_ranch(name,location,user_id,image)
 
     return redirect(url_for('myranch_render'))
-
-
-
-
-    
-
-
-
-
-
-    
-
 
 
 
