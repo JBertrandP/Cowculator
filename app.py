@@ -99,9 +99,6 @@ def myranch_render():
         image = convert_image(ranch_data[i][4])
         ranch_data[i][4] = image
 
-
-
- 
     return render_template('myranch.html',user = username,ranch_data = ranch_data)
 
 def convert_image(heximage):
