@@ -140,5 +140,29 @@ def add_ranch(name,location,user_id,image):
         print(f"Error al conectarse: {e}")
 
 
+def select_ranch(user_id):
+    try:
+        conn = db_connection.db_connect()
+        cursor = conn.cursor()
+
+        # se cambio a solo dos campos
+        query = (f" select * from MyRanch where OwnerID = ? ")
+        cursor.execute(query,user_id)
+
+        row = cursor.fetchall()
+        
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        return row
+
+    except Exception as e:
+        # Print the exception for debugging purposes
+        print(f"Error al conectarse: {e}")
+
+
+
 #add_user("Test","test@test.com","abcdefg")
 #print(select_all())

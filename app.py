@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, redirect, url_for,session
 from werkzeug.security import generate_password_hash,check_password_hash
 from backend import db_methods
+import base64  
 
 
 
@@ -80,13 +81,35 @@ def hash_password(password):
 def myranch_render():
     print(session)
 
+
     username = session['user']['username']
-    return render_template('myranch.html',user = username)
-  
+    ranch_data = db_methods.select_ranch(session['user']['user_id'])
+    
+    #ranch_data
+    #ranch_data[0] Rancho 1
+    #ranch_data[0][4] Rancho 1 Image
+    print(ranch_data)
+    print(ranch_data[0])
+    print(ranch_data[0][1])
+    #convertir imagenes 
+
+    print(len(ranch_data))
+
+    for i in range(0,len(ranch_data)):
+        image = convert_image(ranch_data[i][4])
+        ranch_data[i][4] = image
+
+
+
+ 
+    return render_template('myranch.html',user = username,ranch_data = ranch_data)
+
+def convert_image(heximage):
+    image = base64.b64encode(heximage).decode('utf-8')
+    return image 
 
 @app.route('/formmyranch')
 def frommyranch_render():
-   
    return render_template('Formmyranch.html')
 
 @app.route('/formmyranch_post', methods = ['POST','GET'])
@@ -105,7 +128,9 @@ def formmyranch_post():
         image = image.read()
     
 
+    
     db_methods.add_ranch(name,location,user_id,image)
+
 
     return redirect(url_for('myranch_render'))
 
