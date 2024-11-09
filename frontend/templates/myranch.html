@@ -13,9 +13,24 @@
         <div>
             <h1>MyRanch</h1>
             <p>{{user}}'s Ranchs</p><br>
-            <p>{{ranch_data}}</p>
+           
 
-            <a href="/formmyranch" class="btn btn-primary mt-3">+ Add Ranch</a>
+            {%  for i in range(ranch_data | length) %}
+                
+                <div>
+                    <h1>{{ranch_data[i][1]}}</h1>
+                    <p>Location: {{ranch_data[i][2]}}</p>
+
+                </div>
+
+                
+                {%  if (ranch_data | length ) < 3 and i == (ranch_data | length) -1%}
+                    <a href="/formmyranch">+AddRanch</a>
+                {%  endif %}
+
+
+            {% endfor %}
+            
         </div>
     </div>
     
