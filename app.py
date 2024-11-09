@@ -85,19 +85,18 @@ def myranch_render():
     username = session['user']['username']
     ranch_data = db_methods.select_ranch(session['user']['user_id'])
     
-    #ranch_data
-    #ranch_data[0] Rancho 1
-    #ranch_data[0][4] Rancho 1 Image
-    print(ranch_data)
-    print(ranch_data[0])
-    print(ranch_data[0][1])
-    #convertir imagenes 
-
-    print(len(ranch_data))
-
-    for i in range(0,len(ranch_data)):
-        image = convert_image(ranch_data[i][4])
-        ranch_data[i][4] = image
+    if ranch_data:
+        #ranch_data
+        #ranch_data[0] Rancho 1
+        #ranch_data[0][4] Rancho 1 Image
+        print(ranch_data)
+        print(ranch_data[0])
+        print(ranch_data[0][1])
+        #convertir imagenes 
+        
+        for i in range(0,len(ranch_data)):
+            image = convert_image(ranch_data[i][4])
+            ranch_data[i][4] = image
 
     return render_template('myranch.html',user = username,ranch_data = ranch_data)
 
