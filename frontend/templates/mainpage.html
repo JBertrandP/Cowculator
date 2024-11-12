@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mainpage</title>
     <link rel="stylesheet" href="{{ url_for('static', filename = 'css/stylemain.css')}}">
+    <style>
+
+        body {
+        cursor: url("{{ url_for('static', filename='images/cursor.png') }}"), auto;
+                }
+                a, button, input[type="checkbox"], label, .menu-icono {
+            cursor: pointer;
+        }            
+
+    </style>
 </head>
 <body>
     <article id="Home">
