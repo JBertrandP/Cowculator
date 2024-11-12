@@ -14,23 +14,22 @@
             <h1>MyRanch</h1>
             <p>{{user}}'s Ranchs</p><br>
 
-                {%  for i in range(ranch_data | length) %}
-                    
+                {%  for ranch in ranch_data %}
+                   
                     <div>
                             
-                        <h1 >{{ranch_data[i][1]}}</h1>
-                        <img src="data:image/jpeg;base64,{{ ranch_data[i][4] }}"  />  
-                        <p>Location: {{ranch_data[i][2]}}</p>                         
-                        <a href="/mycattle">Go to {{ranch_data[i][1]}}</a>
+                        <h1 >{{ranch.get('FarmName')}}</h1>
+                        <img src="data:image/jpeg;base64,{{ ranch.get('FarmImage') }}"  />  
+                        <p>Location: {{ranch.get('Location')}}</p>                         
+                        <a href="/mycattle">Go to {{ranch.get('FarmName')}}</a>
 
 
                     </div>
 
                         
-                        {%  if (ranch_data | length ) < 3 and i == (ranch_data | length) -1 %}
+                        {%  if (ranch_data | length ) < 3 and loop.index0 == (ranch_data | length) -1 %}
                             <a href="/formmyranch">+AddRanch</a>
                         {%  endif %}
-
 
                 {% endfor %}
 

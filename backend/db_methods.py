@@ -1,9 +1,11 @@
-from . import db_connection
+from .db_connection import db_connect
+import json
+import base64
 
 def is_usuario(correo):
 
     try:
-        conn = db_connection.db_connect()
+        conn = db_connect()
         cursor = conn.cursor()
 
         query = (f""" 
@@ -26,7 +28,7 @@ def is_usuario(correo):
 
 def add_user(user,correo,contraseña):
     try:
-        conn = db_connection.db_connect()
+        conn = db_connect()
         cursor = conn.cursor()
 
         query = (f"insert into Users( Username,Email,PasswordHash) values ('{user}','{correo}','{contraseña}')  ")
@@ -44,7 +46,7 @@ def add_user(user,correo,contraseña):
 
 def get_hash(email):
     try:
-        conn = db_connection.db_connect()
+        conn = db_connect()
         cursor = conn.cursor()
 
         query = (f""" select PasswordHash from Users where Email = '{email}'
@@ -68,7 +70,7 @@ def get_hash(email):
 
 def get_userData(email):
     try:
-        conn = db_connection.db_connect()
+        conn = db_connect()
         cursor = conn.cursor()
 
         query = (f""" select * from Users where Email = '{email}'
@@ -76,6 +78,7 @@ def get_userData(email):
  """)
         cursor.execute(query)
 
+    
         row = cursor.fetchone()
         
 
@@ -92,7 +95,7 @@ def get_userData(email):
 
 def select_all():
     try:
-        conn = db_connection.db_connect()
+        conn = db_connect()
         cursor = conn.cursor()
 
         query = (f" select * from Users ")
@@ -118,7 +121,7 @@ def select_all():
 
 def add_ranch(name,location,user_id,image):
     try:
-        conn = db_connection.db_connect()
+        conn = db_connect()
         cursor = conn.cursor()
 
         query = (""" 
@@ -142,21 +145,30 @@ def add_ranch(name,location,user_id,image):
 
 def select_ranch(user_id):
     try:
-        conn = db_connection.db_connect()
+        conn = db_connect()
         cursor = conn.cursor()
 
-        # se cambio a solo dos campos
+       
         query = (f" select * from MyRanch where OwnerID = ? ")
         cursor.execute(query,user_id)
 
+
+        columns = [column[0] for column in cursor.description]
         row = cursor.fetchall()
+
         
+        for ranch in row:
+            image = convert_image(ranch[4])
+            ranch[4] = image
+
 
         conn.commit()
         cursor.close()
         conn.close()
 
-        return row
+        
+        return dictionarify(columns,row)
+        
 
     except Exception as e:
         # Print the exception for debugging purposes
@@ -164,5 +176,25 @@ def select_ranch(user_id):
 
 
 
+def dictionarify(colums,rows):
+    try:
+
+        result =  [ dict(zip(colums,row)) for row in rows ]  
+
+        return result
+    
+    except Exception as e:
+        # Print the exception for debugging purposes
+        print(f"Error al conectarse: {e}")
+
+
+
+
+def convert_image(heximage):
+    image = base64.b64encode(heximage).decode('utf-8')
+    return image 
+
+
+select_ranch(2)
 #add_user("Test","test@test.com","abcdefg")
 #print(select_all())

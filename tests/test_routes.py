@@ -1,7 +1,9 @@
 # Unit tests for your Flask routes 
 
+"""
 ranch_data = [('PapuRancho', 'tumami', 2), ('JuanRancho', '999.999', 2) ]
 ranch_data = []
+
 
 for i in range(0,len(ranch_data)):
     print(ranch_data[i][0])
@@ -12,3 +14,23 @@ for i in range(0,len(ranch_data)):
 
 if not ranch_data:
     print("add ranch")
+
+
+"""
+#Jsonify
+columns = ["a","b","c"]
+rows = [(1, 'Alice', 25), (2, 'Bob', 30)]
+
+
+result = [dict(zip(columns,row)) for row in rows]
+
+
+for row in rows:
+    print(row)
+
+
+    
+print()
+
+print(result)
+
