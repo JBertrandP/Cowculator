@@ -85,19 +85,8 @@ def myranch_render():
     username = session['user']['username']
     ranch_data = db_methods.select_ranch(session['user']['user_id'])
     
-    if ranch_data:
-        #ranch_data
-        #ranch_data[0] Rancho 1
-        #ranch_data[0][4] Rancho 1 Image
-        print(ranch_data)
-        print(ranch_data[0])
-        print(ranch_data[0][1])
-        #convertir imagenes 
-        
-        for i in range(0,len(ranch_data)):
-            image = convert_image(ranch_data[i][4])
-            ranch_data[i][4] = image
 
+    print(ranch_data)
     return render_template('myranch.html',user = username,ranch_data = ranch_data)
 
 def convert_image(heximage):
@@ -106,6 +95,7 @@ def convert_image(heximage):
 
 @app.route('/formmyranch')
 def frommyranch_render():
+    #agregar condicion max ranch
    return render_template('Formmyranch.html')
 
 @app.route('/formmyranch_post', methods = ['POST','GET'])
@@ -136,7 +126,9 @@ def formmyranch_post():
 def mycattle_render():
     return render_template("MyCattle.html")
 
-
+@app.route('/add_cow')
+def add_cow():
+    request.form['']
 
 
 if __name__ == ("__main__"):
