@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyCattle</title>
 
-    <link rel="stylesheet"  type="text/css"    href="StyleMyCattle.css">
+    <link rel="stylesheet"  type="text/css"    href="{{ url_for('static', filename = 'css/StyleMyCattle.css')}}">
 
     <link rel="stylesheet"
         href="{{ url_for('static', filename = 'css/StyleMyCattle.css')}}">
@@ -17,6 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com"     crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"    rel="stylesheet">
+    
 </head>
 <body>
     <header>
@@ -76,16 +77,19 @@
 
 
         <div>
+            <!-- AJAX Request-->
+            <form id = "cow_form">
+                <input type="text" placeholder="Name" id="name">
+                <input type="number" placeholder = "Age"  id = "age">
+                <input type="text" placeholder = "Breed" id="breed">
+                <input type="number" placeholder = "Weight" id="weight">
 
-            <form action="/add" method="post">
-
-
-
-
-
-
+                <button type="button" onclick="add_cow()"> Add Cow</button>
 
             </form>
+            
+            <div id="cowDisplay"></div>
+            
 
 
 
@@ -107,7 +111,7 @@
     </div>
 
     <script src="https://unpkg.com/scrollreveal"></script>
-
     <script src="{{ url_for('static', filename = 'js/ScriptMyCattle.js')}}"> </script>
+    
 </body>
 </html>
