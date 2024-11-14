@@ -16,7 +16,6 @@ if not ranch_data:
     print("add ranch")
 
 
-"""
 #Jsonify
 columns = ["a","b","c"]
 rows = [(1, 'Alice', 25), (2, 'Bob', 30)]
@@ -33,4 +32,10 @@ for row in rows:
 print()
 
 print(result)
+
+
+"""
+
+
+from flask import Flask, jsonify,request
 
