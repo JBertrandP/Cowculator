@@ -117,7 +117,7 @@ def formmyranch_post():
 
 
     if image is None:
-        image = url_for('static', filename = 'images/dogallemand.jpg').read()
+        image = url_for('static', filename = 'images/dogallemand.jpg')
     else:
         image = image.read()
     
@@ -133,12 +133,17 @@ def formmyranch_post():
 @app.route('/mycattle')
 def mycattle_render():
     ranch_id = request.args.get('ranchId')
+    print(ranch_id)
+    
     ranch_name = request.args.get('ranchName')
     
     session['user']['ranchId'] = ranch_id
     session.modified = True
 
-    return render_template("MyCattle.html",name = ranch_name,id = ranch_id)
+    count = db_methods.count_cows(ranch_id)
+
+   
+    return render_template("MyCattle.html",name = ranch_name,id = ranch_id,totalCows = count)
 
 @app.route('/add_cow', methods=['POST'])
 def add_cow():
