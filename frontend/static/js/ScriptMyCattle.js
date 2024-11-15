@@ -1,45 +1,3 @@
-function add_cow() {
-    // Get data from the form inputs
-    const cowData = {
-      name: document.getElementById("name").value,
-      age: document.getElementById("age").value,
-      breed: document.getElementById("breed").value,
-      weight: document.getElementById("weight").value
-    };
-  
-    // Send an AJAX request using fetch
-    fetch('/add_cow', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(cowData)
-    })
-    .then(response => response.json())
-    .then(data => {
-      
-        const cowDisplay = document.getElementById("cowDisplay");
-
-        // Create a new cow information block
-        const newCowHTML = `
-          <div class="cow-info">
-            <h2>Added Cow:</h2>
-            <p>ID: ${data.id}</p>
-            <p>Name: ${data.name}</p>
-            <p>Age: ${data.age}</p>
-            <p>Weight: ${data.weight}</p>
-          </div>
-        `;
-      
-        // Append the new cow info to the existing content
-        cowDisplay.innerHTML += newCowHTML;
-        
-
-      document.getElementById("cowForm").reset();
-    })
-    .catch(error => console.error('Error:', error));
-  }
-
 
 
 let menu = document.querySelector('#menu-icon');
@@ -61,6 +19,106 @@ sr.reveal('.model-text', {delay:200, origin: 'top'});
 sr.reveal('.model-img', {delay:450, origin: 'top'});
 sr.reveal('.icons', {delay:500, origin: 'left'});
 sr.reveal('.scroll-down', {delay:500, origin: 'right'});
+
+/*
+
+function add_cow() {
+   
+    const cowData = {
+      name: document.getElementById("name").value,
+      age: document.getElementById("age").value,
+      breed: document.getElementById("breed").value,
+      weight: document.getElementById("weight").value
+    };
+  
+    fetch('/add_cow', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(cowData)
+    })
+    .then(response => response.json())
+    .then(data => {
+      
+        const cowDisplay = document.getElementById("cowDisplay");
+
+        
+        const newCowHTML = `
+          
+        <button class="cow-info-button">
+        <div class="cow-info">
+            <h2>Added Cow:</h2>
+            <p>ID: ${data.id}</p>
+            <p>Name: ${data.name}</p>
+            <p>Age: ${data.age}</p>
+            <p>Weight: ${data.weight}</p>
+        </div>
+        </button>
+     
+        `;
+      
+        cowDisplay.innerHTML += newCowHTML;
+        
+
+      document.getElementById("cowForm").reset();
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+*/
+
+async function add_cow() {
+   
+    const inputData = {
+      name: document.getElementById("name").value,
+      age: document.getElementById("age").value,
+      breed: document.getElementById("breed").value,
+      weight: document.getElementById("weight").value
+    };
+
+    try{
+  
+    let promesa = await fetch('/add_cow', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(inputData)
+    })
+
+    console.log(promesa)
+
+    let cow_data = await promesa.json()
+    console.log("Holaaaa")
+    console.log(cow_data)
+
+    const cowDisplay = document.getElementById('cowDisplay')
+
+    const newCowDisplay =  ` 
+    
+        <button class="cow-info-button">
+        <div class="cow-info">
+            <h2>Added Cow:</h2>
+            <p>ID: ${cow_data.CowId}</p>
+            <p>Name: ${cow_data.name}</p>
+            <p>Age: ${cow_data.age}</p>
+            <p>Weight: ${cow_data.weight}</p>
+        </div>
+        </button>
+     
+    `;
+
+    
+    cowDisplay.innerHTML += newCowDisplay
+    
+    }
+    catch(error){
+        console.log(error)
+    }
+    
+}
+
 
 
 

@@ -175,17 +175,42 @@ def select_ranch(user_id):
         print(f"Error al conectarse: {e}")
 
 
+def add_cow(name,age,breed,weight,ranch_id):
+    conn = db_connect()
+    cursor = conn.cursor()
+       
+    query = (f" insert into Cows(CowName,Age,Breed,Weight,FarmID) values  (?,?,?,?,?) ")
+    cursor.execute(query,(name,age,breed,weight,ranch_id))
+
+    query = (f"  SELECT TOP 1 * FROM cows ORDER BY CowID DESC;")
+    cursor.execute(query)
+
+    columns = [column[0] for column in cursor.description]
+    row = [cursor.fetchone()]
+
+    print(columns)
+    print(row)
+    print(dictionarify(columns,row))
+    
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return dictionarify(columns,row)
+
+
 
 def dictionarify(colums,rows):
     try:
 
         result =  [ dict(zip(colums,row)) for row in rows ]  
-
+        
+        
         return result
     
     except Exception as e:
         # Print the exception for debugging purposes
-        print(f"Error al conectarse: {e}")
+        print(f" Error en la creacion del diccionario: {e}")
 
 
 
