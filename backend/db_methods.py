@@ -188,10 +188,6 @@ def add_cow(name,age,breed,weight,ranch_id):
     columns = [column[0] for column in cursor.description]
     row = [cursor.fetchone()]
 
-    print(columns)
-    print(row)
-    print(dictionarify(columns,row))
-    
     conn.commit()
     cursor.close()
     conn.close()

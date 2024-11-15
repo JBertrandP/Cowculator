@@ -90,7 +90,8 @@ async function add_cow() {
     console.log(promesa)
 
     let cow_data = await promesa.json()
-    console.log("Holaaaa")
+    console.log("Add_Cow AJAX")
+ 
     console.log(cow_data)
 
     const cowDisplay = document.getElementById('cowDisplay')
@@ -100,10 +101,10 @@ async function add_cow() {
         <button class="cow-info-button">
         <div class="cow-info">
             <h2>Added Cow:</h2>
-            <p>ID: ${cow_data.CowId}</p>
-            <p>Name: ${cow_data.name}</p>
-            <p>Age: ${cow_data.age}</p>
-            <p>Weight: ${cow_data.weight}</p>
+            <p>ID: ${cow_data[0].CowID}</p>
+            <p>Name: ${cow_data[0].CowName}</p>
+            <p>Age: ${cow_data[0].Age}</p>
+            <p>Weight: ${cow_data[0].Weight}</p>
         </div>
         </button>
      

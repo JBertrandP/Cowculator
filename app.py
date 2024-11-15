@@ -141,7 +141,6 @@ def mycattle_render():
 def add_cow():
     cow_data = request.json
 
-    print(session)
     print(cow_data)
 
     name = cow_data['name']
@@ -158,6 +157,7 @@ def add_cow():
         "age": cow_data["age"],
         "weight": cow_data["weight"]
     }"""
+
     return jsonify(new_cow), 201
 
 
