@@ -19,17 +19,18 @@
                 {%  for ranch in ranch_data %}
 
 
-                <script> async function handleClick(FarmName,FarmID) {
-                    window.location.href = "/mycattle?ranchName={{ranch.get('FarmName')}}&ranchId={{ranch.get('FarmID')}}" /*Aqui poner la ruta*/
-                    console.log('/mycattle?ranchName={{ranch.get("FarmName")}}&ranchId={{ranch.get("FarmID")}}')
-                        }
+                <script> 
+                    function handleClick(FarmName,FarmID) {
+                    window.location.href = `/mycattle?ranchName=${FarmName}&ranchId=${FarmID}` /*Aqui poner la ruta*/
+                    }
                 </script>
 
                 <div class="button-container">
-                    <div class="ImgBtn" onclick="handleClick()">
-                        <h1 >{{ranch.get('FarmName')}}</h1>
-                        <img src="data:image/jpeg;base64,{{ ranch.get('FarmImage') }}"  />  
-                        <p>Location: {{ranch.get('Location')}}</p>                         
+                    
+                    <div class="ImgBtn" onclick="handleClick('{{ranch.FarmName}}','{{ranch.FarmID}}')">
+                        <h1 >{{ranch.FarmName}}</h1>
+                        <img src="data:image/jpeg;base64,{{ ranch.FarmImage }}"  />  
+                        <p>Location: {{ranch.Location}}</p>                         
                     </div>
 
                     
