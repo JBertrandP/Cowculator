@@ -17,7 +17,7 @@ body {
 }
 
 .txt {
-    margin-top: 70px;
+    margin-top: 20px;
     margin-bottom: 20px; /* Space between the text and buttons */
 }
 
@@ -97,4 +97,15 @@ body {
 
 .AddR a:hover {
     text-decoration: underline; /* Underline text on hover */
+}
+
+.SO {
+    margin-top: 20px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.SO a {
+    color: darkgoldenrod;
 }
