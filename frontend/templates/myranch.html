@@ -21,7 +21,7 @@
                         <h1 >{{ranch.get('FarmName')}}</h1>
                         <img src="data:image/jpeg;base64,{{ ranch.get('FarmImage') }}"  />  
                         <p>Location: {{ranch.get('Location')}}</p>                         
-                        <a href="/mycattle">Go to {{ranch.get('FarmName')}}</a>
+                        <a href="{{url_for('mycattle_render', ranchName = ranch.get('FarmName'),ranchId = ranch.get('FarmID')   )}}">Go to {{ranch.get('FarmName')}}</a>
 
 
                     </div>

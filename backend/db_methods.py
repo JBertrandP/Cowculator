@@ -220,6 +220,5 @@ def convert_image(heximage):
     return image 
 
 
-select_ranch(2)
 #add_user("Test","test@test.com","abcdefg")
 #print(select_all())
