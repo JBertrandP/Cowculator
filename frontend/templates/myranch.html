@@ -17,6 +17,14 @@
                 <p>{{user}}'s Ranchs</p>
             </div>
                 {%  for ranch in ranch_data %}
+
+
+                <script> async function handleClick(FarmName,FarmID) {
+                    window.location.href = "/mycattle?ranchName={{ranch.get('FarmName')}}&ranchId={{ranch.get('FarmID')}}" /*Aqui poner la ruta*/
+                    console.log('/mycattle?ranchName={{ranch.get("FarmName")}}&ranchId={{ranch.get("FarmID")}}')
+                        }
+                </script>
+
                 <div class="button-container">
                     <div class="ImgBtn" onclick="handleClick()">
                         <h1 >{{ranch.get('FarmName')}}</h1>
@@ -24,10 +32,7 @@
                         <p>Location: {{ranch.get('Location')}}</p>                         
                     </div>
 
-                    <script> function handleClick() {
-                        window.location.href = "/mycattle?ranchName={{ranch.get('FarmName')}}&ranchId={{ranch.get('FarmID')}}"; /*Aqui poner la ruta*/
-                            }
-                    </script>
+                    
                     {%  if (ranch_data | length ) < 3 and loop.index0 == (ranch_data | length) -1 %}
                     <div class="AddR"><a href="/formmyranch">+AddRanch</a></div>
                     {%  endif %}

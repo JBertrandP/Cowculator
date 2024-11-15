@@ -160,7 +160,7 @@ def add_cow():
    
     return jsonify(new_cow), 201
 
-@app.route('/search_cow',method = ['POST'])
+@app.route('/search_cow',methods = ['POST'])
 def search_cow():
     request = request.json
 
