@@ -10,36 +10,36 @@
 </head>
 <body>
 
-    <div class="container text-center d-flex justify-content-center align-items-center vh-100">
-        <div>
-            <h1>MyRanch</h1>
-            <p>{{user}}'s Ranchs</p><br>
-
+    <div class="container">
+        
+            <div class="txt">
+                <h1>MyRanch</h1>
+                <p>{{user}}'s Ranchs</p>
+            </div>
                 {%  for ranch in ranch_data %}
+                <div class="button-container">
                     <div class="ImgBtn" onclick="handleClick()">
                         <h1 >{{ranch.get('FarmName')}}</h1>
                         <img src="data:image/jpeg;base64,{{ ranch.get('FarmImage') }}"  />  
                         <p>Location: {{ranch.get('Location')}}</p>                         
-                        <a href="{{url_for('mycattle_render', ranchName = ranch.get('FarmName'),ranchId = ranch.get('FarmID')   )}}">Go to {{ranch.get('FarmName')}}</a>
                     </div>
 
                     <script> function handleClick() {
                         window.location.href = "{{url_for('mycattle_render', ranchName = ranch.get('FarmName'),ranchId = ranch.get('FarmID')   )}}"; /*Aqui poner la ruta*/
                             }
                     </script>
-                        
-                        {%  if (ranch_data | length ) < 3 and loop.index0 == (ranch_data | length) -1 %}
-                        <div class="AddR"><a href="/formmyranch">+AddRanch</a></div>
-                        {%  endif %}
-                    
-                {% endfor %}
+                    {%  if (ranch_data | length ) < 3 and loop.index0 == (ranch_data | length) -1 %}
+                    <div class="AddR"><a href="/formmyranch">+AddRanch</a></div>
+                    {%  endif %}
+                
+                    {% endfor %}
 
-                {% if not ranch_data %}
-                <div class="AddR"><a href="/formmyranch">+AddRanch</a></div>
-                {%  endif %}
+                    {% if not ranch_data %}
+                    <div class="AddR"><a href="/formmyranch">+AddRanch</a></div>
+                    {%  endif %}
+
+                </div>
                 
-                
-        </div>
     </div>
     
 </body>
