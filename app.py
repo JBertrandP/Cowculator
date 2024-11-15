@@ -160,6 +160,21 @@ def add_cow():
    
     return jsonify(new_cow), 201
 
+@app.route('/search_cow',method = ['POST'])
+def search_cow():
+    request = request.json
+
+    cow_id = request['cow_id']
+
+    response = db_methods.select_cow
+
+
+
+
+
+
+
+
 
 if __name__ == ("__main__"):
     app.run(debug= True)

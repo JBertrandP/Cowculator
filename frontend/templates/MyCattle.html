@@ -42,7 +42,7 @@
     <section class="model">
         <div class="model-text">
             <h5>que conchas pongo aqui?</h5>
-            
+
             <!--Vacas Count-->
             <h4 id = "h4">Total de Vacas: <span id = "contador"> {{totalCows}} </span></h4>
             <h1>Bienvenido a MyCattle Id {{id}} </h1>
@@ -58,7 +58,7 @@
         </div>
 
 
-          <!--            Add Cow 
+        <!--            Add Cow 
                     
         Form 
 
@@ -79,7 +79,7 @@
 
 
         <div>
-            <!-- AJAX Request-->
+            <!-- Add Cow Formulario-->
             <form id = "cow_form">
                 <input type="text" placeholder="Name" id="name">
                 <input type="number" placeholder = "Age"  id = "age">
@@ -90,9 +90,27 @@
 
             </form>
             
-            <div id="cowDisplay"></div>
+            <!--Display de vacas agregadas recientemente-->
+            <div id="addCowDisplay"></div>
             
         </div>
+
+
+            <!-- Search Cow-->
+        <div>
+       
+            <form id = "searchCow">
+                <h6>Search</h6>
+                <input type="text" placeholder="Introduce el ID de la vaca que quieras BUSCAR" id="name">
+            
+                <button type="button" onclick="searchCow()"> Search</button>
+
+            </form>
+
+            <div id = ></div>
+
+        </div>
+
 
 
 

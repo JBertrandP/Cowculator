@@ -94,7 +94,7 @@ async function addCow() {
  
     console.log(cow_data)
 
-    const cowDisplay = document.getElementById('cowDisplay')
+    const cowDisplay = document.getElementById('addCowDisplay')
 
     const newCowDisplay =  ` 
     
@@ -132,6 +132,10 @@ async function updateContador() {
   contadorElement.innerText = contadorInt  
 }
 
+async function searchCow(){
+  let promesa = await fetch( '/search_cow' ,{
 
+  })
+}
 
 

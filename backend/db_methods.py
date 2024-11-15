@@ -211,6 +211,22 @@ def count_cows(ranch_id):
     return count[0]
 
 
+def select_cow(cow_id):
+    conn = db_connect()
+    cursor = conn.cursor()
+       
+    query = (f"  select count(*) as count from Cows where FarmID = ? ")
+    cursor.execute(query,cow_id)
+
+    count = cursor.fetchone()
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+
+
+
 def dictionarify(colums,rows):
     try:
 
