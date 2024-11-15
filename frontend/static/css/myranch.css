@@ -1,3 +1,7 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
 body {
     background-image: url(/static/images/myranch.jpg); 
     background-size: cover;
@@ -6,12 +10,32 @@ body {
     height: 100vh; 
 }
 
-h1 {
-    font-family: 'Poppins', sans-serif;
-    color: #000000;
+.txt h1, .txt p {
+    text-align: center;
+    font-size: 250%;
+    margin: auto;
+}
+
+.txt {
+    margin-top: 70px;
+    margin-bottom: 20px; /* Space between the text and buttons */
+}
+
+.button-container {
+    margin-top: -50px;
+    margin-bottom: 20px; /* Space between buttons */
+    display: flex;
+    justify-content: space-between; /* Distribute space between the buttons */
+    align-items: center; /* Align items vertically centered */
+    height: 100vh; /* Full height of the viewport */
+    padding: 25px;
 }
 
 .ImgBtn {
+
+    display: block; /* Use block to stack elements vertically */
+    margin: -10px 0;  /*Adjust margin as needed */
+
     font-size: 73%;
     border-radius: 20px;
     display: inline-block;
@@ -22,13 +46,8 @@ h1 {
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    width: 420px;
-    height: 320px;
-}
-
-.AddR {
-    background-color: rgba(254, 164, 62, 0.749);
-    border-radius: 7px;
+    width: 320px;
+    height: 220px;
 }
 
 .ImgBtn:hover {
@@ -37,12 +56,45 @@ h1 {
 
 .ImgBtn img {
     position: relative;
-    width: 220px;
-    height: auto;
+    width: 130px;
+    height: 100px;
 }
 
 .ImgBtn h1,
 .ImgBtn p {
     margin: 10px 0;
     text-align: right;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center elements horizontally */
+}
+
+.AddR {
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+    height: 50px; /* Height of the button */
+    width: auto; /* Adjust width as needed */
+    background: rgba(254, 164, 62, 0.749);
+    text-decoration: none;
+    padding: 12px 34px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.AddR:hover {
+    background: rgba(251, 147, 27, 0.749);
+    transition: 1s;
+}
+
+.AddR a {
+    color: white; /* Make text white for better contrast */
+    text-decoration: none; /* Remove underline */
+}
+
+.AddR a:hover {
+    text-decoration: underline; /* Underline text on hover */
 }
