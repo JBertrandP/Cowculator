@@ -140,8 +140,10 @@ def mycattle_render():
     session['user']['ranchId'] = ranch_id
     session.modified = True
 
+    count = db_methods.count_cows(ranch_id)
+
    
-    return render_template("MyCattle.html",name = ranch_name,id = ranch_id)
+    return render_template("MyCattle.html",name = ranch_name,id = ranch_id,totalCows = count)
 
 @app.route('/add_cow', methods=['POST'])
 def add_cow():

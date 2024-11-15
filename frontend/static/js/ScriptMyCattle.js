@@ -103,6 +103,7 @@ async function addCow() {
             <h2>Added Cow:</h2>
             <p>ID: ${cow_data[0].CowID}</p>
             <p>Name: ${cow_data[0].CowName}</p>
+            <p>Breed: ${cow_data[0].Breed}</p>
             <p>Age: ${cow_data[0].Age}</p>
             <p>Weight: ${cow_data[0].Weight}</p>
         </div>
@@ -123,15 +124,12 @@ async function addCow() {
 
 
 async function updateContador() {
+  let contadorElement = document.getElementById("contador")
+  let contadorInt = parseInt(contadorElement.innerText)
 
-  let contador = (document.getElementById('h4')).getElementById('contador').value
-  console.log(contador)
-  console.log(window.location.href)
+  contadorInt += 1
 
-  contador += 1
-  console.log(contador)
-
-  
+  contadorElement.innerText = contadorInt  
 }
 
 
