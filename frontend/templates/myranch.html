@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyRanch</title>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"    rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename = 'css/myranch.css')}}">
 </head>
@@ -15,31 +16,26 @@
             <p>{{user}}'s Ranchs</p><br>
 
                 {%  for ranch in ranch_data %}
-                   
-                    <div>
-                            
+                    <div class="ImgBtn" onclick="handleClick()">
                         <h1 >{{ranch.get('FarmName')}}</h1>
                         <img src="data:image/jpeg;base64,{{ ranch.get('FarmImage') }}"  />  
                         <p>Location: {{ranch.get('Location')}}</p>                         
                         <a href="{{url_for('mycattle_render', ranchName = ranch.get('FarmName'),ranchId = ranch.get('FarmID')   )}}">Go to {{ranch.get('FarmName')}}</a>
-
-
                     </div>
 
                     <script> function handleClick() {
-                        window.location.href = "/"; /*Aqui poner la ruta*/
+                        window.location.href = "{{url_for('mycattle_render', ranchName = ranch.get('FarmName'),ranchId = ranch.get('FarmID')   )}}"; /*Aqui poner la ruta*/
                             }
                     </script>
-
                         
                         {%  if (ranch_data | length ) < 3 and loop.index0 == (ranch_data | length) -1 %}
-                            <a href="/formmyranch">+AddRanch</a>
+                        <div class="AddR"><a href="/formmyranch">+AddRanch</a></div>
                         {%  endif %}
-
+                    
                 {% endfor %}
 
                 {% if not ranch_data %}
-                    <a href="/formmyranch">+AddRanch</a>
+                <div class="AddR"><a href="/formmyranch">+AddRanch</a></div>
                 {%  endif %}
                 
                 
