@@ -68,7 +68,7 @@ function add_cow() {
 
 */
 
-async function add_cow() {
+async function addCow() {
    
     const inputData = {
       name: document.getElementById("name").value,
@@ -110,6 +110,7 @@ async function add_cow() {
      
     `;
 
+    updateContador()
     
     cowDisplay.innerHTML += newCowDisplay
     
@@ -120,6 +121,18 @@ async function add_cow() {
     
 }
 
+
+async function updateContador() {
+
+  let contador = (document.getElementById('h4')).getElementById('contador').value
+  console.log(contador)
+  console.log(window.location.href)
+
+  contador += 1
+  console.log(contador)
+
+  
+}
 
 
 

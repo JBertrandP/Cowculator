@@ -81,9 +81,12 @@ def hash_password(password):
 def myranch_render():
     print(session)
 
+    print(session)
     #solo se popea una vez la ruta es recargada no cuando es accesada
     if 'user' in session and 'ranchId' in session['user']:
-        session['user']['ranchId'].pop('ranchId',None)
+        session['user'].pop('ranchId')
+
+
 
     username = session['user']['username']
     ranch_data = db_methods.select_ranch(session['user']['user_id'])
@@ -149,15 +152,7 @@ def add_cow():
     weight = cow_data['weight']
 
     new_cow = db_methods.add_cow(name,age,breed,weight,session['user']['ranchId'])
-    #Ingresar la vaca en la base de datos y obtener el id generado 
-
-    """ new_cow = {
-        "id": 1,  
-        "name": cow_data["name"],
-        "age": cow_data["age"],
-        "weight": cow_data["weight"]
-    }"""
-
+   
     return jsonify(new_cow), 201
 
 
