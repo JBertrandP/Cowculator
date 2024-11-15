@@ -9,3 +9,34 @@ body {
 h1 {
     color: #000000;
 }
+
+.ImgBtn {
+    font-size: 73%;
+    border-radius: 20px;
+    display: inline-block;
+    padding: 20px;
+    background-color: #2e6d30;
+    color: white;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 390px;
+    height: 220px;
+}
+
+.ImgBtn:hover {
+    background-color: #45a049;
+}
+
+.ImgBtn img {
+    position: relative;
+    width: 220px;
+    height: auto;
+}
+
+.ImgBtn h1,
+.ImgBtn p {
+    margin: 10px 0;
+    text-align: right;
+}

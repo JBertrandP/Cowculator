@@ -16,15 +16,17 @@
 
                 {%  for ranch in ranch_data %}
                    
-                    <div>
-                            
+                    <div class="ImgBtn" onclick="handleClick()"> 
                         <h1 >{{ranch.get('FarmName')}}</h1>
                         <img src="data:image/jpeg;base64,{{ ranch.get('FarmImage') }}"  />  
                         <p>Location: {{ranch.get('Location')}}</p>                         
                         <a href="/mycattle">Go to {{ranch.get('FarmName')}}</a>
-
-
                     </div>
+
+                    <script> function handleClick() {
+                        window.location.href = "/"; /*Aqui poner la ruta*/
+                            }
+                    </script>
 
                         
                         {%  if (ranch_data | length ) < 3 and loop.index0 == (ranch_data | length) -1 %}
