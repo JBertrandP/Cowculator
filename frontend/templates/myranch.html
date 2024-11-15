@@ -24,7 +24,7 @@
                     </div>
 
                     <script> function handleClick() {
-                        window.location.href = "{{url_for('mycattle_render', ranchName = ranch.get('FarmName'),ranchId = ranch.get('FarmID')   )}}"; /*Aqui poner la ruta*/
+                        window.location.href = "/mycattle?ranchName={{ranch.get('FarmName')}}&ranchId={{ranch.get('FarmID')}}"; /*Aqui poner la ruta*/
                             }
                     </script>
                         
