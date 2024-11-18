@@ -290,3 +290,37 @@ transform: translateY(-5px);
 
 
 
+/* Estilo general del botón */
+.cow-info-button {
+    background-color: #4CAF50; /* Color de fondo del botón */
+    color: white; /* Color del texto */
+    border: none; /* Sin bordes */
+    padding: 10px 20px; /* Espaciado interno */
+    text-align: center; /* Centrar texto */
+    font-size: 16px; /* Tamaño del texto */
+    cursor: pointer; /* Cambia el cursor al pasar */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s ease; /* Efecto de transición */
+}
+
+/* Cambia el color al pasar el cursor */
+.cow-info-button:hover {
+    background-color: #45a049;
+}
+
+/* Estilo del contenedor de información de la vaca */
+.cow-info {
+    background-color: #f9f9f9; /* Fondo blanco grisáceo */
+    color: #333; /* Color del texto */
+    padding: 15px; /* Espaciado interno */
+    border: 1px solid #ddd; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    margin-top: 10px; /* Espaciado superior */
+    display: none; /* Ocultar inicialmente */
+}
+
+/* Mostrar la información al pasar sobre el botón */
+.cow-info-button:hover .cow-info {
+    display: block;
+}
