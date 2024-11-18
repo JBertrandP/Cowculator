@@ -186,13 +186,13 @@ def add_cow(name,age,breed,weight,ranch_id):
     cursor.execute(query)
 
     columns = [column[0] for column in cursor.description]
-    row = [cursor.fetchone()]
+    rows = [cursor.fetchone()]
 
     conn.commit()
     cursor.close()
     conn.close()
 
-    return dictionarify(columns,row)
+    return dictionarify(columns,rows)
 
 
 def count_cows(ranch_id):
@@ -215,15 +215,17 @@ def select_cow(cow_id):
     conn = db_connect()
     cursor = conn.cursor()
        
-    query = (f"  select count(*) as count from Cows where FarmID = ? ")
+    query = (f"  select * from Cows where CowId = ? ")
     cursor.execute(query,cow_id)
 
-    count = cursor.fetchone()
+    columns = [column[0] for column in cursor.description]
+    rows = [cursor.fetchone()]
 
     conn.commit()
     cursor.close()
     conn.close()
 
+    return dictionarify(columns,rows)
 
 
 

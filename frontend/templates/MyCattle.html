@@ -99,15 +99,30 @@
             <!-- Search Cow-->
         <div>
        
-            <form id = "searchCow">
+            <form id = "searchCowForm">
                 <h6>Search</h6>
-                <input type="text" placeholder="Introduce el ID de la vaca que quieras BUSCAR" id="name">
+                <input type="number" placeholder="Enter a valid Cow Id" id="searchCow">
             
-                <button type="button" onclick="searchCow()"> Search</button>
+                <button type="button" onclick="searchCow('searchCow','showSearch')"> Search</button>
 
             </form>
 
-            <div id = ></div>
+            <div id = showSearch></div>
+
+        </div>
+
+
+        <div>
+       
+            <form>
+                <h6>Transfer Cow</h6>
+                <input type="number" placeholder="Enter the Id of the Cow you want to transfer" id="transferCow">
+            
+                <button type="button" onclick="transferCow()"> Search</button>
+
+            </form>
+
+            <div id = showAvailableRanches></div>
 
         </div>
 

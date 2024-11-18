@@ -117,7 +117,7 @@ async function addCow() {
     
     }
     catch(error){
-        console.log(error)
+      console.log(error)
     }
     
 }
@@ -131,11 +131,78 @@ async function updateContador() {
 
   contadorElement.innerText = contadorInt  
 }
+//funcion adaptada
+//input: De donde consigue la informacion de busqueda
+//Output: Donde se muestra el re
 
-async function searchCow(){
+async function searchCow(input,output){
+  let cowId = {
+    cowId : document.getElementById(input).value
+  }
+ 
+
+  try{
   let promesa = await fetch( '/search_cow' ,{
 
+    method : 'POST',
+    headers : {
+      'Content-Type' : 'application/json'
+    },
+    body: JSON.stringify(cowId)
   })
+
+  let cowInfo = await promesa.json()
+
+
+  if(cowInfo){
+  //checar si returnea vacio
+  displaySearchedCow(cowInfo)
+
+  return cowInfo
+  }
+  else{
+    document.getElementById(output).innerHTML = '<h2>Invalid ID</h2>'
+  }
 }
+catch(error){
+  console.log(error)
+}
+}
+
+async function displaySearchedCow(cowInfo){
+
+  const showSearch = document.getElementById('showSearch').innerHTML
+
+  let showCow = 
+    ` <div class="search-cow">
+            <h2>${cowInfo.CowId}</h2>
+            <p>ID: ${cowInfo[0].CowID}</p>
+            <p>Name: ${cowInfo[0].CowName}</p>
+            <p>Breed: ${cowInfo[0].Breed}</p>
+            <p>Age: ${cowInfo[0].Age}</p>
+            <p>Weight: ${cowInfo[0].Weight}</p>
+            <p>Date Added: ${cowInfo[0].Date}</p> //checar esta parte
+        </div> `;
+
+  
+  showSearch = showCow
+
+}
+
+async function cowTransfer(){
+
+  try{
+  
+  if (searchCow('cowTransfer','showAvailableRanches')){
+
+  }
+
+  }
+  catch(error){
+    console.log(error)
+  }
+}
+
+
 
 

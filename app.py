@@ -158,15 +158,17 @@ def add_cow():
 
     new_cow = db_methods.add_cow(name,age,breed,weight,session['user']['ranchId'])
    
-    return jsonify(new_cow), 201
+    return jsonify(new_cow)
 
 @app.route('/search_cow',methods = ['POST'])
 def search_cow():
     request = request.json
+    
+    cow_id = request['cowId']
 
-    cow_id = request['cow_id']
+    cow_info = db_methods.select_cow(cow_id)
 
-    response = db_methods.select_cow
+    return jsonify(cow_info)
 
 
 
