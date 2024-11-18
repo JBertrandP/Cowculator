@@ -162,9 +162,9 @@ def add_cow():
 
 @app.route('/search_cow',methods = ['POST'])
 def search_cow():
-    request = request.json
+    cowId = request.json
     
-    cow_id = request['cowId']
+    cow_id = cowId['cowId']
 
     cow_info = db_methods.select_cow(cow_id)
 

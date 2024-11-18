@@ -131,9 +131,56 @@ async function updateContador() {
 
   contadorElement.innerText = contadorInt  
 }
+
+
+/*
+
+
+let cowId = {
+    cowId : document.getElementById('searchCow').value
+  }
+
+
+
+let promesa = await fetch('/search_cow',{
+
+  method : 'POST',
+  headers :{
+    'Content-Type' : 'application/json'
+  },
+  body : JSON.stringify(cowId)
+})
+
+let cowInfo = await promesa.json
+
+let searchDisplay = document.getElementById('showSearch').innerHTML
+
+let newDisplay = ` 
+          <div class="search-cow">
+            <h2>${cowInfo.CowId}</h2>
+            <p>ID: ${cowInfo[0].CowID}</p>
+            <p>Name: ${cowInfo[0].CowName}</p>
+            <p>Breed: ${cowInfo[0].Breed}</p>
+            <p>Age: ${cowInfo[0].Age}</p>
+            <p>Weight: ${cowInfo[0].Weight}</p>
+            <p>Date Added: ${cowInfo[0].Date}</p> //checar esta parte
+          </div> 
+
+
+
+`;
+
+searchDisplay = newDisplay
+
+*/
+
+
+
+
 //funcion adaptada
 //input: De donde consigue la informacion de busqueda
 //Output: Donde se muestra el re
+
 
 async function searchCow(input,output){
   let cowId = {
@@ -153,7 +200,7 @@ async function searchCow(input,output){
 
   let cowInfo = await promesa.json()
 
-
+  console.log(cowInfo)
   if(cowInfo){
   //checar si returnea vacio
   displaySearchedCow(cowInfo)
@@ -171,21 +218,25 @@ catch(error){
 
 async function displaySearchedCow(cowInfo){
 
-  const showSearch = document.getElementById('showSearch').innerHTML
+  let showSearch = document.getElementById('showSearch')
 
+  console.log(cowInfo)
   let showCow = 
-    ` <div class="search-cow">
-            <h2>${cowInfo.CowId}</h2>
+    `   <div class="search-cow">
+            <h2>${cowInfo[0].CowID}</h2>
             <p>ID: ${cowInfo[0].CowID}</p>
             <p>Name: ${cowInfo[0].CowName}</p>
             <p>Breed: ${cowInfo[0].Breed}</p>
             <p>Age: ${cowInfo[0].Age}</p>
             <p>Weight: ${cowInfo[0].Weight}</p>
-            <p>Date Added: ${cowInfo[0].Date}</p> //checar esta parte
+            <p>Date Added: ${cowInfo[0].Date}</p> 
         </div> `;
 
+
+  console.log(showCow)
+  console.log(showSearch)
   
-  showSearch = showCow
+  showSearch.innerHTML = showCow
 
 }
 
@@ -202,6 +253,8 @@ async function cowTransfer(){
     console.log(error)
   }
 }
+
+
 
 
 
