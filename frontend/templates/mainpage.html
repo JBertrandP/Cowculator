@@ -35,9 +35,14 @@
             <section class="cowtxt">
                 <h1>Our Cows&nbsp&nbsp&nbsp&nbsp&nbsp</h1>
                 <p>The cows we manage are:</p>
-                    <ol>-Hereford &nbsp&nbsp&nbsp -Angus</ol>
-                    <ol>-Brangus &nbsp&nbsp&nbsp  -Charolais</ol>
-                    <ol>-Salers &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp -Limousin</ol>
+                <div class="cow-list">
+                    <span id="breed1">-Charolais</span>
+                    <span id="breed2">-Angus</span>
+                    <span id="breed3">-Brangus</span>
+                    <span id="breed4">-Hereford</span>
+                    <span id="breed5">-Salers Limousin</span>
+                <script src="{{ url_for('static', filename='js/mainpg.js') }}"></script>
+                </div>
             </section>    
                 <div class="cow-gif">
                     <img src="{{ url_for('static', filename = 'images/CowCarrosel.gif')}}" alt="Cattle GIF" class="full-gif">
