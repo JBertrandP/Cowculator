@@ -211,12 +211,12 @@ def count_cows(ranch_id):
     return count[0]
 
 
-def select_cow(cow_id):
+def select_cow(cow_id,ranch_id):
     conn = db_connect()
     cursor = conn.cursor()
        
-    query = (f"  select * from Cows where CowId = ? ")
-    cursor.execute(query,cow_id)
+    query = (f"  select * from Cows where CowID = ? and FarmID = ?")
+    cursor.execute(query,(cow_id,ranch_id))
 
     columns = [column[0] for column in cursor.description]
     rows = [cursor.fetchone()]

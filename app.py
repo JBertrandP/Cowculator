@@ -165,8 +165,8 @@ def search_cow():
     cowId = request.json
     
     cow_id = cowId['cowId']
-
-    cow_info = db_methods.select_cow(cow_id)
+    ranch_id = session['user']['ranchId']
+    cow_info = db_methods.select_cow(cow_id,ranch_id)
 
     return jsonify(cow_info)
 
