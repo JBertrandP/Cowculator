@@ -418,7 +418,7 @@ transform: translateY(-5px);
 
 /* Cambiar color del botón al pasar el mouse */
 #cow_form button:hover {
-    background-color: #966909 28.53%;
+    background-color: #7c5602 28.53%;
 }
 
 
@@ -578,7 +578,7 @@ transform: translateY(-5px);
 
 /* Hover del botón */
 #searchCowForm button:hover {
-    background-color: #966909 28.53%;
+    background-color: #7c5602 28.53%;
 }
 
 /* Contenedor de resultados */
