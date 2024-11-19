@@ -520,3 +520,72 @@ transform: translateY(-5px);
     margin: 5px 0;
 }
 /* si esto no es conveniente, lo eliminamos, ya que papuKevin hizo algo bien intento dificil (tryhard) ;) */
+
+
+
+
+/* Contenedor principal del formulario */
+#searchCowContainer {
+    max-width: 400px; /* Ancho máximo */
+    margin: 20px auto; /* Centrar vertical y horizontalmente */
+    padding: 20px;
+    background-color: #f9f9f9; /* Fondo suave */
+    border: 2px solid #ccc; /* Borde gris */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+/* Título del formulario */
+#searchCowForm h2 {
+    text-align: center;
+    color: #333; /* Color del texto */
+    margin-bottom: 15px;
+}
+
+/* Etiqueta del input */
+#searchCowForm label {
+    display: block; /* Bloque para mejor alineación */
+    font-size: 16px;
+    color: #555; /* Texto más claro */
+    margin-bottom: 5px;
+}
+
+/* Campo de entrada */
+#searchCowForm input {
+    width: 100%; /* Ancho completo */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px; /* Espaciado debajo del campo */
+    box-sizing: border-box;
+}
+
+/* Botón de búsqueda */
+#searchCowForm button {
+    width: 100%; /* Botón del ancho completo */
+    padding: 10px;
+    font-size: 16px;
+    color: #fff; /* Texto blanco */
+    background-color: #007bff; /* Azul vibrante */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Manita al pasar el ratón */
+    transition: background-color 0.3s ease; /* Efecto de transición */
+}
+
+/* Hover del botón */
+#searchCowForm button:hover {
+    background-color: #0056b3; /* Azul más oscuro */
+}
+
+/* Contenedor de resultados */
+#showSearch {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #fff; /* Fondo blanco */
+    border: 1px solid #ddd; /* Borde suave */
+    border-radius: 5px; /* Bordes redondeados */
+    text-align: center; /* Centrado de texto */
+    color: #555; /* Texto oscuro */
+}
