@@ -174,6 +174,27 @@ def select_ranch(user_id):
         # Print the exception for debugging purposes
         print(f"Error al conectarse: {e}")
 
+def is_owner(user_id,ranch_id):
+    try:
+        conn = db_connect()
+        cursor = conn.cursor()
+
+
+        query = (f" select FarmID from MyRanch where OwnerID = ? and FarmID = ? ")
+        cursor.execute(query,(user_id,ranch_id))
+
+        data = cursor.fetchone()
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+        
+        return data
+    
+
+    except Exception as e:
+        print(e)
+
 
 def add_cow(name,age,breed,weight,ranch_id):
     try:
@@ -223,6 +244,7 @@ def delete_cow(cow_id):
 
 
 
+
 # se necesitan todos los datos de la vaca
 def transfer_cow(cowData):
     try:
@@ -250,12 +272,6 @@ def transfer_cow(cowData):
 
 
 def count_cows(type,ranch_id):
-
-
-    #type global   type = 1 = 1
-    #type vaca     type = 'Angus'
-
-
     try:
         conn = db_connect()
         cursor = conn.cursor()

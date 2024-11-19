@@ -1,5 +1,4 @@
 
-
 let menu = document.querySelector('#menu-icon');
 let navlist = document.querySelector('.navlist');
 
@@ -43,8 +42,6 @@ async function addCow() {
       body: JSON.stringify(inputData)
     })
 
-    
-
     let cow_data = await promesa.json()
     
 
@@ -80,18 +77,6 @@ async function addCow() {
 
 async function updateContador(breed) {
 
-
-  /*
-
-      <option value="Angus" >Angus</option>
-                    <option value="Brangus">Brangus</option>
-                    <option value="Charolais">Charolais</option>
-                    <option value="Hereford">Hereford</option>
-                    <option value="Salers Limousin">Salers Limousin</option>
-
-  */
-
-  
   let breeds = {'Angus': 'contadorAngus','Brangus': "contadorBrangus"   ,'Charolais': "contadorCharolais" ,'Hereford': "contadorHereford" ,'Salers Limousin': "contadorSalers"}
   
   let contadorGlobal = document.getElementById("contadorGlobal")
@@ -106,18 +91,13 @@ async function updateContador(breed) {
     if(breed == key){
 
       let contadorLocal = document.getElementById(`${breeds[key]}`)
-
-      
       let contadorLocalInt = parseInt(contadorLocal.innerText)
 
       contadorLocalInt += 1
       contadorLocal.innerText = contadorLocalInt
 
-
-
     }
   }
-
   contadorGlobal.innerText = contadorInt  
 }
 

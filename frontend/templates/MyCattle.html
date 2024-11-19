@@ -68,28 +68,8 @@
         </div>
 
 
-        <!--            Add Cow 
-                    
-        Form 
-
-        -Name (opcional)
-        -Age
-        -Breed
-         -Dropdown 
-            5 razas
-        -Weight
-
-
-        Button 
-
-        Add Cow 
-
-
-        -->
-
-
         <div>
-            <!-- Add Cow Formulario-->
+            <!-- Add Cow -->
             <form id = "cow_form">
                 <input type="text" placeholder="Name" id="name">
                 <input type="number" placeholder = "Age"  id = "age">
@@ -130,7 +110,7 @@
         </div>
 
 
-        
+        <!--Transfer Cow-->
         <div>
        
             <form>
@@ -144,6 +124,26 @@
             <div id = showAvailableRanches></div>
 
         </div>
+
+        <!---->
+        <div>
+       
+            <form>
+                <h6>Delete Cow</h6>
+                <input type="number" placeholder="Enter the Id of the Cow you want to transfer" id="cowTransferId" required>
+            
+                <button type="button" onclick="transferCow()"> Search</button>
+
+            </form>
+
+            <div id = showAvailableRanches></div>
+
+        </div>
+
+        
+
+
+
 
 
 

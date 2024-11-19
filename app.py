@@ -133,28 +133,49 @@ def formmyranch_post():
 @app.route('/mycattle')
 def mycattle_render():
     ranch_id = request.args.get('ranchId')
-    print(ranch_id)
-    
     ranch_name = request.args.get('ranchName')
+
+    if db_methods.is_owner(session['user']['user_id'],ranch_id):
+        session['user']['ranchId'] = ranch_id
+        session.modified = True
+
+        #hacer con un diccionario
+
+        type = ["","and Breed = 'Angus'","and Breed = 'Brangus'","and Breed = 'Charolais'","and Breed = 'Hereford'","and Breed = 'Salers Limousin'"]
+
+        count = {
+            "Global" :  db_methods.count_cows(type[0],ranch_id),
+            "Angus" : db_methods.count_cows(type[1],ranch_id),
+            "Brangus" : db_methods.count_cows(type[2],ranch_id),
+            "Charolais" : db_methods.count_cows(type[3],ranch_id),
+            "Hereford" : db_methods.count_cows(type[4],ranch_id),
+            "Salers" : db_methods.count_cows(type[5],ranch_id)
+        }
+        
+
+        """ name = ["Global","Angus","Brangus","Charolais","Hereford","Salers"]
     
-    session['user']['ranchId'] = ranch_id
-    session.modified = True
+        count = [
+        for i in range(0 , len(type)):
+            {name[i] : db_methods.count_cows(type[i],ranch_id)}
+        ]
+
+        print(count)
+
+        """
+        return render_template("MyCattle.html",name = ranch_name,id = ranch_id,totalCows = count['Global'],totalAngus = count['Angus'],totalBrangus = count['Brangus'],totalCharolais = count['Charolais'],totalHereford = count['Hereford'],totalSalers = count['Salers'],)
+    else:
+        print('NO eres dueño')
+        return redirect(url_for('myranch_render'))
 
 
-    type = ["and 1 = 1","and Breed = 'Angus'","and Breed = 'Brangus'","and Breed = 'Charolais'","and Breed = 'Hereford'","and Breed = 'Salers Limousin'"]
-    #conteo global de vacas
+
+def dictionarify(colums,rows):
     
-    countGlobal = db_methods.count_cows(type[0],ranch_id)
-
-    countAngus = db_methods.count_cows(type[1],ranch_id)
-    countBrangus = db_methods.count_cows(type[2],ranch_id)
-    countCharolais = db_methods.count_cows(type[3],ranch_id)
-    countHereford = db_methods.count_cows(type[4],ranch_id)
-    countSalers = db_methods.count_cows(type[5],ranch_id)
-
-
-   
-    return render_template("MyCattle.html",name = ranch_name,id = ranch_id,totalCows = countGlobal,totalAngus = countAngus,totalBrangus = countBrangus,totalCharolais = countCharolais,totalHereford = countHereford,totalSalers = countSalers,)
+    result =  [ dict(zip(colums,row)) for row in rows ]  
+        
+        
+    return result
 
 
 
