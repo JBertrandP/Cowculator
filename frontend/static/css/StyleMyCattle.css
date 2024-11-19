@@ -541,13 +541,14 @@ transform: translateY(-5px);
     text-align: center;
     color: #333; /* Color del texto */
     margin-bottom: 15px;
-    font-family: 'Poppins', sans-serif;;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* Etiqueta del input */
 #searchCowForm label {
     display: block; /* Bloque para mejor alineación */
     font-size: 16px;
+    font-family: 'Poppins', sans-serif;
     color: #555; /* Texto más claro */
     margin-bottom: 5px;
 }
@@ -557,6 +558,7 @@ transform: translateY(-5px);
     width: 100%; /* Ancho completo */
     padding: 10px;
     font-size: 16px;
+    font-family: 'Poppins', sans-serif;
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-bottom: 15px; /* Espaciado debajo del campo */
@@ -568,6 +570,7 @@ transform: translateY(-5px);
     width: 100%; /* Botón del ancho completo */
     padding: 10px;
     font-size: 16px;
+    font-family: 'Poppins', sans-serif;
     color: #fff; /* Texto blanco */
     background-color: #f1c041; 
     border: none; /* Sin borde */
