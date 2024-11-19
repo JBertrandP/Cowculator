@@ -420,3 +420,43 @@ transform: translateY(-5px);
 #cow_form button:hover {
     background-color: #f5cf7f 28.53%;
 }
+
+
+/* Estilo del selector */
+#cow_form select {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #555;
+    appearance: none; /* Quita la apariencia nativa del navegador */
+}
+
+/* Cambiar el color del borde al enfocarse */
+#cow_form select:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+
+
+/* function addCow() {
+    const name = document.getElementById('name').value;
+    const age = document.getElementById('age').value;
+    const breed = document.getElementById('breed').value;
+    const weight = document.getElementById('weight').value;
+
+    if (!breed) {
+        alert('Please select a breed.');
+        return;
+    }
+
+    console.log(`Name: ${name}, Age: ${age}, Breed: ${breed}, Weight: ${weight}`);
+    // Aquí puedes añadir lógica para guardar estos datos o usarlos según tu necesidad
+}
+    ESTE ES EL SCRIPT PARA LA FUNCION DE SELECCIONAR LAS RAZAS, PERO NO SE SI SE IMPLEMENTA ESTO, ASI QUE LO CHECAMOS EN CLASE PAPUS. YA QUE EL SERVIDOR SE CERRÓ JSJS
+*/

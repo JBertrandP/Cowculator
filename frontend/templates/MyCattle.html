@@ -83,7 +83,14 @@
             <form id = "cow_form">
                 <input type="text" placeholder="Name" id="name">
                 <input type="number" placeholder = "Age"  id = "age">
-                <input type="text" placeholder = "Breed" id="breed">
+                <select id="breed">
+                    <option value="" disabled selected>Select Breed</option>
+                    <option value="Angus">Angus</option>
+                    <option value="Brangus">Brangus</option>
+                    <option value="Charolais">Charolais</option>
+                    <option value="Hereford">Hereford</option>
+                    <option value="Salers Limousin">Salers Limousin</option>
+                </select>
                 <input type="number" placeholder = "Weight in Kg" id="weight">
 
                 <button type="button" onclick="addCow()"> Add Cow</button>
