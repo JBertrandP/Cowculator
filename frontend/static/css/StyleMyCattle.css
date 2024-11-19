@@ -409,7 +409,7 @@ transform: translateY(-5px);
     padding: 10px;
     font-size: 16px;
     color: white;
-    background-color: #bb8e1b ;
+    background-color: #f1c041 ;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -569,7 +569,7 @@ transform: translateY(-5px);
     padding: 10px;
     font-size: 16px;
     color: #fff; /* Texto blanco */
-    background-color: #bb8e1b; 
+    background-color: #f1c041; 
     border: none; /* Sin borde */
     border-radius: 5px; /* Bordes redondeados */
     cursor: pointer; /* Manita al pasar el ratón */
