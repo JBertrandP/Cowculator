@@ -1,5 +1,3 @@
-
-
 let menu = document.querySelector('#menu-icon');
 let navlist = document.querySelector('.navlist');
 
@@ -32,8 +30,7 @@ async function addCow() {
     };
 
     console.log('Log desde js MyCattle')
-    console.log(inputData);
-
+    console.log(inputData)
     try{
   
     let promesa = await fetch('/add_cow', {
@@ -42,14 +39,14 @@ async function addCow() {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(inputData)
-    });
+    })
 
     
 
-    let cow_data = await promesa.json();
+    let cow_data = await promesa.json()
     
 
-    const cowDisplay = document.getElementById('addCowDisplay');
+    const cowDisplay = document.getElementById('addCowDisplay')
 
     const newCowDisplay =  ` 
     
@@ -65,16 +62,15 @@ async function addCow() {
         </button>
      
     `;
-    breed = inputData.breed;
+    breed = inputData.breed
 
-    updateContador(breed);
+    updateContador(breed)
     
-    cowDisplay.innerHTML += newCowDisplay;
+    cowDisplay.innerHTML += newCowDisplay
     
     }
-    catch(error) {
-      console.log(error);
-      alert('Error al agregar vaca, por favor intente nuevamente.');
+    catch(error){
+      console.log(error)
     }
     
 }
@@ -94,12 +90,12 @@ async function updateContador(breed) {
   */
 
   
-  let breeds = {'Angus': 'contadorAngus','Brangus': 'contadorBrangus'   ,'Charolais': 'contadorCharolais' ,'Hereford': 'contadorHereford' ,'Salers Limousin': 'contadorSalers'};
+  let breeds = {'Angus': 'contadorAngus','Brangus': "contadorBrangus"   ,'Charolais': "contadorCharolais" ,'Hereford': "contadorHereford" ,'Salers Limousin': "contadorSalers"}
   
   let contadorGlobal = document.getElementById("contadorGlobal")
-  let contadorInt = parseInt(contadorGlobal.innerText);
+  let contadorInt = parseInt(contadorGlobal.innerText)
 
-  contadorInt += 1;
+  contadorInt += 1
 
   //for...in itera los indices
   //for...of itera los valores
@@ -110,17 +106,17 @@ async function updateContador(breed) {
       let contadorLocal = document.getElementById(`${breeds[key]}`)
 
       
-      let contadorLocalInt = parseInt(contadorLocal.innerText);
+      let contadorLocalInt = parseInt(contadorLocal.innerText)
 
-      contadorLocalInt += 1;
-      contadorLocal.innerText = contadorLocalInt;
+      contadorLocalInt += 1
+      contadorLocal.innerText = contadorLocalInt
 
 
 
     }
   }
 
-  contadorGlobal.innerText = contadorInt;
+  contadorGlobal.innerText = contadorInt  
 }
 
 
@@ -135,7 +131,7 @@ async function updateContador(breed) {
 async function searchCow(input,output){
   let cowId = {
     cowId : document.getElementById(input).value
-  };
+  }
  
 
   try{
@@ -146,28 +142,27 @@ async function searchCow(input,output){
       'Content-Type' : 'application/json'
     },
     body: JSON.stringify(cowId)
-  });
+  })
 
-  let cowInfo = await promesa.json();
+  let cowInfo = await promesa.json()
 
   
   if(cowInfo){
   //checar si returnea vacio
   displaySearchedCow(cowInfo,output)
 
-  return cowInfo;
+  return cowInfo
   }
   else{
     document.getElementById(output).innerHTML = '<h2>Invalid ID</h2>'
-    return undefined;
+    return undefined
   }
 
 
 }
 catch(error){
-  console.log(error);
-  alert('Error al buscar la vaca. Por favor, intente nuevamente.');
- }
+  console.log(error)
+}
 }
 
 async function displaySearchedCow(cowInfo,output){
@@ -237,41 +232,58 @@ async function transferCow(){
 
   if (cowData){
     
-    let ranchData = await getRanchs();
+    let ranchData = await getRanchs()
     let displayRanch = document.getElementById('showAvailableRanches')
 
     
     //meter un loop que concatene a la info
     // que no concatene tu rancho actual 
 
-    let actualRanchId = await getActualRanchId();
+    let actualRanchId = await getActualRanchId()
 
-    ranchData.forEach(ranch => {
-      if (ranch.FarmID !== actualRanchId) {
-          let ranchInfo = `
-              <div class="button-container">
-                  <div class="ImgBtn" data-ranch-id="${ranch.FarmID}">
-                      <h1>${ranch.FarmName}</h1>
-                      <img src="data:image/jpeg;base64,${ranch.FarmImage}" />
-                      <p>Location: ${ranch.Location}</p>
-                  </div>
-              </div>
-          `;
-          displayRanch.innerHTML += ranchInfo;
+    for(const ranch of ranchData){
+
+      
+      if(ranch.FarmID != actualRanchId){
+
+        // en el onclick agregar a que rancho se va a mandar la vaca
+        
+
+        //intetar cambiar por addEventListener
+        //insertar datos de vaca uno por un 
+      let ranchInfo = `
+        <div class="button-container">
+
+           <div class="ImgBtn" onclick="moveCow(${cowData[0].Age},'${cowData[0].Breed}',${cowData[0].CowID},'${cowData[0].CowName}',${cowData[0].FarmID},${cowData[0].Weight},${ranch.FarmID})">
+                        <h1 >${ranch.FarmName}</h1>
+                        <img src="data:image/jpeg;base64,${ranch.FarmImage} "  />  
+                        <p>Location: ${ranch.Location}</p>                         
+                    </div>
+        </div>
+      
+      
+      
+      `;
+
+      displayRanch.innerHTML += ranchInfo
+  
       }
-  });
-}
-} catch (error) {
-console.log(error);
-}
+    }
+
+
+
+    //mover a la vaca 
+
+
+
+  }
+
+  }
+  catch(error){
+    console.log(error)
+  }
 }
 
-document.querySelectorAll('.ImgBtn').forEach(btn => {
-  btn.addEventListener('click', function() {
-      let ranchId = this.getAttribute('data-ranch-id');
-      moveCow(age, breed, cowId, cowName, farmId, weight, ranchId);
-  });
-});
 
 
 async function moveCow(age,breed,cowId,cowName,farmId,weight,ranchId) {
@@ -396,4 +408,17 @@ let newDisplay = `
 searchDisplay = newDisplay
 
 */
+
+
+
+
+
+
+
+
+
+
+
+
+
 
