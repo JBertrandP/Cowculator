@@ -530,7 +530,7 @@ transform: translateY(-5px);
     max-width: 400px; /* Ancho máximo */
     margin: 20px auto; /* Centrar vertical y horizontalmente */
     padding: 20px;
-    background-color: #e91818; /* Fondo suave */
+    background-color: #f9f9f9; /* Fondo suave */
     border: 2px solid #ccc; /* Borde gris */
     border-radius: 10px; /* Bordes redondeados */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
