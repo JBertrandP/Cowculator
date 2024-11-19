@@ -1,5 +1,3 @@
-
-
 let menu = document.querySelector('#menu-icon');
 let navlist = document.querySelector('.navlist');
 
@@ -410,4 +408,17 @@ let newDisplay = `
 searchDisplay = newDisplay
 
 */
+
+
+
+
+
+
+
+
+
+
+
+
+
 

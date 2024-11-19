@@ -439,6 +439,14 @@ transform: translateY(-5px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+
+
+
+#cow_form h2 {
+    text-align: center;
+    color: #444; /* Texto gris oscuro */
+    margin-bottom: 15px;
+}
 /* Estilo de los campos de entrada */
 #cow_form input {
     width: 100%;
@@ -485,13 +493,13 @@ transform: translateY(-5px);
     border-radius: 5px;
     box-sizing: border-box;
     background-color: #fff;
-    color: #555;
+    color: #e4d838 28.53%;
     appearance: none; /* Quita la apariencia nativa del navegador */
 }
 
 /* Cambiar el color del borde al enfocarse */
 #cow_form select:focus {
-    border-color: #4CAF50;
+    border-color: #f1c041;
     outline: none;
 }
 
