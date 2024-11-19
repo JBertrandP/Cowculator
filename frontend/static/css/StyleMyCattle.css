@@ -418,7 +418,7 @@ transform: translateY(-5px);
 
 /* Cambiar color del botón al pasar el mouse */
 #cow_form button:hover {
-    background-color: #f5cf7f 28.53%;
+    background-color: #966909 28.53%;
 }
 
 
@@ -531,7 +531,7 @@ transform: translateY(-5px);
     margin: 20px auto; /* Centrar vertical y horizontalmente */
     padding: 20px;
     background-color: #f9f9f9; /* Fondo suave */
-    border: 2px solid #ccc; /* Borde gris */
+    border: 2px solid #bb8e1b; 
     border-radius: 10px; /* Bordes redondeados */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
 }
@@ -541,6 +541,7 @@ transform: translateY(-5px);
     text-align: center;
     color: #333; /* Color del texto */
     margin-bottom: 15px;
+    font-family: 'Poppins', sans-serif;;
 }
 
 /* Etiqueta del input */
@@ -568,7 +569,7 @@ transform: translateY(-5px);
     padding: 10px;
     font-size: 16px;
     color: #fff; /* Texto blanco */
-    background-color: #007bff; /* Azul vibrante */
+    background-color: #bb8e1b; 
     border: none; /* Sin borde */
     border-radius: 5px; /* Bordes redondeados */
     cursor: pointer; /* Manita al pasar el ratón */
@@ -577,7 +578,7 @@ transform: translateY(-5px);
 
 /* Hover del botón */
 #searchCowForm button:hover {
-    background-color: #0056b3; /* Azul más oscuro */
+    background-color: #966909 28.53%;
 }
 
 /* Contenedor de resultados */
