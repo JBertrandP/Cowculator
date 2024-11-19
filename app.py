@@ -188,12 +188,28 @@ def get_ranchs_data():
 def transfer_cow():
     cow_data = request.json
 
-    name = cow_data['name']
-    age = cow_data['age']
-    breed = cow_data['breed']
-    weight = cow_data['weight']
-    destination = cow_data['ranchId']
+    """
+    
+    Age: age,
+    Breed: breed,
+    CowID: cowId,
+    CowName: cowName,
+    FarmID: farmId,
+    Weight: weight,
+    Destination : ranchId
 
+    """
+
+    db_methods.transfer_cow(cow_data)
+
+    name = cow_data['CowName']
+    age = cow_data['Age']
+    breed = cow_data['Breed']
+    cowId = cow_data['CowID']
+    weight = cow_data['Weight']
+    destination = cow_data['Destination']
+
+    return jsonify(),201
 
 
 

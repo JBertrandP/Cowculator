@@ -297,13 +297,18 @@ async function transferCow(){
 
     for(const ranch of ranchData){
 
+      
       if(ranch.FarmID != actualRanchId){
 
         // en el onclick agregar a que rancho se va a mandar la vaca
+        
+
+        //intetar cambiar por addEventListener
+        //insertar datos de vaca uno por un 
       let ranchInfo = `
         <div class="button-container">
 
-           <div class="ImgBtn" onclick="">
+           <div class="ImgBtn" onclick="moveCow(${cowData[0].Age},'${cowData[0].Breed}',${cowData[0].CowID},'${cowData[0].CowName}',${cowData[0].FarmID},${cowData[0].Weight},${ranch.FarmID})">
                         <h1 >${ranch.FarmName}</h1>
                         <img src="data:image/jpeg;base64,${ranch.FarmImage} "  />  
                         <p>Location: ${ranch.Location}</p>                         
@@ -323,8 +328,6 @@ async function transferCow(){
 
     //mover a la vaca 
 
-    console.log(cowData)
-
 
 
   }
@@ -337,10 +340,23 @@ async function transferCow(){
 
 
 
-async function moveCow(cowData) {
+async function moveCow(age,breed,cowId,cowName,farmId,weight,ranchId) {
 
+  let cowData = {
 
-  let promesa = fetch('/transfer_cow',{
+    Age: age,
+    Breed: breed,
+    CowID: cowId,
+    CowName: cowName,
+    FarmID: farmId,
+    Weight: weight,
+    Destination : ranchId
+
+  }
+  
+  console.log(cowData)
+
+  let promesa = await fetch('/transfer_cow',{
 
     method : 'POST',
     headers : {
@@ -349,6 +365,9 @@ async function moveCow(cowData) {
     body : JSON.stringify(cowData)
 
   })
+
+  let response = promesa.status
+
 
   
 }

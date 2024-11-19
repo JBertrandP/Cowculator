@@ -198,6 +198,9 @@ def add_cow(name,age,breed,weight,ranch_id):
         print(e)
 
 
+
+
+
 def delete_cow(cow_id):
     try:
         conn = db_connect()
@@ -215,14 +218,33 @@ def delete_cow(cow_id):
         print(e)
 
 
-# se necesitan todos los datos de la vaca
-def transfer_cow(cow_id):
+def update_cow():
     try:
+        
+       
         conn = db_connect()
         cursor = conn.cursor()
         
-        delete_cow(cow_id)
-        add_cow
+       
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+    except Exception as e:
+        print(e)
+
+
+# se necesitan todos los datos de la vaca
+def transfer_cow(cowData):
+    try:
+        print(cowData)
+       
+        conn = db_connect()
+        cursor = conn.cursor()
+        
+        delete_cow(cowData['CowID'])
+        add_cow(cowData['CowName'],cowData['Age'],cowData['Breed'],cowData['Weight'],cowData['Destination'])
 
         conn.commit()
         cursor.close()
