@@ -19,12 +19,14 @@
                 {%  for ranch in ranch_data %}
 
                 <div class="button-container">
-                    
                     <div class="ImgBtn" onclick="handleClick('{{ranch.FarmName}}','{{ranch.FarmID}}')">
-                        <h1 >{{ranch.FarmName}}</h1>
-                        <img src="data:image/jpeg;base64,{{ ranch.FarmImage }}"  />  
-                        <p>Location: {{ranch.Location}}</p>                         
+                        <h1>{{ranch.FarmName}}</h1>
+                        <img src="data:image/jpeg;base64,{{ ranch.FarmImage }}" alt="" />
+
+                        <p>Location: {{ranch.Location}}</p>
                     </div>
+                </div>
+                
 
                     
                     {%  if (ranch_data | length ) < 3 and loop.index0 == (ranch_data | length) -1 %}
