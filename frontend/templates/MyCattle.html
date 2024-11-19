@@ -131,17 +131,19 @@
 
 
         
-        <div>
+        <div id="transferCowContainer">
        
-            <form>
-                <h6>Transfer Cow</h6>
+            <form id="transferCowForm">
+                <h2>Transfer Cow</h2>
+                <label for="cowTransferId">Cow ID:</label>
                 <input type="number" placeholder="Enter the Id of the Cow you want to transfer" id="cowTransferId" required>
             
-                <button type="button" onclick="transferCow()"> Search</button>
+                <button type="button" onclick="transferCow()"> Transfer</button>
 
             </form>
 
             <div id = showAvailableRanches></div>
+            
 
         </div>
 
