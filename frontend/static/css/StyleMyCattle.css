@@ -371,3 +371,92 @@ transform: translateY(-5px);
     text-align: right;
 }
 
+
+
+/* estilo para el form de MyCattle papuus! pa' que se vea bien clean */
+
+/* Estilo general del formulario */
+#cow_form {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px solid #c4a562 28.53%;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo de los campos de entrada */
+#cow_form input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Cambiar color de borde al enfocarse */
+#cow_form input:focus {
+    border-color: #bb8e1b ;
+    outline: none;
+}
+
+/* Estilo del botón */
+#cow_form button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: white;
+    background-color: #bb8e1b ;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Cambiar color del botón al pasar el mouse */
+#cow_form button:hover {
+    background-color: #f5cf7f 28.53%;
+}
+
+
+/* Estilo del selector */
+#cow_form select {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #555;
+    appearance: none; /* Quita la apariencia nativa del navegador */
+}
+
+/* Cambiar el color del borde al enfocarse */
+#cow_form select:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+
+
+/* function addCow() {
+    const name = document.getElementById('name').value;
+    const age = document.getElementById('age').value;
+    const breed = document.getElementById('breed').value;
+    const weight = document.getElementById('weight').value;
+
+    if (!breed) {
+        alert('Please select a breed.');
+        return;
+    }
+
+    console.log(`Name: ${name}, Age: ${age}, Breed: ${breed}, Weight: ${weight}`);
+    // Aquí puedes añadir lógica para guardar estos datos o usarlos según tu necesidad
+}
+    ESTE ES EL SCRIPT PARA LA FUNCION DE SELECCIONAR LAS RAZAS, PERO NO SE SI SE IMPLEMENTA ESTO, ASI QUE LO CHECAMOS EN CLASE PAPUS. YA QUE EL SERVIDOR SE CERRÓ JSJS
+*/

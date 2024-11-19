@@ -45,7 +45,7 @@
 
             <!--Vacas Count-->
             <h4 id = "h4">Total de Vacas: <span id = "contador"> {{totalCows}} </span></h4>
-            <h1>Bienvenido a MyCattle Id {{id}} </h1>
+            <h1>Bienvenido a MyCattle Id:  {{id}} </h1>
             <p>{{name}} </p>
             <a href="#">que pongo</a>
             <a href="#" class="ctaa"><i class="ri-play-fill"></i>que agrego aqui?</a>
@@ -83,8 +83,15 @@
             <form id = "cow_form">
                 <input type="text" placeholder="Name" id="name">
                 <input type="number" placeholder = "Age"  id = "age">
-                <input type="text" placeholder = "Breed" id="breed">
-                <input type="number" placeholder = "Weight" id="weight">
+                <select id="breed">
+                    <option value="" disabled selected>Select Breed</option>
+                    <option value="Angus">Angus</option>
+                    <option value="Brangus">Brangus</option>
+                    <option value="Charolais">Charolais</option>
+                    <option value="Hereford">Hereford</option>
+                    <option value="Salers Limousin">Salers Limousin</option>
+                </select>
+                <input type="number" placeholder = "Weight in Kg" id="weight">
 
                 <button type="button" onclick="addCow()"> Add Cow</button>
 
