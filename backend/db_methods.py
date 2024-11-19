@@ -249,13 +249,19 @@ def transfer_cow(cowData):
         
 
 
-def count_cows(ranch_id):
+def count_cows(type,ranch_id):
+
+
+    #type global   type = 1 = 1
+    #type vaca     type = 'Angus'
+
 
     try:
         conn = db_connect()
         cursor = conn.cursor()
         
-        query = (f"  select count(*) as count from Cows where FarmID = ? ")
+        query = (f"  select count(*) as count from Cows where FarmID = ? {type} ")
+        print(query)
         cursor.execute(query,ranch_id)
 
         count = cursor.fetchone()

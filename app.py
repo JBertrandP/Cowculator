@@ -140,10 +140,21 @@ def mycattle_render():
     session['user']['ranchId'] = ranch_id
     session.modified = True
 
-    count = db_methods.count_cows(ranch_id)
+
+    type = ["and 1 = 1","and Breed = 'Angus'","and Breed = 'Brangus'","and Breed = 'Charolais'","and Breed = 'Hereford'","and Breed = 'Salers Limousin'"]
+    #conteo global de vacas
+    
+    countGlobal = db_methods.count_cows(type[0],ranch_id)
+
+    countAngus = db_methods.count_cows(type[1],ranch_id)
+    countBrangus = db_methods.count_cows(type[2],ranch_id)
+    countCharolais = db_methods.count_cows(type[3],ranch_id)
+    countHereford = db_methods.count_cows(type[4],ranch_id)
+    countSalers = db_methods.count_cows(type[5],ranch_id)
+
 
    
-    return render_template("MyCattle.html",name = ranch_name,id = ranch_id,totalCows = count)
+    return render_template("MyCattle.html",name = ranch_name,id = ranch_id,totalCows = countGlobal,totalAngus = countAngus,totalBrangus = countBrangus,totalCharolais = countCharolais,totalHereford = countHereford,totalSalers = countSalers,)
 
 
 
@@ -188,28 +199,7 @@ def get_ranchs_data():
 @app.route('/transfer_cow', methods = ['POST'])
 def transfer_cow():
     cow_data = request.json
-
-    """
-    
-    Age: age,
-    Breed: breed,
-    CowID: cowId,
-    CowName: cowName,
-    FarmID: farmId,
-    Weight: weight,
-    Destination : ranchId
-
-    """
-
     db_methods.transfer_cow(cow_data)
-
-    name = cow_data['CowName']
-    age = cow_data['Age']
-    breed = cow_data['Breed']
-    cowId = cow_data['CowID']
-    weight = cow_data['Weight']
-    destination = cow_data['Destination']
-
     return jsonify(),201
 
 
