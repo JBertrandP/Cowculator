@@ -380,7 +380,7 @@ transform: translateY(-5px);
     width: 300px;
     margin: 0 auto;
     padding: 20px;
-    border: 2px solid #4CAF50;
+    border: 2px solid #c4a562 28.53%;
     border-radius: 10px;
     background-color: #f9f9f9;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -418,5 +418,5 @@ transform: translateY(-5px);
 
 /* Cambiar color del botón al pasar el mouse */
 #cow_form button:hover {
-    background-color: #c4a562 28.53%;
+    background-color: #f5cf7f 28.53%;
 }
