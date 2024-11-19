@@ -176,56 +176,102 @@ def select_ranch(user_id):
 
 
 def add_cow(name,age,breed,weight,ranch_id):
-    conn = db_connect()
-    cursor = conn.cursor()
-       
-    query = (f" insert into Cows(CowName,Age,Breed,Weight,FarmID) values  (?,?,?,?,?) ")
-    cursor.execute(query,(name,age,breed,weight,ranch_id))
+    try:
+        conn = db_connect()
+        cursor = conn.cursor()
+        
+        query = (f" insert into Cows(CowName,Age,Breed,Weight,FarmID) values  (?,?,?,?,?) ")
+        cursor.execute(query,(name,age,breed,weight,ranch_id))
 
-    query = (f"  SELECT TOP 1 * FROM cows ORDER BY CowID DESC;")
-    cursor.execute(query)
+        query = (f"  SELECT TOP 1 * FROM cows ORDER BY CowID DESC;")
+        cursor.execute(query)
 
-    columns = [column[0] for column in cursor.description]
-    rows = [cursor.fetchone()]
+        columns = [column[0] for column in cursor.description]
+        rows = [cursor.fetchone()]
 
-    conn.commit()
-    cursor.close()
-    conn.close()
+        conn.commit()
+        cursor.close()
+        conn.close()
 
-    return dictionarify(columns,rows)
+        return dictionarify(columns,rows)
+    except Exception as e:
+        print(e)
+
+
+def delete_cow(cow_id):
+    try:
+        conn = db_connect()
+        cursor = conn.cursor()
+        
+        query = (f" delete from Cows where CowID = ? ")
+        cursor.execute(query,cow_id)
+
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+    except Exception as e:
+        print(e)
+
+
+# se necesitan todos los datos de la vaca
+def transfer_cow(cow_id):
+    try:
+        conn = db_connect()
+        cursor = conn.cursor()
+        
+        delete_cow(cow_id)
+        add_cow
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+    except Exception as e:
+        print(e)
+
+        
 
 
 def count_cows(ranch_id):
-    conn = db_connect()
-    cursor = conn.cursor()
-       
-    query = (f"  select count(*) as count from Cows where FarmID = ? ")
-    cursor.execute(query,ranch_id)
 
-    count = cursor.fetchone()
+    try:
+        conn = db_connect()
+        cursor = conn.cursor()
+        
+        query = (f"  select count(*) as count from Cows where FarmID = ? ")
+        cursor.execute(query,ranch_id)
 
-    conn.commit()
-    cursor.close()
-    conn.close()
+        count = cursor.fetchone()
 
-    return count[0]
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        return count[0]
+    except Exception as e:
+        print(e)
 
 
 def select_cow(cow_id,ranch_id):
-    conn = db_connect()
-    cursor = conn.cursor()
-       
-    query = (f"  select * from Cows where CowID = ? and FarmID = ?")
-    cursor.execute(query,(cow_id,ranch_id))
+    try:
+        conn = db_connect()
+        cursor = conn.cursor()
+        
+        query = (f"  select * from Cows where CowID = ? and FarmID = ?")
+        cursor.execute(query,(cow_id,ranch_id))
 
-    columns = [column[0] for column in cursor.description]
-    rows = [cursor.fetchone()]
+        columns = [column[0] for column in cursor.description]
+        rows = [cursor.fetchone()]
 
-    conn.commit()
-    cursor.close()
-    conn.close()
+        conn.commit()
+        cursor.close()
+        conn.close()
 
-    return dictionarify(columns,rows)
+        return dictionarify(columns,rows)
+    except Exception as e:
+        print(e)
 
 
 

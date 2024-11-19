@@ -200,7 +200,6 @@ async function searchCow(input,output){
 
   let cowInfo = await promesa.json()
 
-  console.log(cowInfo)
   
   if(cowInfo){
   //checar si returnea vacio
@@ -256,8 +255,6 @@ async function getRanchs(){
 
     const ranchData = await promesa.json()
     
-    console.log('Funcion getRanchs() datos para return')
-    console.log(ranchData)
 
     return ranchData
 
@@ -284,10 +281,10 @@ async function transferCow(){
 
   try{
   
-  let isCow = await searchCow('cowTransferId','showAvailableRanches')
-  console.log(isCow)
+  let cowData = await searchCow('cowTransferId','showAvailableRanches')
+  
 
-  if (isCow){
+  if (cowData){
     
     let ranchData = await getRanchs()
     let displayRanch = document.getElementById('showAvailableRanches')
@@ -296,20 +293,22 @@ async function transferCow(){
     //meter un loop que concatene a la info
     // que no concatene tu rancho actual 
 
-    let actualRanchId = getActualRanchId()
+    let actualRanchId = await getActualRanchId()
 
     for(const ranch of ranchData){
 
       if(ranch.FarmID != actualRanchId){
-      let ranchInfo = `
 
+        // en el onclick agregar a que rancho se va a mandar la vaca
+      let ranchInfo = `
+        <div class="button-container">
 
            <div class="ImgBtn" onclick="">
                         <h1 >${ranch.FarmName}</h1>
                         <img src="data:image/jpeg;base64,${ranch.FarmImage} "  />  
                         <p>Location: ${ranch.Location}</p>                         
                     </div>
-      
+        </div>
       
       
       
@@ -322,6 +321,12 @@ async function transferCow(){
 
 
 
+    //mover a la vaca 
+
+    console.log(cowData)
+
+
+
   }
 
   }
@@ -330,6 +335,23 @@ async function transferCow(){
   }
 }
 
+
+
+async function moveCow(cowData) {
+
+
+  let promesa = fetch('/transfer_cow',{
+
+    method : 'POST',
+    headers : {
+      'Content-Type': 'application/json'
+    },
+    body : JSON.stringify(cowData)
+
+  })
+
+  
+}
 
 
 

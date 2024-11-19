@@ -184,6 +184,19 @@ def get_ranchs_data():
 
     return jsonify(ranch_data)
 
+@app.route('/transfer_cow', methods = ['POST'])
+def transfer_cow():
+    cow_data = request.json
+
+    name = cow_data['name']
+    age = cow_data['age']
+    breed = cow_data['breed']
+    weight = cow_data['weight']
+    destination = cow_data['ranchId']
+
+
+
+
 
 
 

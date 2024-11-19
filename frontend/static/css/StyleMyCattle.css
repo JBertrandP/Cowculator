@@ -324,3 +324,50 @@ transform: translateY(-5px);
 .cow-info-button:hover .cow-info {
     display: block;
 }
+
+
+.button-container {
+    margin-top: 0px;
+    margin-bottom: 1px; /* Space between buttons */
+    display: flex;
+    justify-content: space-between; /* Distribute space between the buttons */
+    align-items: center; /* Align items vertically centered */
+    height: 100vh; /* Full height of the viewport */
+    padding: 25px;
+}
+
+.ImgBtn {
+
+    display: block; /* Use block to stack elements vertically */
+    margin: -10px 0;  /*Adjust margin as needed */
+
+    font-size: 73%;
+    border-radius: 20px;
+    display: inline-block;
+    padding: 20px;
+    background-color: #2e6d30ce;
+    color: white;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 320px;
+    height: 220px;
+}
+
+.ImgBtn:hover {
+    background-color: #45a049;
+}
+
+.ImgBtn img {
+    position: relative;
+    width: 130px;
+    height: 100px;
+}
+
+.ImgBtn h1,
+.ImgBtn p {
+    margin: 10px 0;
+    text-align: right;
+}
+
