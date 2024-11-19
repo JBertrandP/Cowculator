@@ -440,13 +440,13 @@ transform: translateY(-5px);
     border-radius: 5px;
     box-sizing: border-box;
     background-color: #fff;
-    color: #555;
+    color: #e4d838 28.53%;
     appearance: none; /* Quita la apariencia nativa del navegador */
 }
 
 /* Cambiar el color del borde al enfocarse */
 #cow_form select:focus {
-    border-color: #4CAF50;
+    border-color: #f1c041;
     outline: none;
 }
 
