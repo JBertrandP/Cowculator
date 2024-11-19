@@ -201,26 +201,29 @@ async function searchCow(input,output){
   let cowInfo = await promesa.json()
 
   console.log(cowInfo)
+  
   if(cowInfo){
   //checar si returnea vacio
-  displaySearchedCow(cowInfo)
+  displaySearchedCow(cowInfo,output)
 
   return cowInfo
   }
   else{
     document.getElementById(output).innerHTML = '<h2>Invalid ID</h2>'
+    return undefined
   }
+
+
 }
 catch(error){
   console.log(error)
 }
 }
 
-async function displaySearchedCow(cowInfo){
+async function displaySearchedCow(cowInfo,output){
 
-  let showSearch = document.getElementById('showSearch')
-
-  console.log(cowInfo)
+  let showSearch = document.getElementById(output)
+  
   let showCow = 
     `   <div class="search-cow">
             <h2>${cowInfo[0].CowID}</h2>
@@ -233,18 +236,91 @@ async function displaySearchedCow(cowInfo){
         </div> `;
 
 
-  console.log(showCow)
-  console.log(showSearch)
-  
   showSearch.innerHTML = showCow
 
 }
 
-async function cowTransfer(){
+async function getRanchs(){
+
+
+  try{
+
+    let promesa = await fetch('/get_ranchs_data',{
+      
+      method : 'GET',
+      headers :{
+        'Content-Type' : 'application/json'
+      }
+
+    })
+
+    const ranchData = await promesa.json()
+    
+    console.log('Funcion getRanchs() datos para return')
+    console.log(ranchData)
+
+    return ranchData
+
+  }
+  catch(error){
+    console.log(error)
+  }
+
+}
+
+async function getActualRanchId() {
+
+  let url = window.location.href
+
+  let urlObj = new URL(url)
+
+  id = (urlObj.searchParams).get('ranchId')
+
+  return id
+
+}
+
+async function transferCow(){
 
   try{
   
-  if (searchCow('cowTransfer','showAvailableRanches')){
+  let isCow = await searchCow('cowTransferId','showAvailableRanches')
+  console.log(isCow)
+
+  if (isCow){
+    
+    let ranchData = await getRanchs()
+    let displayRanch = document.getElementById('showAvailableRanches')
+
+    
+    //meter un loop que concatene a la info
+    // que no concatene tu rancho actual 
+
+    let actualRanchId = getActualRanchId()
+
+    for(const ranch of ranchData){
+
+      if(ranch.FarmID != actualRanchId){
+      let ranchInfo = `
+
+
+           <div class="ImgBtn" onclick="">
+                        <h1 >${ranch.FarmName}</h1>
+                        <img src="data:image/jpeg;base64,${ranch.FarmImage} "  />  
+                        <p>Location: ${ranch.Location}</p>                         
+                    </div>
+      
+      
+      
+      
+      `;
+
+      displayRanch.innerHTML += ranchInfo
+  
+      }
+    }
+
+
 
   }
 

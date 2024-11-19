@@ -145,6 +145,11 @@ def mycattle_render():
    
     return render_template("MyCattle.html",name = ranch_name,id = ranch_id,totalCows = count)
 
+
+
+
+#AJAX Calls
+
 @app.route('/add_cow', methods=['POST'])
 def add_cow():
     cow_data = request.json
@@ -170,6 +175,14 @@ def search_cow():
 
     return jsonify(cow_info)
 
+@app.route('/get_ranchs_data',methods = ['POST','GET'])
+def get_ranchs_data():
+
+    uid = session['user']['user_id']
+
+    ranch_data = db_methods.select_ranch(uid)
+
+    return jsonify(ranch_data)
 
 
 

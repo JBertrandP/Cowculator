@@ -18,13 +18,6 @@
             </div>
                 {%  for ranch in ranch_data %}
 
-
-                <script> 
-                    function handleClick(FarmName,FarmID) {
-                    window.location.href = `/mycattle?ranchName=${FarmName}&ranchId=${FarmID}` /*Aqui poner la ruta*/
-                    }
-                </script>
-
                 <div class="button-container">
                     
                     <div class="ImgBtn" onclick="handleClick('{{ranch.FarmName}}','{{ranch.FarmID}}')">
@@ -47,6 +40,6 @@
                 </div>
                 
     </div>
-    
+    <script src="{{ url_for('static', filename = 'js/scriptMyRanch.js')}}"> </script>
 </body>
 </html>
