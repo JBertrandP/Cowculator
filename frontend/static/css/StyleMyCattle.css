@@ -462,3 +462,61 @@ transform: translateY(-5px);
 */
 
 
+
+
+/* Contenedor principal del display */
+#addCowDisplay {
+    display: flex; /* Permite organizar los botones */
+    flex-wrap: wrap; /* Permite que los botones se ajusten a múltiples filas */
+    gap: 15px; /* Espaciado entre los botones */
+    justify-content: center; /* Centra los botones horizontalmente */
+    padding: 20px;
+    background-color: #f0f0f5; /* Fondo suave */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+
+
+
+
+/* Botón que contiene la información */
+.cow-info-button {
+    background-color: #ffffff; /* Fondo blanco */
+    border: 2px solid #ccc; /* Borde gris claro */
+    border-radius: 8px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    padding: 10px;
+    width: 100%; /* Ajusta el tamaño al contenido */
+    max-width: 300px; /* Ancho máximo del botón */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
+    transition: transform 0.2s, box-shadow 0.2s; /* Animación suave */
+}
+
+/* Efecto al pasar el ratón por el botón */
+.cow-info-button:hover {
+    transform: scale(1.05); /* Agranda ligeramente el botón */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Incrementa la sombra */
+}
+
+/* Contenedor de la información */
+.cow-info {
+    text-align: left; /* Alinea el texto a la izquierda */
+}
+
+/* Títulos dentro del contenedor */
+.cow-info h2 {
+    font-size: 20px;
+    color: #333; /* Texto oscuro */
+    margin-bottom: 10px;
+}
+
+/* Texto descriptivo */
+.cow-info p {
+    font-size: 16px;
+    color: #555; /* Texto ligeramente más claro */
+    margin: 5px 0;
+}
+/* si esto no es conveniente, lo eliminamos, ya que papuKevin hizo algo bien intento dificil (tryhard) ;) */
