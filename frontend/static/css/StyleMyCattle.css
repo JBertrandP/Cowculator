@@ -399,7 +399,7 @@ transform: translateY(-5px);
 
 /* Cambiar color de borde al enfocarse */
 #cow_form input:focus {
-    border-color: #4CAF50;
+    border-color: #bb8e1b ;
     outline: none;
 }
 
@@ -409,7 +409,7 @@ transform: translateY(-5px);
     padding: 10px;
     font-size: 16px;
     color: white;
-    background-color: #4CAF50;
+    background-color: #bb8e1b ;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -418,5 +418,5 @@ transform: translateY(-5px);
 
 /* Cambiar color del botón al pasar el mouse */
 #cow_form button:hover {
-    background-color: #45a049;
+    background-color: #c4a562 28.53%;
 }
