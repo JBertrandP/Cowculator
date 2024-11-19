@@ -114,11 +114,12 @@
 
 
             <!-- Search Cow-->
-        <div>
+        <div id="searchCowContainer">
        
             <form id = "searchCowForm">
-                <h6>Search</h6>
-                <input type="number" placeholder="Enter a valid Cow Id" id="cowId">
+                <h2>Search Cow</h2>
+                <label for="cowId">Cow ID:</label>
+                <input type="number" placeholder="Enter a valid Cow Id" id="cowId" required>
             
                 <button type="button" onclick="searchCow('cowId','showSearch')"> Search</button>
                                                 
@@ -129,6 +130,7 @@
         </div>
 
 
+        
         <div>
        
             <form>
