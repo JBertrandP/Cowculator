@@ -191,7 +191,10 @@ def add_cow(name,age,breed,weight,ranch_id):
 
         conn.commit()
         cursor.close()
-        conn.close()
+        conn.close()    
+
+        print('Print desde db_methods')
+        print(dictionarify(columns,rows))
 
         return dictionarify(columns,rows)
     except Exception as e:
@@ -218,21 +221,6 @@ def delete_cow(cow_id):
         print(e)
 
 
-def update_cow():
-    try:
-        
-       
-        conn = db_connect()
-        cursor = conn.cursor()
-        
-       
-
-        conn.commit()
-        cursor.close()
-        conn.close()
-
-    except Exception as e:
-        print(e)
 
 
 # se necesitan todos los datos de la vaca
@@ -242,9 +230,14 @@ def transfer_cow(cowData):
        
         conn = db_connect()
         cursor = conn.cursor()
+
+        query = """
+
+            update Cows set FarmID = ? where CowID = ?
+        """
+
+        cursor.execute(query,(cowData['Destination'],cowData['CowID']))
         
-        delete_cow(cowData['CowID'])
-        add_cow(cowData['CowName'],cowData['Age'],cowData['Breed'],cowData['Weight'],cowData['Destination'])
 
         conn.commit()
         cursor.close()

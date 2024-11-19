@@ -154,6 +154,7 @@ def mycattle_render():
 def add_cow():
     cow_data = request.json
 
+    print('Print desde app /add_cow')
     print(cow_data)
 
     name = cow_data['name']

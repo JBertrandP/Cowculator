@@ -77,6 +77,8 @@ async function addCow() {
       weight: document.getElementById("weight").value
     };
 
+    console.log('Log desde js MyCattle')
+    console.log(inputData)
     try{
   
     let promesa = await fetch('/add_cow', {
@@ -87,11 +89,10 @@ async function addCow() {
       body: JSON.stringify(inputData)
     })
 
-    console.log(promesa)
+    
 
     let cow_data = await promesa.json()
     console.log("Add_Cow AJAX")
- 
     console.log(cow_data)
 
     const cowDisplay = document.getElementById('addCowDisplay')
