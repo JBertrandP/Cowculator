@@ -319,7 +319,7 @@ def recently_added(ranch_id):
         cursor.execute(query,(ranch_id))
 
         columns = [column[0] for column in cursor.description]
-        rows = cursor.fetchall()
+        rows = cursor.fetchall()    
 
         conn.commit()
         cursor.close()
