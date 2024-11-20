@@ -5,7 +5,6 @@ import base64
 
 
 
-
 app = Flask(__name__, template_folder= "frontend/templates", static_folder= "frontend/static")  
 
 app.secret_key = "hello"
