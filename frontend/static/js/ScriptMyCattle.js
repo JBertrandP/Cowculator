@@ -305,6 +305,27 @@ async function moveCow(age,breed,cowId,cowName,farmId,weight,ranchId) {
 }
 
 
+document.addEventListener('DOMContentLoaded', function () {
+  renderRecentlyAddedCows()
+});
+
+//intentar mover el index por uno 
+
+async function renderRecentlyAddedCows(params) {
+try{
+
+let promesa = await fetch('/recently_added')
+
+let cowData = await promesa.json()
+
+console.log(cowData)
+
+
+}catch(exception){
+  console.log(exception)
+}
+}
+
 
 /*
 

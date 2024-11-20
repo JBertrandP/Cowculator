@@ -1,5 +1,7 @@
 // Generic function to manage modals
 function setupModal(triggerIds, modalId) {
+
+    try{
     const modal = document.getElementById(modalId);
     const modalOverlay = document.getElementById('modalOverlay');
     const closeModal = modal.querySelector('.closeModal');
@@ -22,6 +24,10 @@ function setupModal(triggerIds, modalId) {
 
     closeModal.addEventListener('click', hideModal);
     modalOverlay.addEventListener('click', hideModal);
+    }
+    catch{
+        
+    }
 }
 
 // Set up all modals

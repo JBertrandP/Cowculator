@@ -151,18 +151,17 @@ def mycattle_render():
             "Salers" : db_methods.count_cows(type[5],ranch_id)
         }
         
+        """   recently_added = db_methods.recently_added(ranch_id)
 
-        """ name = ["Global","Angus","Brangus","Charolais","Hereford","Salers"]
-    
-        count = [
-        for i in range(0 , len(type)):
-            {name[i] : db_methods.count_cows(type[i],ranch_id)}
-        ]
+        for cow in recently_added:
+            cow['Weight'] = float( cow['Weight'])
 
-        print(count)
-
+        
+        cowJson = jsonify(recently_added)
         """
-        return render_template("MyCattle.html",name = ranch_name,id = ranch_id,totalCows = count['Global'],totalAngus = count['Angus'],totalBrangus = count['Brangus'],totalCharolais = count['Charolais'],totalHereford = count['Hereford'],totalSalers = count['Salers'],)
+
+
+        return render_template("MyCattle.html",name = ranch_name,id = ranch_id,totalCows = count['Global'],totalAngus = count['Angus'],totalBrangus = count['Brangus'],totalCharolais = count['Charolais'],totalHereford = count['Hereford'],totalSalers = count['Salers'])
     else:
         print('NO eres dueño')
         return redirect(url_for('myranch_render'))
@@ -180,6 +179,15 @@ def dictionarify(colums,rows):
 
 
 #AJAX Calls
+
+@app.route('/recently_added', methods = ['GET'])
+def recently_added():
+
+    ranch_id = session['user']['ranchId']
+    recently_added = db_methods.recently_added(ranch_id)
+
+    return jsonify(recently_added),201
+
 
 @app.route('/add_cow', methods=['POST'])
 def add_cow():
@@ -221,6 +229,8 @@ def transfer_cow():
     cow_data = request.json
     db_methods.transfer_cow(cow_data)
     return jsonify(),201
+
+
 
 
 
