@@ -84,13 +84,12 @@
                     </select>
                     <input type="number" placeholder = "Weight in Kg" id="weight">
 
-                            <button type="button" onclick="addCow()"> Add Cow</button>
+                        <button type="button" onclick="addCow()">Add Cow</button>
 
                 </form>
                         
                         <!--Display de vacas agregadas recientemente-->
                         <div id="addCowDisplay"></div>
-                        <button class="closeModal">Close</button>
                         <script src="{{ url_for('static', filename = 'js/MyCattlePopUp.js')}}"> </script>
             </div>
 
@@ -110,7 +109,6 @@
                     <div id = showSearch></div>
 
                 </div>
-                <button class="closeModal">Close</button>                   
                 <script src="{{ url_for('static', filename = 'js/MyCattlePopUp.js')}}"> </script>
             </div>
 
@@ -156,7 +154,7 @@
     </div> -->
 
     <script src="https://unpkg.com/scrollreveal"></script>
-    <!-- <script src="{{ url_for('static', filename = 'js/ScriptMyCattle.js')}}"> </script> -->
+    <script src="{{ url_for('static', filename = 'js/ScriptMyCattle.js')}}"> </script>
     <script>
         // script.js
 function displayContent(contentId) {
