@@ -76,7 +76,29 @@ header {
 }
 
 .center {
-    flex: 2.5   ;
+    flex: 2.5;
+    margin-top: 30px;
+    margin-bottom: 20px; /* Space between buttons */
+    display: flex;
+    justify-content: space-between; /* Distribute space between the buttons */
+    align-items: center; /* Align items vertically centered */
+    height: 100vh; /* Full height of the viewport */
+    padding: 25px;
+}
+
+.ImgBtn {
+    font-size: 73%;
+    border-radius: 20px;
+    display: inline-block;
+    padding: 20px;
+    background-color: #2e6d30ce;
+    color: white;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 320px;
+    height: 220px;
 }
 
 .right {
