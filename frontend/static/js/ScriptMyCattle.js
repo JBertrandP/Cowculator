@@ -69,6 +69,7 @@ async function addCow() {
     breed = inputData.breed
 
     updateContador(breed)
+    getRecentlyAddedCows()
     
     cowDisplay.innerHTML += newCowDisplay
     
@@ -330,12 +331,13 @@ renderAddedCows(cowData)
 }
 
 
-function renderAddedCows(cowData){
+async function renderAddedCows(cowData){
 
 let display = document.getElementById('showRecentCows')
+let tempDisplay = ""
 
 for(let cowInfo of cowData){
-  let newDislay = `
+  let newDisplay = `
           <div class="search-cow">
             <h2>${cowInfo.CowID}</h2>
             <p>ID: ${cowInfo.CowID}</p>
@@ -343,8 +345,10 @@ for(let cowInfo of cowData){
             <p>Breed: ${cowInfo.Breed}</p>
         </div> `;
 
-    display.innerHTML += newDislay
+    tempDisplay += newDisplay
 }
+
+display.innerHTML = tempDisplay
 
 }
 
