@@ -21,17 +21,15 @@
 </head>
 <body>
     <header>
-        <a href="#" class="logo">Cowculator</a>
+        <h1 class="logo">Bienvenido a MyCattle Id:  {{id}} </h1>
         <ul class="navlist">
             <li><a href="/myranch">My Ranch</a></li>
-            <li><a href="#" id="openModal1">Add Cows</a></li>
-            <li><a href="#" id="openModal2">Transfer Cows</a></li>
-            <li><a href="#" id="openModal3">Search Cows</a></li>
-            <!-- <li><a href="#">Pollon</a></li>
-            <li><a href="#">Pollita</a></li> -->
+            <li><a href="#" onclick="displayContent('content1')">Add Cows</a></li>
+            <li><a href="#" onclick="displayContent('content3')">Transfer Cows</a></li>
+            <li><a href="#" onclick="displayContent('content2')">Search Cows</a></li>
         </ul>
 
-        <div class="bx bx-menu" id="menu-icon"></div>
+        <!-- <div class="bx bx-menu" id="menu-icon"></div> -->
 
     </header>
 
@@ -49,8 +47,7 @@
             
             
             Count-->
-            <h1>Bienvenido a MyCattle Id:  {{id}} </h1>
-            <p>{{name}} </p>
+            <p>{{name}}</p>
             <div class="Contador">
                 <h4 id = "h4">Total de Vacas: <span id = "contadorGlobal"> {{totalCows}}</span>
                 Angus: <span id = "contadorAngus">{{totalAngus}}</span>
@@ -63,17 +60,18 @@
         </div>
 
         
-        <div class="model-img">
+        <!-- <div class="model-img">
             <img src="{{ url_for('static', filename = 'images/cowcattle.png')}}" height="600px">
-
-        </div>
-
-
-        <div>
+        </div> -->
+            <div class="center">
+                <p>cows 'n shi</p>
+            </div>
+<!-- Content for Right Side -->
             <!-- Add Cow Formulario-->
-            <div class="modal-overlay" id="modalOverlay"></div> <!-- PopUp closes -->
-            <div class="modal" id="myModal1">
+        <div class="right">
+            <div id="content1" class="content">
                 <form id = "cow_form">
+                    <h2>Add Cow</h2>
                     <input type="text" placeholder="Name" id="name">
                     <input type="number" placeholder = "Age"  id = "age">
                     <select id="breed" type = ''>
@@ -88,18 +86,16 @@
 
                             <button type="button" onclick="addCow()"> Add Cow</button>
 
-                        </form>
+                </form>
                         
                         <!--Display de vacas agregadas recientemente-->
                         <div id="addCowDisplay"></div>
                         <button class="closeModal">Close</button>
                         <script src="{{ url_for('static', filename = 'js/MyCattlePopUp.js')}}"> </script>
             </div>
-        </div>
-
 
             <!-- Search Cow-->
-            <div class="modal" id="myModal3">
+            <div  id="content2" class="content" style="display:none;">
                 <div id="searchCowContainer">
             
                     <form id = "searchCowForm">
@@ -118,7 +114,7 @@
                 <script src="{{ url_for('static', filename = 'js/MyCattlePopUp.js')}}"> </script>
             </div>
 
-            <div class="modal" id="myModal2">    
+            <div  id="content3" class="content" style="display:none;">    
                 <div id="transferCowContainer">
                     <form id="transferCowForm">
                         <h2>Transfer Cow</h2>
@@ -146,7 +142,7 @@
             <div id = showAvailableRanches></div>
 
         </div> -->
-
+        </div>
     </section>
 
     <!-- <div class="icons">
@@ -155,12 +151,22 @@
         <a href="#"><i class="ri-dribbble-line"></i></a>
     </div> -->
 
-    <div class="scroll-down">   
+    <!-- <div class="scroll-down">   
         <a href=""><i class="ri-arrow-down-s-fill"></i></a>
-    </div>
+    </div> -->
 
     <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="{{ url_for('static', filename = 'js/ScriptMyCattle.js')}}"> </script>
+    <!-- <script src="{{ url_for('static', filename = 'js/ScriptMyCattle.js')}}"> </script> -->
+    <script>
+        // script.js
+function displayContent(contentId) {
+    const contents = document.querySelectorAll('.content');
+    contents.forEach(content => {
+        content.style.display = 'none';
+    });
+    document.getElementById(contentId).style.display = 'block';
+}
+    </script>
     
 </body>
 </html>
