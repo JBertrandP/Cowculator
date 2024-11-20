@@ -277,7 +277,6 @@ def count_cows(type,ranch_id):
         cursor = conn.cursor()
         
         query = (f"  select count(*) as count from Cows where FarmID = ? {type} ")
-        print(query)
         cursor.execute(query,ranch_id)
 
         count = cursor.fetchone()
@@ -309,6 +308,30 @@ def select_cow(cow_id,ranch_id):
         return dictionarify(columns,rows)
     except Exception as e:
         print(e)
+
+
+def recently_added(ranch_id):
+    try:
+        conn = db_connect()
+        cursor = conn.cursor()
+        
+        query = (f" select top 5 * from Cows where FarmID = ? ")
+        cursor.execute(query,(ranch_id))
+
+        columns = [column[0] for column in cursor.description]
+        rows = cursor.fetchall()    
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        return dictionarify(columns,rows)
+    except Exception as e:
+        print(e)   
+
+
+
+
 
 
 

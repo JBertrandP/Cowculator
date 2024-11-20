@@ -1,4 +1,4 @@
-
+/*
 
 let menu = document.querySelector('#menu-icon');
 let navlist = document.querySelector('.navlist');
@@ -7,6 +7,9 @@ menu.onclick = () => {
     menu.classList.toggle('bx-x');
     navlist.classList.toggle('open');
 };
+
+
+
 
 const sr = ScrollReveal ({
     distance: '65px',
@@ -20,6 +23,7 @@ sr.reveal('.model-img', {delay:450, origin: 'top'});
 sr.reveal('.icons', {delay:500, origin: 'left'});
 sr.reveal('.scroll-down', {delay:500, origin: 'right'});
 
+*/
 
 
 async function addCow() {
@@ -303,6 +307,47 @@ async function moveCow(age,breed,cowId,cowName,farmId,weight,ranchId) {
 
   
 }
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('Se carga la pagina')
+  getRecentlyAddedCows()
+});
+
+//intentar mover el index por uno 
+
+async function getRecentlyAddedCows() {
+try{
+
+let promesa = await fetch('/recently_added')
+let cowData = await promesa.json()
+
+renderAddedCows(cowData)
+
+}catch(exception){
+  console.log(exception)
+}
+}
+
+
+function renderAddedCows(cowData){
+
+let display = document.getElementById('showRecentCows')
+
+for(let cowInfo of cowData){
+  let newDislay = `
+          <div class="search-cow">
+            <h2>${cowInfo.CowID}</h2>
+            <p>ID: ${cowInfo.CowID}</p>
+            <p>Name: ${cowInfo.CowName}</p>
+            <p>Breed: ${cowInfo.Breed}</p>
+        </div> `;
+
+    display.innerHTML += newDislay
+}
+
+}
+
 
 
 

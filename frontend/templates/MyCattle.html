@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com"     crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"    rel="stylesheet">
-    
+    <script src="{{ url_for('static', filename = 'js/ScriptMyCattle.js')}}" defer> </script>
 </head>
 <body>
     <header>
@@ -64,6 +64,8 @@
             <img src="{{ url_for('static', filename = 'images/cowcattle.png')}}" height="600px">
         </div> -->
             <div class="center">
+
+                <div id = 'showRecentCows'></div>
                 <p>cows 'n shi</p>
             </div>
 <!-- Content for Right Side -->
@@ -140,7 +142,7 @@
             <div id = showAvailableRanches></div>
 
         </div> -->
-        </div>
+
     </section>
 
     <!-- <div class="icons">
@@ -149,12 +151,13 @@
         <a href="#"><i class="ri-dribbble-line"></i></a>
     </div> -->
 
+
     <!-- <div class="scroll-down">   
         <a href=""><i class="ri-arrow-down-s-fill"></i></a>
     </div> -->
 
     <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="{{ url_for('static', filename = 'js/ScriptMyCattle.js')}}"> </script>
+    <!-- <script src="{{ url_for('static', filename = 'js/ScriptMyCattle.js')}}"> </script> -->
     <script>
         // script.js
 function displayContent(contentId) {
