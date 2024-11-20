@@ -315,7 +315,7 @@ def recently_added(ranch_id):
         conn = db_connect()
         cursor = conn.cursor()
         
-        query = (f" select top 5 * from Cows where FarmID = ? ")
+        query = (f" select top 5 * from Cows where FarmID = ? ORDER by CowID Desc ")
         cursor.execute(query,(ranch_id))
 
         columns = [column[0] for column in cursor.description]
