@@ -87,11 +87,14 @@ async function updateContador(breed) {
 
   //for...in itera los indices
   //for...of itera los valores
+
+  
   for( let key in breeds){
 
     if(breed == key){
-
+      
       let contadorLocal = document.getElementById(`${breeds[key]}`)
+      console.log(contadorLocal)
       let contadorLocalInt = parseInt(contadorLocal.innerText)
 
       contadorLocalInt += 1
