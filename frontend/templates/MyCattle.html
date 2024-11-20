@@ -51,7 +51,8 @@
             Count-->
             <h1>Bienvenido a MyCattle Id:  {{id}} </h1>
             <p>{{name}} </p>
-            <div class="Contador"><h4 id = "h4">Total de Vacas: <span id = "contadorGlobal"> {{totalCows}}</span>
+            <div class="Contador">
+                <h4 id = "h4">Total de Vacas: <span id = "contadorGlobal"> {{totalCows}}</span>
                 <span id = "contadorAngus">Angus: {{totalAngus}}</span>
                 <span id = "contadorBrangus">Brangus: {{totalBrangus}}</span>
                 <span id = "contadorCharolais">Charolais: {{totalCharolais}}</span>
@@ -70,30 +71,30 @@
 
         <div>
             <!-- Add Cow Formulario-->
-            <form id = "cow_form">
-                <input type="text" placeholder="Name" id="name">
-                <input type="number" placeholder = "Age"  id = "age">
-                <select id="breed" type = ''>
-                    <option value="" disabled selected>Select Breed</option>
-                    <option value="Angus" >Angus</option>
-                    <option value="Brangus">Brangus</option>
-                    <option value="Charolais">Charolais</option>
-                    <option value="Hereford">Hereford</option>
-                    <option value="Salers Limousin">Salers Limousin</option>
-                </select>
-                <input type="number" placeholder = "Weight in Kg" id="weight">
+            <div class="modal-overlay" id="modalOverlay"></div> <!-- PopUp closes -->
+            <div class="modal" id="myModal1">
+                <form id = "cow_form">
+                    <input type="text" placeholder="Name" id="name">
+                    <input type="number" placeholder = "Age"  id = "age">
+                    <select id="breed" type = ''>
+                        <option value="" disabled selected>Select Breed</option>
+                        <option value="Angus" >Angus</option>
+                        <option value="Brangus">Brangus</option>
+                        <option value="Charolais">Charolais</option>
+                        <option value="Hereford">Hereford</option>
+                        <option value="Salers Limousin">Salers Limousin</option>
+                    </select>
+                    <input type="number" placeholder = "Weight in Kg" id="weight">
 
-                        <button type="button" onclick="addCow()"> Add Cow</button>
+                            <button type="button" onclick="addCow()"> Add Cow</button>
 
-                    </form>
-                    
-                    <!--Display de vacas agregadas recientemente-->
-                    <div id="addCowDisplay"></div>
-                    <button class="closeModal">Close</button>
-                    <script src="{{ url_for('static', filename = 'js/MyCattlePopUp.js')}}"> </script>
+                        </form>
+                        
+                        <!--Display de vacas agregadas recientemente-->
+                        <div id="addCowDisplay"></div>
+                        <button class="closeModal">Close</button>
+                        <script src="{{ url_for('static', filename = 'js/MyCattlePopUp.js')}}"> </script>
             </div>
-    
-            
         </div>
 
 
@@ -117,25 +118,22 @@
                 <script src="{{ url_for('static', filename = 'js/MyCattlePopUp.js')}}"> </script>
             </div>
 
-        
-        <div id="transferCowContainer">
-       
-            <form id="transferCowForm">
-                <h2>Transfer Cow</h2>
-                <label for="cowTransferId">Cow ID:</label>
-                <input type="number" placeholder="Enter the Id of the Cow you want to transfer" id="cowTransferId" required>
-            
-                <button type="button" onclick="transferCow()"> Transfer</button>
-            </form>
+            <div class="modal" id="myModal2">    
+                <div id="transferCowContainer">
+                    <form id="transferCowForm">
+                        <h2>Transfer Cow</h2>
+                        <label for="cowTransferId">Cow ID:</label>
+                        <input type="number" placeholder="Enter the Id of the Cow you want to transfer" id="cowTransferId" required>
+                    
+                        <button type="button" onclick="transferCow()"> Transfer</button>
+                    </form>
 
-            <div id = showAvailableRanches></div>
-            <button class="closeModal">Close</button>                   
-            <script src="{{ url_for('static', filename = 'js/MyCattlePopUp.js')}}"> </script>
-        </div>
-    </div>
-
-        <!---->
-        <div>
+                    <div id = showAvailableRanches></div>
+                    <button class="closeModal">Close</button>                   
+                    <script src="{{ url_for('static', filename = 'js/MyCattlePopUp.js')}}"> </script>
+                </div>
+            </div>
+        <!-- <div>
        
             <form>
                 <h6>Delete Cow</h6>
@@ -147,15 +145,7 @@
 
             <div id = showAvailableRanches></div>
 
-        </div>
-
-        
-
-
-
-
-
-
+        </div> -->
 
     </section>
 
