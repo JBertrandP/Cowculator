@@ -24,24 +24,19 @@
         <a href="#" class="logo">Cowculator</a>
         <ul class="navlist">
             <li><a href="/myranch">My Ranch</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Add</a></li>
-            <li><a href="#">Polla</a></li>
+            <li><a href="#" id="openModal1">Add Cows</a></li>
+            <li><a href="#" id="openModal2">Transfer Cows</a></li>
+            <li><a href="#" id="openModal3">Search Cows</a></li>
             <li><a href="#">Pollon</a></li>
             <li><a href="#">Pollita</a></li>
         </ul>
 
         <div class="bx bx-menu" id="menu-icon"></div>
 
-
-
-
-
     </header>
 
     <section class="model">
         <div class="model-text">
-            <h5>que conchas pongo aqui?</h5>
 
             <!--Vacas 
             
@@ -54,11 +49,16 @@
             
             
             Count-->
-            <h4 id = "h4">Total de Vacas: <span id = "contadorGlobal"> {{totalCows}} </span>   contadorAngus: <span id = "contadorAngus">{{totalAngus}}</span>  contadorBrangus: <span id = "contadorBrangus">{{totalBrangus}}</span> contadorCharolais: <span id = "contadorCharolais">{{totalCharolais}}</span> contadorHereford: <span id = "contadorHereford">{{totalHereford}}</span> contadorSalers: <span id = "contadorSalers">{{totalSalers}}</span></h4>
             <h1>Bienvenido a MyCattle Id:  {{id}} </h1>
             <p>{{name}} </p>
-            <a href="#">que pongo</a>
-            <a href="#" class="ctaa"><i class="ri-play-fill"></i>que agrego aqui?</a>
+            <div class="Contador"><h4 id = "h4">Total de Vacas: <span id = "contadorGlobal"> {{totalCows}}</span>
+                <span id = "contadorAngus">Angus: {{totalAngus}}</span>
+                <span id = "contadorBrangus">Brangus: {{totalBrangus}}</span>
+                <span id = "contadorCharolais">Charolais: {{totalCharolais}}</span>
+                <span id = "contadorHereford">Hereford: {{totalHereford}}</span> Salers:
+                <span id = "contadorSalers">{{totalSalers}}</span>
+            </h4></div>
+            <!-- <a href="#" class="ctaa"><i class="ri-play-fill"></i>que agrego aqui?</a> -->
         </div>
 
         
@@ -69,7 +69,7 @@
 
 
         <div>
-            <!-- Add Cow -->
+            <!-- Add Cow Formulario-->
             <form id = "cow_form">
                 <input type="text" placeholder="Name" id="name">
                 <input type="number" placeholder = "Age"  id = "age">
@@ -83,35 +83,42 @@
                 </select>
                 <input type="number" placeholder = "Weight in Kg" id="weight">
 
-                <button type="button" onclick="addCow()"> Add Cow</button>
+                        <button type="button" onclick="addCow()"> Add Cow</button>
 
-            </form>
-            
-            <!--Display de vacas agregadas recientemente-->
-            <div id="addCowDisplay"></div>
+                    </form>
+                    
+                    <!--Display de vacas agregadas recientemente-->
+                    <div id="addCowDisplay"></div>
+                    <button class="closeModal">Close</button>
+                    <script src="{{ url_for('static', filename = 'js/MyCattlePopUp.js')}}"> </script>
+            </div>
+    
             
         </div>
 
 
             <!-- Search Cow-->
-        <div id="searchCowContainer">
-       
-            <form id = "searchCowForm">
-                <h2>Search Cow</h2>
-                <label for="cowId">Cow ID:</label>
-                <input type="number" placeholder="Enter a valid Cow Id" id="cowId" required>
+            <div class="modal" id="myModal3">
+                <div id="searchCowContainer">
             
-                <button type="button" onclick="searchCow('cowId','showSearch')"> Search</button>
-                                                
-            </form>
+                    <form id = "searchCowForm">
+                        <h2>Search Cow</h2>
+                        <label for="cowId">Cow ID:</label>
+                        <input type="number" placeholder="Enter a valid Cow Id" id="cowId" required>
+                    
+                        <button type="button" onclick="searchCow('cowId','showSearch')"> Search</button>
 
-            <div id = showSearch></div>
+                    </form>
 
-        </div>
+                    <div id = showSearch></div>
 
+                </div>
+                <button class="closeModal">Close</button>                   
+                <script src="{{ url_for('static', filename = 'js/MyCattlePopUp.js')}}"> </script>
+            </div>
 
         
-        <div>
+        <div id="transferCowContainer">
        
             <form id="transferCowForm">
                 <h2>Transfer Cow</h2>
@@ -119,13 +126,13 @@
                 <input type="number" placeholder="Enter the Id of the Cow you want to transfer" id="cowTransferId" required>
             
                 <button type="button" onclick="transferCow()"> Transfer</button>
-
             </form>
 
             <div id = showAvailableRanches></div>
-            
-
+            <button class="closeModal">Close</button>                   
+            <script src="{{ url_for('static', filename = 'js/MyCattlePopUp.js')}}"> </script>
         </div>
+    </div>
 
         <!---->
         <div>
