@@ -51,7 +51,8 @@ async function addCow() {
     
 
     const cowDisplay = document.getElementById('addCowDisplay')
-
+   
+    /*
     const newCowDisplay =  ` 
     
         <button class="cow-info-button">
@@ -66,12 +67,14 @@ async function addCow() {
         </button>
      
     `;
+    */
+
     breed = inputData.breed
 
     updateContador(breed)
     getRecentlyAddedCows()
     
-    cowDisplay.innerHTML += newCowDisplay
+    //cowDisplay.innerHTML += newCowDisplay
     
     }
     catch(error){
