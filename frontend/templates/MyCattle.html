@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com"     crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"    rel="stylesheet">
-    
+    <script src="{{ url_for('static', filename = 'js/ScriptMyCattle.js')}}" defer> </script>
 </head>
 <body>
     <header>
@@ -147,6 +147,12 @@
 
         </div> -->
 
+
+
+        <div id = 'recentlyAdded'></div>
+
+        
+
     </section>
 
     <!-- <div class="icons">
@@ -155,12 +161,13 @@
         <a href="#"><i class="ri-dribbble-line"></i></a>
     </div> -->
 
+
     <div class="scroll-down">   
         <a href=""><i class="ri-arrow-down-s-fill"></i></a>
     </div>
 
     <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="{{ url_for('static', filename = 'js/ScriptMyCattle.js')}}"> </script>
+    
     
 </body>
 </html>
