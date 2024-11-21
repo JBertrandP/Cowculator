@@ -86,6 +86,11 @@ async function addCow() {
 }
 
 
+async function updateCow() {
+  
+}
+
+
 async function updateContador(breed) {
 
   let breeds = {'Angus': 'contadorAngus','Brangus': "contadorBrangus"   ,'Charolais': "contadorCharolais" ,'Hereford': "contadorHereford" ,'Salers Limousin': "contadorSalers"}
