@@ -87,7 +87,50 @@ async function addCow() {
 
 
 async function updateCow() {
+
+
+
+
+
+
+
+
+
   
+
+  /*
+  const inputData = {
+    name: document.getElementById("modifyName").value,
+    age: document.getElementById("modifyAge").value,
+    breed: document.getElementById("modifyBreed").value,
+    weight: document.getElementById("modifyWeight").value
+  };
+
+  if(inputData){
+    try{
+
+      let promesa = await fetch('/update_cow', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(inputData)
+      })
+
+      let status = await promesa.status
+
+
+    
+    }
+    catch(exception){
+    console.log(exception)
+    }
+  }
+  else{
+    //display introduce informacion
+  }
+
+  */
 }
 
 

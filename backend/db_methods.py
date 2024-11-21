@@ -245,7 +245,7 @@ def select_cow(cow_id,ranch_id):
 
 
 
-def update_cow(cow_id):
+def update_cow(cow_info):
     try:
 
         
@@ -253,7 +253,7 @@ def update_cow(cow_id):
         cursor = conn.cursor()
         
         query = (f"  update Cows set CowName = 'Juan', age = 2, Breed = 'Charolais', Weight = 42 where  CowID = 3226")
-        cursor.execute(query,(cow_id))
+        cursor.execute(query)
 
         columns = [column[0] for column in cursor.description]
         rows = [cursor.fetchone()]

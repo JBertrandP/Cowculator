@@ -215,6 +215,17 @@ def search_cow():
 
     return jsonify(cow_info)
 
+
+@app.route('/update_cow',methods = ['POST'])
+def update_cow():
+    cow_info = request.json
+
+    db_methods.update_cow(cow_info)
+    return jsonify(),201
+
+    
+
+
 @app.route('/get_ranchs_data',methods = ['POST','GET'])
 def get_ranchs_data():
 

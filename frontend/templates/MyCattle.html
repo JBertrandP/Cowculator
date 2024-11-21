@@ -27,6 +27,7 @@
             <li><a href="#" onclick="displayContent('content1')">Add Cows</a></li>
             <li><a href="#" onclick="displayContent('content3')">Transfer Cows</a></li>
             <li><a href="#" onclick="displayContent('content2')">Search Cows</a></li>
+            <li><a href="#" onclick="displayContent('content4')">Update Cows</a></li>
         </ul>
 
         <!-- <div class="bx bx-menu" id="menu-icon"></div> -->
@@ -129,10 +130,10 @@
 
             <div id="content4" class="conent" style="display:none;">
                 <form id = "cow_form">
-                    <h2>Modify Cow</h2>
-                    <input type="text" placeholder="Name" id="name">
-                    <input type="number" placeholder = "Age"  id = "age">
-                    <select id="breed" type = ''>
+                    <h2>Update Cow</h2>
+                    <input type="text" placeholder="Name" id="modifyName">
+                    <input type="number" placeholder = "Age"  id = "modifyAge">
+                    <select id="modifyBreed" type = ''>
                         <option value="" disabled selected>Select Breed</option>
                         <option value="Angus" >Angus</option>
                         <option value="Brangus">Brangus</option>
@@ -140,9 +141,9 @@
                         <option value="Hereford">Hereford</option>
                         <option value="Salers Limousin">Salers Limousin</option>
                     </select>
-                    <input type="number" placeholder = "Weight in Kg" id="weight">
+                    <input type="number" placeholder = "Weight in Kg" id="modifyWeight">
 
-                        <button type="button" onclick="addCow()">Add Cow</button>
+                        <button type="button" onclick="updateCow()">Update</button>
 
                 </form>
                 
