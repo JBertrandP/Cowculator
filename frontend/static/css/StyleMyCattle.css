@@ -632,9 +632,31 @@ transform: translateY(-5px);
 }
 /* si esto no es conveniente, lo eliminamos, ya que papuKevin hizo algo bien intento dificil (tryhard) ;) */
 
+#showRecentCows {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: center;
+}
 
-
-
+.search-cow {
+    display: block; /* Use block to stack elements vertically */
+    margin: 10px 0;  /*Adjust margin as needed */
+    font-size: 73%;
+    border-radius: 20px;
+    display: inline-block;
+    padding: 20px;
+    background-color: #ad5215ce;
+    color: white;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 190px;
+    height: 150px;
+}
+.search-cow:hover {
+    background-color: #b46c39;
+}
 
 /* Contenedor principal del formulario */
 #searchCowContainer {

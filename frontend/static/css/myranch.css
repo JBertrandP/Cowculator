@@ -109,3 +109,21 @@ body {
 .SO a {
     color: darkgoldenrod;
 }
+
+.search-cow {
+    display: block; /* Use block to stack elements vertically */
+    margin: -10px 0;  /*Adjust margin as needed */
+
+    font-size: 73%;
+    border-radius: 20px;
+    display: inline-block;
+    padding: 20px;
+    background-color: #2e6d30ce;
+    color: white;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 320px;
+    height: 220px;
+}
