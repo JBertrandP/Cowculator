@@ -223,6 +223,52 @@ def add_cow(name,age,breed,weight,ranch_id):
 
 
 
+def select_cow(cow_id,ranch_id):
+    try:
+        conn = db_connect()
+        cursor = conn.cursor()
+        
+        query = (f"  select * from Cows where CowID = ? and FarmID = ?")
+        cursor.execute(query,(cow_id,ranch_id))
+
+        columns = [column[0] for column in cursor.description]
+        rows = [cursor.fetchone()]
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        return dictionarify(columns,rows)
+    except Exception as e:
+        print(e)
+
+
+
+
+def update_cow(cow_id):
+    try:
+
+        
+        conn = db_connect()
+        cursor = conn.cursor()
+        
+        query = (f"  update Cows set CowName = 'Juan', age = 2, Breed = 'Charolais', Weight = 42 where  CowID = 3226")
+        cursor.execute(query,(cow_id))
+
+        columns = [column[0] for column in cursor.description]
+        rows = [cursor.fetchone()]
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        return dictionarify(columns,rows)
+    except Exception as e:
+        print(e)
+
+
+
+
 
 
 def delete_cow(cow_id):
@@ -290,24 +336,6 @@ def count_cows(type,ranch_id):
         print(e)
 
 
-def select_cow(cow_id,ranch_id):
-    try:
-        conn = db_connect()
-        cursor = conn.cursor()
-        
-        query = (f"  select * from Cows where CowID = ? and FarmID = ?")
-        cursor.execute(query,(cow_id,ranch_id))
-
-        columns = [column[0] for column in cursor.description]
-        rows = [cursor.fetchone()]
-
-        conn.commit()
-        cursor.close()
-        conn.close()
-
-        return dictionarify(columns,rows)
-    except Exception as e:
-        print(e)
 
 
 def recently_added(ranch_id):

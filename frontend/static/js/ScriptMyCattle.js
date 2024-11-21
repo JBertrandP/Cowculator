@@ -27,7 +27,7 @@ sr.reveal('.scroll-down', {delay:500, origin: 'right'});
 
 
 async function addCow() {
-   
+
     const inputData = {
       name: document.getElementById("name").value,
       age: document.getElementById("age").value,
@@ -35,8 +35,7 @@ async function addCow() {
       weight: document.getElementById("weight").value
     };
 
-    console.log('Log desde js MyCattle')
-    console.log(inputData)
+  
     try{
   
     let promesa = await fetch('/add_cow', {
@@ -68,6 +67,9 @@ async function addCow() {
      
     `;
     */
+
+
+
 
     breed = inputData.breed
 
@@ -294,7 +296,7 @@ async function moveCow(age,breed,cowId,cowName,farmId,weight,ranchId) {
 
   }
   
-  console.log(cowData)
+
 
   let promesa = await fetch('/transfer_cow',{
 
@@ -314,7 +316,6 @@ async function moveCow(age,breed,cowId,cowName,farmId,weight,ranchId) {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('Se carga la pagina')
   getRecentlyAddedCows()
 });
 
@@ -342,10 +343,11 @@ let tempDisplay = ""
 for(let cowInfo of cowData){
   let newDisplay = `
           <div class="search-cow">
-            <h2>${cowInfo.CowID}</h2>
+            <h2>${cowInfo.CowName}</h2>
             <p>ID: ${cowInfo.CowID}</p>
             <p>Name: ${cowInfo.CowName}</p>
             <p>Breed: ${cowInfo.Breed}</p>
+            <button type="button" onclick="showCowInfo()"> Transfer</button>
         </div> `;
 
     tempDisplay += newDisplay
@@ -356,7 +358,14 @@ display.innerHTML = tempDisplay
 }
 
 
+//previous ranch history
+function showCowInfo(cowId,cowName,age,weight){
 
+let cowDisplay = document.getElementById('content4')
+
+
+
+}
 
 /*
 
