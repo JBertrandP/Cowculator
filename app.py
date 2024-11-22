@@ -187,49 +187,81 @@ def dictionarify(colums,rows):
 
 @app.route('/recently_added', methods = ['GET'])
 def recently_added():
+    try:
+        ranch_id = session['user']['ranchId']
+        recently_added = db_methods.recently_added(ranch_id)
 
-    ranch_id = session['user']['ranchId']
-    recently_added = db_methods.recently_added(ranch_id)
+        return jsonify(recently_added),201
+    except Exception as e:
+            print(e)
 
-    return jsonify(recently_added),201
 
 
+#CRUD Cows
 @app.route('/add_cow', methods=['POST'])
 def add_cow():
-    cow_data = request.json
+    try:
+        cow_data = request.json
 
-    print('Print desde app /add_cow')
-    print(cow_data)
+        print('Print desde app /add_cow')
+        print(cow_data)
 
-    name = cow_data['name']
-    age = cow_data['age']
-    breed = cow_data['breed']
-    weight = cow_data['weight']
+        name = cow_data['name']
+        age = cow_data['age']
+        breed = cow_data['breed']
+        weight = cow_data['weight']
 
-    new_cow = db_methods.add_cow(name,age,breed,weight,session['user']['ranchId'])
+        new_cow = db_methods.add_cow(name,age,breed,weight,session['user']['ranchId'])
+    except Exception as e:
+        print(e)
    
     return jsonify(new_cow)
 
 @app.route('/search_cow',methods = ['POST'])
 def search_cow():
-    cowId = request.json
-    
-    cow_id = cowId['cowId']
-    ranch_id = session['user']['ranchId']
-    cow_info = db_methods.select_cow(cow_id,ranch_id)
 
-    return jsonify(cow_info)
+    try:
+        cowId = request.json
+        
+        cow_id = cowId['cowId']
+        ranch_id = session['user']['ranchId']
+        cow_info = db_methods.select_cow(cow_id,ranch_id)
+
+        return jsonify(cow_info)
+    except Exception as e:
+            print(e)
 
 
 @app.route('/update_cow',methods = ['POST'])
 def update_cow():
-    cow_info = request.json
-    
-    print('Print desde app /update_cow')
-    print(cow_info)
+    try:
+        cow_info = request.json
+        
+        print('Print desde app /update_cow')
+        print(cow_info)
 
-    db_methods.update_cow(cow_info)
-    return jsonify(),201
+        db_methods.update_cow(cow_info)
+        return jsonify(),201
+    except Exception as e:
+            print(e)
+
+
+@app.route('/delete_cow', methods = ['POST'])
+def delete_cow():
+    try:
+        cow_info = request.json
+        print('La cow Info es: ')
+        print(cow_info)
+        cow_id = cow_info['cowId']
+        
+        print('El cow Id es ')
+        print(cow_id)
+        db_methods.delete_cow(cow_id)
+
+        return jsonify(),201
+    except Exception as e:
+        print(e)
+
 
     
 
