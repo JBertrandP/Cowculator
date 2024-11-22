@@ -29,7 +29,6 @@
             <li><a href="#" onclick="displayContent('content2')">Search Cows</a></li>
             <li><a href="#" onclick="displayContent('content4')">Update Cows</a></li>
             <li><a href="#" onclick="displayContent('content5')">KILL Cows</a></li>
-            <li><a href="#" onclick="displayContent('content6')">Selected Cows Display</a></li>
         </ul>
 
         <!-- <div class="bx bx-menu" id="menu-icon"></div> -->
@@ -38,18 +37,6 @@
 
     <section class="model">
         <div class="model-text">
-
-            <!--Vacas 
-            
-            
-                    <option value="Angus" >Angus</option>
-                    <option value="Brangus">Brangus</option>
-                    <option value="Charolais">Charolais</option>
-                    <option value="Hereford">Hereford</option>
-                    <option value="Salers Limousin">Salers Limousin</option>
-            
-            
-            Count-->
             <p>{{name}}</p>
             <div class="Contador">
                 <h4 id = "h4">Total de Vacas: <span id = "contadorGlobal"> {{totalCows}}</span>
@@ -59,16 +46,11 @@
                 Hereford: <span id = "contadorHereford">{{totalHereford}}</span> 
                 Salers: <span id = "contadorSalers">{{totalSalers}}</span>
             </h4></div>
-            <!-- <a href="#" class="ctaa"><i class="ri-play-fill"></i>que agrego aqui?</a> -->
         </div>
 
-        
-        <!-- <div class="model-img">
-            <img src="{{ url_for('static', filename = 'images/cowcattle.png')}}" height="600px">
-        </div> -->
-            <div class="center">
-                    <div id = 'showRecentCows'></div>
-            </div>
+        <div class="center">
+            <div id = 'showRecentCows'></div>
+        </div>
 <!-- Content for Right Side -->
             <!-- Add Cow Formulario-->
         <div class="right">
@@ -88,12 +70,7 @@
                     <input type="number" placeholder = "Weight in Kg" id="weight">
 
                         <button type="button" onclick="addCow()">Add Cow</button>
-
                 </form>
-                        
-                        <!--Display de vacas agregadas recientemente-->
-                        <!-- <div id="addCowDisplay"></div> -->
-                        <script src="{{ url_for('static', filename = 'js/MyCattlePopUp.js')}}"> </script>
             </div>
 
             <!-- Search Cow-->
@@ -110,10 +87,9 @@
                     </form>
 
                     <div id = 'showSearch'></div>
-
                 </div>
-                <script src="{{ url_for('static', filename = 'js/MyCattlePopUp.js')}}"> </script>
             </div>
+
             <!-- Transfer Cow -->
             <div  id="content3" class="content" style="display:none;">    
 
@@ -128,26 +104,21 @@
                     </form>
 
                     <div id = 'showAvailableRanches'></div>
-                    <script src="{{ url_for('static', filename = 'js/MyCattlePopUp.js')}}"> </script>
                 </div>
             </div>
             <!-- Update Cow -->
-            <div id="content4" class="conent" style="display:none;">
+            <div id="content4" class="content" style="display:none;">
 
-                <div id="searchCowContainer">
-                    <div id="updateCowContainer">
+                <div id="updateCowContainer">
                         <form id = "updateForm">
                             <h2>Update Cow</h2>
                             <label for="cowId">Cow ID:</label>
                             <input type="number" placeholder="Enter a valid Cow Id" id="updateCowId" required>
                         
                             <button type="button" onclick="updateCow()"> Search</button>
-
                         </form>
 
-                        <div id = 'showResult'></div>
-                    </div>
-                
+                        <div id = 'showResult'></div>   
                 </div>
                 
                 
@@ -155,10 +126,9 @@
 
 
             <!-- KILL Cow -->
-            <div id="content5" class="conent" style="display:none;">
+            <div id="content5" class="content" style="display:none;">
 
-                <div id="searchCowContainer">
-                    <div id="updateCowContainer">
+                <div id="killCowContainer">
                         <form id = "updateForm">
                             <h2>KILL Cow</h2>
                             <label for="cowId">Cow ID:</label>
@@ -169,29 +139,22 @@
                         </form>
 
                         <div id = 'showResult'></div>
-                    </div>
-                
                 </div>
             </div>
 
 
             <!-- Selected Cow Display -->
-            <div id="content6" class="conent" style="display:none;">
+            <div id="content6" class="content" style="display:none;">
 
                 <div id="displayCowContainer">
                     
                 
-                        <h2 id = 'selectedCowH'></h2>
-                        <label for="" id = 'selectedCowId'>Cow ID: </label> 
-                        <label for="" id = 'selectedCowName'>Name: </label>
-                        <label for="" id = 'selectedCowAge'>Age: </label>
-                        <label for="" id = 'selectedCowBreed'>Breed: </label>
-                        <label for="" id = 'selectedCowWeight'>Weight: </label>
-                        <label for="" id = 'selectedCowDate'>AddedDate: </label>
-                        
-                        
-                        
-                 
+                        <h2 id = 'selectedCowName'></h2>
+                        <p>Cow ID: <label for="" id = 'selectedCowId'></label></p>
+                        <p>Age: <label for="" id = 'selectedCowAge'></label></p>
+                        <p>Breed: <label for="" id = 'selectedCowBreed'></label></p>
+                        <p>Weight: <label for="" id = 'selectedCowWeight'></label></p>
+                        <p>AddedDate: <label for="" id = 'selectedCowDate'></label></p>
 
                     <div id = 'showResult'></div>
                     

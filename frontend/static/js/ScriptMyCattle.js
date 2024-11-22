@@ -474,7 +474,7 @@ let fechaXD ='fechaXD'
                                                       //id,name,age,breed,weight,date
 for(let cowInfo of cowData){
   let newDisplay = `
-          <div class="search-cow" onclick="showCowInfo(${cowInfo.CowID},'${cowInfo.CowName}',${cowInfo.Age},'${cowInfo.Breed}',${cowInfo.Weight},'${fechaXD}')">
+          <div class="search-cow" onclick="showCowInfo(${cowInfo.CowID},'${cowInfo.CowName}',${cowInfo.Age},'${cowInfo.Breed}',${cowInfo.Weight},'${fechaXD}'), displayContent('content6')">
             <h2>${cowInfo.CowName}</h2>
             <p>ID: ${cowInfo.CowID}</p>
             <p>Name: ${cowInfo.CowName}</p>
