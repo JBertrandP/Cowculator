@@ -439,7 +439,7 @@ async function moveCow(age,breed,cowId,cowName,farmId,weight,ranchId) {
 
   let response = promesa.status
 
-
+  getRecentlyAddedCows()
   
 }
 
@@ -465,18 +465,21 @@ renderAddedCows(cowData)
 
 
 async function renderAddedCows(cowData){
+console.log(cowData)
+
 
 let display = document.getElementById('showRecentCows')
 let tempDisplay = ""
-
+let fechaXD ='fechaXD'
+                                                      //id,name,age,breed,weight,date
 for(let cowInfo of cowData){
   let newDisplay = `
-          <div class="search-cow">
+          <div class="search-cow" onclick="showCowInfo(${cowInfo.CowID},'${cowInfo.CowName}',${cowInfo.Age},'${cowInfo.Breed}',${cowInfo.Weight},'${fechaXD}')">
             <h2>${cowInfo.CowName}</h2>
             <p>ID: ${cowInfo.CowID}</p>
             <p>Name: ${cowInfo.CowName}</p>
             <p>Breed: ${cowInfo.Breed}</p>
-            <button type="button" onclick="showCowInfo()"> Transfer</button>
+            
         </div> `;
 
     tempDisplay += newDisplay
@@ -488,9 +491,18 @@ display.innerHTML = tempDisplay
 
 
 //previous ranch history
-function showCowInfo(cowId,cowName,age,weight){
+function showCowInfo(id,name,age,breed,weight,date){
 
-let cowDisplay = document.getElementById('content4')
+
+
+
+document.getElementById('selectedCowId').innerText= id
+document.getElementById('selectedCowName').innerText = name
+document.getElementById('selectedCowAge').innerText = age
+document.getElementById('selectedCowBreed').innerText = breed
+document.getElementById('selectedCowWeight').innerText = weight
+document.getElementById('selectedCowDate').innerText = date
+
 
 
 
