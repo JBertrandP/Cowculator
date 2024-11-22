@@ -248,21 +248,26 @@ def select_cow(cow_id,ranch_id):
 def update_cow(cow_info):
     try:
 
+        print('UpdateCow  db_methods')
+        print(cow_info)
+        
+        name = cow_info['name']
+        age = cow_info['age']
+        breed = cow_info['breed']
+        weight = cow_info['weight']
+        cow_id = cow_info['cowId']
         
         conn = db_connect()
         cursor = conn.cursor()
         
-        query = (f"  update Cows set CowName = 'Juan', age = 2, Breed = 'Charolais', Weight = 42 where  CowID = 3226")
-        cursor.execute(query)
+        query = (f"  update Cows set CowName = ?, age = ?, Breed = ?, Weight = ? where  CowID = ?")
+        cursor.execute(query,(name, age , breed , weight,cow_id))
 
-        columns = [column[0] for column in cursor.description]
-        rows = [cursor.fetchone()]
-
+        
         conn.commit()
         cursor.close()
         conn.close()
 
-        return dictionarify(columns,rows)
     except Exception as e:
         print(e)
 

@@ -114,6 +114,8 @@
             </div>
 
             <div  id="content3" class="content" style="display:none;">    
+
+                
                 <div id="transferCowContainer">
                     <form id="transferCowForm">
                         <h2>Transfer Cow</h2>
@@ -129,23 +131,23 @@
             </div>
 
             <div id="content4" class="conent" style="display:none;">
-                <form id = "cow_form">
-                    <h2>Update Cow</h2>
-                    <input type="text" placeholder="Name" id="modifyName">
-                    <input type="number" placeholder = "Age"  id = "modifyAge">
-                    <select id="modifyBreed" type = ''>
-                        <option value="" disabled selected>Select Breed</option>
-                        <option value="Angus" >Angus</option>
-                        <option value="Brangus">Brangus</option>
-                        <option value="Charolais">Charolais</option>
-                        <option value="Hereford">Hereford</option>
-                        <option value="Salers Limousin">Salers Limousin</option>
-                    </select>
-                    <input type="number" placeholder = "Weight in Kg" id="modifyWeight">
 
-                        <button type="button" onclick="updateCow()">Update</button>
+                <div id="searchCowContainer">
+                    <div id="updateCowContainer">
+                        <form id = "updateForm">
+                            <h2>Update Cow</h2>
+                            <label for="cowId">Cow ID:</label>
+                            <input type="number" placeholder="Enter a valid Cow Id" id="updateCowId" required>
+                        
+                            <button type="button" onclick="updateCow()"> Search</button>
 
-                </form>
+                        </form>
+
+                        <div id = showResult></div>
+                    </div>
+                
+                </div>
+                
                 
             </div>
         <!-- <div>

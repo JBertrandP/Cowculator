@@ -89,49 +89,130 @@ async function addCow() {
 async function updateCow() {
 
 
+  //nota para todas las funciones
+  //limpiar formularios y mostradores cada vez que se manda la solicitud
 
+  let cowId = {
+    cowId : document.getElementById('updateCowId').value
+  }
+ 
 
+  try{
+  let promesa = await fetch( '/search_cow' ,{
 
+    method : 'POST',
+    headers : {
+      'Content-Type' : 'application/json'
+    },
+    body: JSON.stringify(cowId)
+  })
 
-
-
+  let cowInfo = await promesa.json()
 
   
+  if(cowInfo){
+  //formulario de transferencia
+    
+  console.log(cowInfo) 
+  
 
-  /*
-  const inputData = {
-    name: document.getElementById("modifyName").value,
-    age: document.getElementById("modifyAge").value,
-    breed: document.getElementById("modifyBreed").value,
-    weight: document.getElementById("modifyWeight").value
-  };
+  display = document.getElementById('updateCowContainer')
+  
+  console.log(display)
+  newDisplay = ` 
+    
+              <form id = "cow_form">
+                    <h2>Update Cow</h2>
+                    <input type="text" placeholder="${cowInfo[0].CowName}" id="updateName">
+                    <input type="number" placeholder = "${cowInfo[0].Age}"  id = "updateAge">
+                    <select id="updateBreed" >
+                        <option value="" disabled selected>Select Breed</option>
+                        <option value="Angus" >Angus</option>
+                        <option value="Brangus">Brangus</option>
+                        <option value="Charolais">Charolais</option>
+                        <option value="Hereford">Hereford</option>
+                        <option value="Salers Limousin">Salers Limousin</option>
+                    </select>
+                    <input type="number" placeholder = "${cowInfo[0].Weight}" id="updateWeight">
 
-  if(inputData){
-    try{
+                        <button type="button" onclick="dbUpdateCow(${cowInfo[0].CowID})">Add Cow</button>
 
-      let promesa = await fetch('/update_cow', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(inputData)
-      })
+                </form>
+     
+    `
+   
+      display.innerHTML = newDisplay
 
-      let status = await promesa.status
+
+      document.getElementById('updateName').value = cowInfo[0].CowName
+      document.getElementById('updateAge').value = cowInfo[0].Age
+      document.getElementById('updateWeight').value = cowInfo[0].Weight
+      document.getElementById('updateBreed').value = cowInfo[0].Breed
+      
+
+  }
+  else{
+    document.getElementById('showResult').innerHTML = '<h2>Invalid ID</h2>'
+    return undefined
+  }
+
+
+}
+catch(error){
+  console.log(error)
+}
+
+
+}
+
+
+
+async function dbUpdateCow(cowId) {
+
+  let cowInfo = {
+    cowId :cowId,
+    name : document.getElementById('updateName').value,
+    age : document.getElementById('updateAge').value,
+    breed : document.getElementById('updateBreed').value,
+    weight : document.getElementById('updateWeight').value
+
+  }
+
+  console.log(cowInfo)
+  
+  try {
+
+    let promesa = await fetch('/update_cow',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(cowInfo)
+    })
+    
+    let response = promesa.json()
+
+    display = document.getElementById('updateCowContainer')
+
+    newDisplay = ` 
+
+                    <h2>Actualizada con exito!</h2>
+                
+    `
+    display.innerHTML = newDisplay  
+
+
+    getRecentlyAddedCows()
 
 
     
-    }
-    catch(exception){
-    console.log(exception)
-    }
-  }
-  else{
-    //display introduce informacion
+  } catch (error) {
+    
   }
 
-  */
+
 }
+
 
 
 async function updateContador(breed) {
@@ -511,7 +592,39 @@ searchDisplay = newDisplay
 
 
 
+  /*
+  const inputData = {
+    name: document.getElementById("modifyName").value,
+    age: document.getElementById("modifyAge").value,
+    breed: document.getElementById("modifyBreed").value,
+    weight: document.getElementById("modifyWeight").value
+  };
 
+  if(inputData){
+    try{
+
+      let promesa = await fetch('/update_cow', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(inputData)
+      })
+
+      let status = await promesa.status
+
+
+    
+    }
+    catch(exception){
+    console.log(exception)
+    }
+  }
+  else{
+    //display introduce informacion
+  }
+
+  */
 
 
 
