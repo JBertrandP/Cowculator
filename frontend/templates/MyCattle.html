@@ -27,8 +27,9 @@
             <li><a href="#" onclick="displayContent('content1')">Add Cows</a></li>
             <li><a href="#" onclick="displayContent('content3')">Transfer Cows</a></li>
             <li><a href="#" onclick="displayContent('content2')">Search Cows</a></li>
-            <li><a href="#" onclick="displayContent('content5')">Update Cows</a></li>
-            <li><a href="#" onclick="displayContent('content6')">Delete Cows</a></li>
+            <li><a href="#" onclick="displayContent('content4')">Update Cows</a></li>
+            <li><a href="#" onclick="displayContent('content5')">KILL Cows</a></li>
+            <li><a href="#" onclick="displayContent('content6')">Selected Cows Display</a></li>
         </ul>
 
         <!-- <div class="bx bx-menu" id="menu-icon"></div> -->
@@ -108,13 +109,15 @@
 
                     </form>
 
-                    <div id = showSearch></div>
+                    <div id = 'showSearch'></div>
 
                 </div>
                 <script src="{{ url_for('static', filename = 'js/MyCattlePopUp.js')}}"> </script>
             </div>
-
+            <!-- Transfer Cow -->
             <div  id="content3" class="content" style="display:none;">    
+
+                
                 <div id="transferCowContainer">
                     <form id="transferCowForm">
                         <h2>Transfer Cow</h2>
@@ -124,27 +127,79 @@
                         <button type="button" onclick="transferCow()"> Transfer</button>
                     </form>
 
-                    <div id = showAvailableRanches></div>
+                    <div id = 'showAvailableRanches'></div>
                     <script src="{{ url_for('static', filename = 'js/MyCattlePopUp.js')}}"> </script>
                 </div>
             </div>
-
+            <!-- Update Cow -->
             <div id="content4" class="conent" style="display:none;">
 
+                <div id="searchCowContainer">
+                    <div id="updateCowContainer">
+                        <form id = "updateForm">
+                            <h2>Update Cow</h2>
+                            <label for="cowId">Cow ID:</label>
+                            <input type="number" placeholder="Enter a valid Cow Id" id="updateCowId" required>
+                        
+                            <button type="button" onclick="updateCow()"> Search</button>
+
+                        </form>
+
+                        <div id = 'showResult'></div>
+                    </div>
+                
+                </div>
+                
+                
             </div>
-        <!-- <div>
+
+
+            <!-- KILL Cow -->
+            <div id="content5" class="conent" style="display:none;">
+
+                <div id="searchCowContainer">
+                    <div id="updateCowContainer">
+                        <form id = "updateForm">
+                            <h2>KILL Cow</h2>
+                            <label for="cowId">Cow ID:</label>
+                            <input type="number" placeholder="Enter a valid Cow Id" id="updateCowId" required>
+                        
+                            <button type="button" onclick="updateCow()"> Search</button>
+
+                        </form>
+
+                        <div id = 'showResult'></div>
+                    </div>
+                
+                </div>
+            </div>
+
+
+            <!-- Selected Cow Display -->
+            <div id="content6" class="conent" style="display:none;">
+
+                <div id="displayCowContainer">
+                    
+                
+                        <h2 id = 'selectedCowH'></h2>
+                        <label for="" id = 'selectedCowId'>Cow ID: </label> 
+                        <label for="" id = 'selectedCowName'>Name: </label>
+                        <label for="" id = 'selectedCowAge'>Age: </label>
+                        <label for="" id = 'selectedCowBreed'>Breed: </label>
+                        <label for="" id = 'selectedCowWeight'>Weight: </label>
+                        <label for="" id = 'selectedCowDate'>AddedDate: </label>
+                        
+                        
+                        
+                 
+
+                    <div id = 'showResult'></div>
+                    
+    
+                </div>
+            </div>
        
-            <form>
-                <h6>Delete Cow</h6>
-                <input type="number" placeholder="Enter the Id of the Cow you want to transfer" id="cowTransferId" required>
-            
-                <button type="button" onclick="transferCow()"> Search</button>
-
-            </form>
-
-            <div id = showAvailableRanches></div>
-
-        </div> -->
+       
 
     </section>
 
@@ -163,7 +218,7 @@
     <!-- <script src="{{ url_for('static', filename = 'js/ScriptMyCattle.js')}}"> </script> -->
     <script>
         // script.js
-function displayContent(contentId) {
+    function displayContent(contentId) {
     const contents = document.querySelectorAll('.content');
     contents.forEach(content => {
         content.style.display = 'none';

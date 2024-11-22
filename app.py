@@ -24,22 +24,27 @@ def login_post():
     email = request.form['email']
     password = request.form['password']
 
+    #pedo con orden de evaluacion eh implicaciones de obtener la password hash
     password_hash = db_methods.get_hash(email)
-    
-    if db_methods.is_usuario(email)  is not None and check_password_hash(password_hash,password):
-
-        user_id = db_methods.get_userData(email)[0]
-        username = db_methods.get_userData(email)[1]
-        email = db_methods.get_userData(email)[2]
-
-        session['user'] = {'user_id' : None , 'email' : None , 'username' : None}
+    #fixear mierda de codigo
+    if password_hash:
         
-        session['user']['user_id'] = user_id
-        session['user']['email'] =  email
-        session['user']['username'] =  username
-        
-        print(session)
-        return redirect(url_for('myranch_render'))
+        if db_methods.is_usuario(email)  is not None and check_password_hash(password_hash,password):
+
+            user_id = db_methods.get_userData(email)[0]
+            username = db_methods.get_userData(email)[1]
+            email = db_methods.get_userData(email)[2]
+
+            session['user'] = {'user_id' : None , 'email' : None , 'username' : None}
+            
+            session['user']['user_id'] = user_id
+            session['user']['email'] =  email
+            session['user']['username'] =  username
+            
+            print(session)
+            return redirect(url_for('myranch_render'))
+        else:
+            return redirect(url_for("signuplogin_render"))
     else:
         return redirect(url_for("signuplogin_render"))
 
@@ -214,6 +219,20 @@ def search_cow():
     cow_info = db_methods.select_cow(cow_id,ranch_id)
 
     return jsonify(cow_info)
+
+
+@app.route('/update_cow',methods = ['POST'])
+def update_cow():
+    cow_info = request.json
+    
+    print('Print desde app /update_cow')
+    print(cow_info)
+
+    db_methods.update_cow(cow_info)
+    return jsonify(),201
+
+    
+
 
 @app.route('/get_ranchs_data',methods = ['POST','GET'])
 def get_ranchs_data():

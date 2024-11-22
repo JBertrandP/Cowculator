@@ -27,7 +27,7 @@ sr.reveal('.scroll-down', {delay:500, origin: 'right'});
 
 
 async function addCow() {
-   
+
     const inputData = {
       name: document.getElementById("name").value,
       age: document.getElementById("age").value,
@@ -35,8 +35,7 @@ async function addCow() {
       weight: document.getElementById("weight").value
     };
 
-    console.log('Log desde js MyCattle')
-    console.log(inputData)
+  
     try{
   
     let promesa = await fetch('/add_cow', {
@@ -69,6 +68,9 @@ async function addCow() {
     `;
     */
 
+
+
+
     breed = inputData.breed
 
     updateContador(breed)
@@ -82,6 +84,135 @@ async function addCow() {
     }
     
 }
+
+
+async function updateCow() {
+
+
+  //nota para todas las funciones
+  //limpiar formularios y mostradores cada vez que se manda la solicitud
+
+  let cowId = {
+    cowId : document.getElementById('updateCowId').value
+  }
+ 
+
+  try{
+  let promesa = await fetch( '/search_cow' ,{
+
+    method : 'POST',
+    headers : {
+      'Content-Type' : 'application/json'
+    },
+    body: JSON.stringify(cowId)
+  })
+
+  let cowInfo = await promesa.json()
+
+  
+  if(cowInfo){
+  //formulario de transferencia
+    
+  console.log(cowInfo) 
+  
+
+  display = document.getElementById('updateCowContainer')
+  
+  console.log(display)
+  newDisplay = ` 
+    
+              <form id = "cow_form">
+                    <h2>Update Cow</h2>
+                    <input type="text" placeholder="${cowInfo[0].CowName}" id="updateName">
+                    <input type="number" placeholder = "${cowInfo[0].Age}"  id = "updateAge">
+                    <select id="updateBreed" >
+                        <option value="" disabled selected>Select Breed</option>
+                        <option value="Angus" >Angus</option>
+                        <option value="Brangus">Brangus</option>
+                        <option value="Charolais">Charolais</option>
+                        <option value="Hereford">Hereford</option>
+                        <option value="Salers Limousin">Salers Limousin</option>
+                    </select>
+                    <input type="number" placeholder = "${cowInfo[0].Weight}" id="updateWeight">
+
+                        <button type="button" onclick="dbUpdateCow(${cowInfo[0].CowID})">Add Cow</button>
+
+                </form>
+     
+    `
+   
+      display.innerHTML = newDisplay
+
+
+      document.getElementById('updateName').value = cowInfo[0].CowName
+      document.getElementById('updateAge').value = cowInfo[0].Age
+      document.getElementById('updateWeight').value = cowInfo[0].Weight
+      document.getElementById('updateBreed').value = cowInfo[0].Breed
+      
+
+  }
+  else{
+    document.getElementById('showResult').innerHTML = '<h2>Invalid ID</h2>'
+    return undefined
+  }
+
+
+}
+catch(error){
+  console.log(error)
+}
+
+
+}
+
+
+
+async function dbUpdateCow(cowId) {
+
+  let cowInfo = {
+    cowId :cowId,
+    name : document.getElementById('updateName').value,
+    age : document.getElementById('updateAge').value,
+    breed : document.getElementById('updateBreed').value,
+    weight : document.getElementById('updateWeight').value
+
+  }
+
+  console.log(cowInfo)
+  
+  try {
+
+    let promesa = await fetch('/update_cow',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(cowInfo)
+    })
+    
+    let response = promesa.json()
+
+    display = document.getElementById('updateCowContainer')
+
+    newDisplay = ` 
+
+                    <h2>Actualizada con exito!</h2>
+                
+    `
+    display.innerHTML = newDisplay  
+
+
+    getRecentlyAddedCows()
+
+
+    
+  } catch (error) {
+    
+  }
+
+
+}
+
 
 
 async function updateContador(breed) {
@@ -294,7 +425,7 @@ async function moveCow(age,breed,cowId,cowName,farmId,weight,ranchId) {
 
   }
   
-  console.log(cowData)
+
 
   let promesa = await fetch('/transfer_cow',{
 
@@ -308,13 +439,12 @@ async function moveCow(age,breed,cowId,cowName,farmId,weight,ranchId) {
 
   let response = promesa.status
 
-
+  getRecentlyAddedCows()
   
 }
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('Se carga la pagina')
   getRecentlyAddedCows()
 });
 
@@ -335,17 +465,21 @@ renderAddedCows(cowData)
 
 
 async function renderAddedCows(cowData){
+console.log(cowData)
+
 
 let display = document.getElementById('showRecentCows')
 let tempDisplay = ""
-
+let fechaXD ='fechaXD'
+                                                      //id,name,age,breed,weight,date
 for(let cowInfo of cowData){
   let newDisplay = `
-          <div class="search-cow">
-            <h2>${cowInfo.CowID}</h2>
+          <div class="search-cow" onclick="showCowInfo(${cowInfo.CowID},'${cowInfo.CowName}',${cowInfo.Age},'${cowInfo.Breed}',${cowInfo.Weight},'${fechaXD}')">
+            <h2>${cowInfo.CowName}</h2>
             <p>ID: ${cowInfo.CowID}</p>
             <p>Name: ${cowInfo.CowName}</p>
             <p>Breed: ${cowInfo.Breed}</p>
+            
         </div> `;
 
     tempDisplay += newDisplay
@@ -356,7 +490,23 @@ display.innerHTML = tempDisplay
 }
 
 
+//previous ranch history
+function showCowInfo(id,name,age,breed,weight,date){
 
+
+
+
+document.getElementById('selectedCowId').innerText= id
+document.getElementById('selectedCowName').innerText = name
+document.getElementById('selectedCowAge').innerText = age
+document.getElementById('selectedCowBreed').innerText = breed
+document.getElementById('selectedCowWeight').innerText = weight
+document.getElementById('selectedCowDate').innerText = date
+
+
+
+
+}
 
 /*
 
@@ -454,7 +604,39 @@ searchDisplay = newDisplay
 
 
 
+  /*
+  const inputData = {
+    name: document.getElementById("modifyName").value,
+    age: document.getElementById("modifyAge").value,
+    breed: document.getElementById("modifyBreed").value,
+    weight: document.getElementById("modifyWeight").value
+  };
 
+  if(inputData){
+    try{
+
+      let promesa = await fetch('/update_cow', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(inputData)
+      })
+
+      let status = await promesa.status
+
+
+    
+    }
+    catch(exception){
+    console.log(exception)
+    }
+  }
+  else{
+    //display introduce informacion
+  }
+
+  */
 
 
 
