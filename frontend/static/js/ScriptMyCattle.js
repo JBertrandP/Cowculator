@@ -506,6 +506,8 @@ async function deleteCow() {
             <button type="button" onclick="killCow()"> Yes</button>
             <button type="button" onclick="displayContent('content5')"> No</button>
 
+
+
             
             `;
 
@@ -513,13 +515,10 @@ async function deleteCow() {
     
     
       showSearch.innerHTML = showCow
-    
-      
-
-
 
 
       
+  
     }
     else{
       document.getElementById('delCowDisiplay').innerHTML = '<h2>Invalid ID</h2>'
