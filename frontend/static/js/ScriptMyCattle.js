@@ -1,29 +1,3 @@
-/*
-
-let menu = document.querySelector('#menu-icon');
-let navlist = document.querySelector('.navlist');
-
-menu.onclick = () => {
-    menu.classList.toggle('bx-x');
-    navlist.classList.toggle('open');
-};
-
-
-
-
-const sr = ScrollReveal ({
-    distance: '65px',
-    duration: 2600,
-    delay: 450,
-    reset: true
-});
-
-sr.reveal('.model-text', {delay:200, origin: 'top'});
-sr.reveal('.model-img', {delay:450, origin: 'top'});
-sr.reveal('.icons', {delay:500, origin: 'left'});
-sr.reveal('.scroll-down', {delay:500, origin: 'right'});
-
-*/
 
 
 async function addCow() {
@@ -51,23 +25,6 @@ async function addCow() {
 
     const cowDisplay = document.getElementById('addCowDisplay')
    
-    /*
-    const newCowDisplay =  ` 
-    
-        <button class="cow-info-button">
-        <div class="cow-info">
-            <h2>Added Cow:</h2>
-            <p>ID: ${cow_data[0].CowID}</p>
-            <p>Name: ${cow_data[0].CowName}</p>
-            <p>Breed: ${cow_data[0].Breed}</p>
-            <p>Age: ${cow_data[0].Age}</p>
-            <p>Weight: ${cow_data[0].Weight}</p>
-        </div>
-        </button>
-     
-    `;
-    */
-
 
 
 
@@ -465,7 +422,6 @@ renderAddedCows(cowData)
 
 
 async function renderAddedCows(cowData){
-console.log(cowData)
 
 
 let display = document.getElementById('showRecentCows')
@@ -490,7 +446,6 @@ display.innerHTML = tempDisplay
 }
 
 
-//previous ranch history
 function showCowInfo(id,name,age,breed,weight,date){
 
 
@@ -506,6 +461,104 @@ document.getElementById('selectedCowDate').innerText = date
 
 
 
+}
+
+
+async function deleteCow() {
+
+  try {
+    
+  
+    let cowId = {
+
+      cowId : document.getElementById('deleteCowId').value
+    }
+
+    let promesaSearch = await fetch( '/search_cow' ,{
+
+      method : 'POST',
+      headers : {
+        'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify(cowId)
+    })
+  
+    let cowInfo = await promesaSearch.json()
+  
+    
+    if(cowInfo){
+
+      let showSearch = document.getElementById('delCowDisiplay')
+  
+      let showCow = 
+        `   <div class="deleteCowDisplay">
+                <h2>${cowInfo[0].CowID}</h2>
+                <p>ID: ${cowInfo[0].CowID}</p>
+                <p>Name: ${cowInfo[0].CowName}</p>
+                <p>Breed: ${cowInfo[0].Breed}</p>
+                <p>Age: ${cowInfo[0].Age}</p>
+                <p>Weight: ${cowInfo[0].Weight}</p>
+                <p>Date Added: ${cowInfo[0].Date}</p> 
+            </div> 
+            
+            <h2>¿Estas seguro que quieres eliminar a ${cowInfo[0].CowID}</h2>
+
+            <button type="button" onclick="killCow()"> Yes</button>
+            <button type="button" onclick="displayContent('content5')"> No</button>
+
+
+
+            
+            `;
+
+            
+    
+    
+      showSearch.innerHTML = showCow
+
+
+      
+  
+    }
+    else{
+      document.getElementById('delCowDisiplay').innerHTML = '<h2>Invalid ID</h2>'
+      return undefined
+    }
+
+
+  } catch (error) {
+    console.log(error)
+    
+  }
+  
+}
+
+
+async function killCow(cowId) {
+
+  let cowInfo = {
+
+    cowId : document.getElementById('deleteCowId').value
+  }
+
+  let promesa =  await fetch('/delete_cow',{
+
+    method : 'POST',
+    headers : {
+      'Content-Type': 'application/json'
+    },
+    body : JSON.stringify(cowInfo)
+
+  })
+
+  let response = await promesa.json
+
+
+
+  document.getElementById('delCowDisplay').innerHTML = "<h2>Vaca eliminada con exito</h2>"
+
+  getRecentlyAddedCows()
+  
 }
 
 /*
@@ -642,3 +695,49 @@ searchDisplay = newDisplay
 
 
 
+/*
+
+let menu = document.querySelector('#menu-icon');
+let navlist = document.querySelector('.navlist');
+
+menu.onclick = () => {
+    menu.classList.toggle('bx-x');
+    navlist.classList.toggle('open');
+};
+
+
+
+
+const sr = ScrollReveal ({
+    distance: '65px',
+    duration: 2600,
+    delay: 450,
+    reset: true
+});
+
+sr.reveal('.model-text', {delay:200, origin: 'top'});
+sr.reveal('.model-img', {delay:450, origin: 'top'});
+sr.reveal('.icons', {delay:500, origin: 'left'});
+sr.reveal('.scroll-down', {delay:500, origin: 'right'});
+
+*/
+
+
+
+
+    /*
+    const newCowDisplay =  ` 
+    
+        <button class="cow-info-button">
+        <div class="cow-info">
+            <h2>Added Cow:</h2>
+            <p>ID: ${cow_data[0].CowID}</p>
+            <p>Name: ${cow_data[0].CowName}</p>
+            <p>Breed: ${cow_data[0].Breed}</p>
+            <p>Age: ${cow_data[0].Age}</p>
+            <p>Weight: ${cow_data[0].Weight}</p>
+        </div>
+        </button>
+     
+    `;
+    */

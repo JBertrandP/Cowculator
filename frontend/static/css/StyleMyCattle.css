@@ -21,7 +21,6 @@ header {
 }
 
 .logo {
-
     font-size: 30px;
     font-weight: 700;
     color: white;
@@ -34,7 +33,7 @@ header {
 .navlist a {
     color: white;
     margin-left: 33px;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     border-bottom: 2px solid transparent;
     transition: all .55s ease;
@@ -81,13 +80,12 @@ header {
 
 .center {
     flex: 2.5;
-    margin-top: 42px;
+    margin-top: -32px;
     margin-bottom: 20px; /* Space between buttons */
     display: flex;
     justify-content: space-between; /* Distribute space between the buttons */
     align-items: center; /* Align items vertically centered */
     height: 150vh; /* Full height of the viewport */
-    
 }
 
 .ImgBtn {

@@ -132,23 +132,25 @@
                         <form id = "updateForm">
                             <h2>Remove Cow</h2>
                             <label for="cowId">Cow ID:</label>
-                            <input type="number" placeholder="Enter a valid Cow Id" id="updateCowId" required>
+                            <input type="number" placeholder="Enter a valid Cow Id" id="deleteCowId" required>
                         
-                            <button type="button" onclick="updateCow()"> Search</button>
+                            <button type="button" onclick="deleteCow()"> Delete</button>
 
                         </form>
 
+                        <div id = 'delCowDisiplay'></div>
+                    </div>
+                
                         <div id = 'showResult'></div>
                 </div>
-            </div>
+            
 
 
             <!-- Selected Cow Display -->
             <div id="content6" class="content" style="display:none;">
 
                 <div id="displayCowContainer">
-                    
-                
+
                         <h2 id = 'selectedCowName'></h2>
                         <p>Cow ID: <label for="" id = 'selectedCowId'></label></p>
                         <p>Age: <label for="" id = 'selectedCowAge'></label></p>
@@ -158,7 +160,7 @@
 
                     <div id = 'showResult'></div>
                     
-    
+                </div>
                 </div>
             </div>
        
