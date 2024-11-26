@@ -464,6 +464,48 @@ document.getElementById('selectedCowDate').innerText = date
 }
 
 
+function renderUpdateCowForm(){
+
+  const display =   `  <div id="updateCowContainer">
+                        <form id = "updateForm">
+                            <h2>Update Cow</h2>
+                            <label for="cowId">Cow ID:</label>
+                            <input type="number" placeholder="Enter a valid Cow Id" id="updateCowId" required>
+                        
+                            <button type="button" onclick="updateCow()"> Search</button>
+                        </form>
+
+                        <div id = 'showResult'></div>   
+                </div>
+                `;
+
+                        
+  document.getElementById('content4').innerHTML = display
+}
+
+
+function renderDeleteCowForm(){
+
+  const display =   `<div id="killCowContainer">
+                        <form id = "updateForm">
+                            <h2>Remove Cow</h2>
+                            <label for="cowId">Cow ID:</label>
+                            <input type="number" placeholder="Enter a valid Cow Id" id="deleteCowId" required>
+                        
+                            <button type="button" onclick="deleteCow()"> Delete</button>
+
+                        </form>
+
+                        <div id = 'delCowDisiplay'></div>
+                    </div>
+                
+                        <div id = 'showResult'></div>`;
+
+
+  document.getElementById('content5').innerHTML = display
+}
+
+
 async function deleteCow() {
 
   try {
@@ -491,7 +533,7 @@ async function deleteCow() {
       let showSearch = document.getElementById('delCowDisiplay')
   
       let showCow = 
-        `   <div class="deleteCowDisplay">
+        `   <div id = 'deleteCowDisplay'class="">
                 <h2>${cowInfo[0].CowID}</h2>
                 <p>ID: ${cowInfo[0].CowID}</p>
                 <p>Name: ${cowInfo[0].CowName}</p>
@@ -552,10 +594,10 @@ async function killCow(cowId) {
   })
 
   let response = await promesa.json
+  console.log(response)
 
-
-
-  document.getElementById('delCowDisplay').innerHTML = "<h2>Vaca eliminada con exito</h2>"
+  
+  document.getElementById('killCowContainer').innerHTML = "<h2>Vaca eliminada con exito</h2>"
 
   getRecentlyAddedCows()
   

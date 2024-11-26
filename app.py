@@ -221,6 +221,8 @@ def search_cow():
     return jsonify(cow_info)
 
 
+
+
 @app.route('/update_cow',methods = ['POST'])
 def update_cow():
     cow_info = request.json
@@ -229,6 +231,18 @@ def update_cow():
     print(cow_info)
 
     db_methods.update_cow(cow_info)
+    return jsonify(),201
+
+
+
+@app.route('/delete_cow',methods = ['POST'])
+def delete_cow():
+    cowInfo = request.json
+    print(cowInfo)
+    cow_id = cowInfo['cowId']
+   
+    db_methods.delete_cow(cow_id)
+
     return jsonify(),201
 
     
