@@ -27,8 +27,8 @@
             <li><a href="#" onclick="displayContent('content1')">Add Cows</a></li>
             <li><a href="#" onclick="displayContent('content3')">Transfer Cows</a></li>
             <li><a href="#" onclick="displayContent('content2')">Search Cows</a></li>
-            <li><a href="#" onclick="displayContent('content4')">Update Cows</a></li>
-            <li><a href="#" onclick="displayContent('content5')">Remove Cows</a></li>
+            <li><a href="#" onclick="renderUpdateCowForm(),displayContent('content4')">Update Cows</a></li>
+            <li><a href="#" onclick="renderDeleteCowForm(),displayContent('content5')">Remove Cows</a></li>
         </ul>
 
         <!-- <div class="bx bx-menu" id="menu-icon"></div> -->
@@ -142,7 +142,7 @@
                     </div>
                 
                         <div id = 'showResult'></div>
-                </div>
+            </div>
             
 
 
