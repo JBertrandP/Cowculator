@@ -21,7 +21,7 @@ header {
 }
 
 .logo {
-    font-size: 30px;
+    font-size: 29px;
     font-weight: 700;
     color: white;
 }
@@ -80,12 +80,12 @@ header {
 
 .center {
     flex: 2.5;
-    margin-top: -32px;
-    margin-bottom: 20px; /* Space between buttons */
+    margin-top: -48px;
+    margin-bottom: 10px; /* Space between buttons */
     display: flex;
     justify-content: space-between; /* Distribute space between the buttons */
     align-items: center; /* Align items vertically centered */
-    height: 150vh; /* Full height of the viewport */
+    height: 125vh; /* Full height of the viewport */
 }
 
 .ImgBtn {
@@ -639,7 +639,7 @@ transform: translateY(-5px);
 
 .search-cow {
     display: block; /* Use block to stack elements vertically */
-    margin: 10px 0;  /*Adjust margin as needed */
+    margin: 5px 0;  /*Adjust margin as needed */
     font-size: 73%;
     border-radius: 20px;
     display: inline-block;
@@ -650,8 +650,8 @@ transform: translateY(-5px);
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    width: 190px;
-    height: 150px;
+    width: 170px;
+    height: 120px;
 }
 .search-cow:hover {
     background-color: #b46c39;
