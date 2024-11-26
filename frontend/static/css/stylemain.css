@@ -162,9 +162,15 @@ footer {
     background-image: url(/static/images/tierra.gif);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 60%;
+    background-size: 50%;
     background-color: black;
     color: rgb(252, 252, 252);
     padding: 20px;
 }
+.center-image {
+    display: block;
+    margin: 0 auto;
+    width: 1000px;
+}
+
 
