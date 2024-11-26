@@ -174,6 +174,54 @@ def select_ranch(user_id):
         # Print the exception for debugging purposes
         print(f"Error al conectarse: {e}")
 
+def update_ranch_contador(total_cows,total_sick,farm_id):
+    try:
+        conn = db_connect()
+        cursor = conn.cursor()
+
+
+        query = (f" update MyRanch set TotalCows = ?, TotalSickCows = ? where FarmID = ?")
+        cursor.execute(query,(total_cows,total_sick,farm_id))
+
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+        
+
+
+    except Exception as e:
+        print(e)
+
+
+
+
+def get_ranch_contador(farm_id):
+    try:
+        conn = db_connect()
+        cursor = conn.cursor()
+
+
+        query = (f"select TotalCows,TotalSickCows from MyRanch where FarmID = ?")
+        cursor.execute(query,(farm_id))
+
+        columns = [column[0] for column in cursor.description]
+        rows = [cursor.fetchone()]
+
+
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        return dictionarify(columns,rows)
+        
+
+
+    except Exception as e:
+        print(e)
+
+
 def is_owner(user_id,ranch_id):
     try:
         conn = db_connect()
@@ -196,13 +244,13 @@ def is_owner(user_id,ranch_id):
         print(e)
 
 
-def add_cow(name,age,breed,weight,ranch_id):
+def add_cow(name,age,breed,weight,ranch_id,status):
     try:
         conn = db_connect()
         cursor = conn.cursor()
         
-        query = (f" insert into Cows(CowName,Age,Breed,Weight,FarmID) values  (?,?,?,?,?) ")
-        cursor.execute(query,(name,age,breed,weight,ranch_id))
+        query = (f" insert into Cows(CowName,Age,Breed,Weight,FarmID,Status) values  (?,?,?,?,?,?) ")
+        cursor.execute(query,(name,age,breed,weight,ranch_id,status))
 
         query = (f"  SELECT TOP 1 * FROM cows ORDER BY CowID DESC;")
         cursor.execute(query)
@@ -302,7 +350,7 @@ def count_cows(type,ranch_id):
         conn = db_connect()
         cursor = conn.cursor()
         
-        query = (f"  select count(*) as count from Cows where FarmID = ? {type} ")
+        query = (f"select count(*) as count from Cows where FarmID = ? {type} ")
         cursor.execute(query,ranch_id)
 
         count = cursor.fetchone()

@@ -92,10 +92,12 @@ def myranch_render():
 
 
 
+
+
     username = session['user']['username']
     ranch_data = db_methods.select_ranch(session['user']['user_id'])
-   
-
+    
+    
     
 
     print(ranch_data)
@@ -145,10 +147,11 @@ def mycattle_render():
 
         #hacer con un diccionario
 
-        type = ["","and Breed = 'Angus'","and Breed = 'Brangus'","and Breed = 'Charolais'","and Breed = 'Hereford'","and Breed = 'Salers Limousin'"]
+        type = ["","and Breed = 'Angus'","and Breed = 'Brangus'","and Breed = 'Charolais'","and Breed = 'Hereford'","and Breed = 'Salers Limousin'","and Status = 'Sick'"]
 
         count = {
             "Global" :  db_methods.count_cows(type[0],ranch_id),
+            "Sick" : db_methods.count_cows(type[6],ranch_id),
             "Angus" : db_methods.count_cows(type[1],ranch_id),
             "Brangus" : db_methods.count_cows(type[2],ranch_id),
             "Charolais" : db_methods.count_cows(type[3],ranch_id),
@@ -156,17 +159,9 @@ def mycattle_render():
             "Salers" : db_methods.count_cows(type[5],ranch_id)
         }
         
-        """   recently_added = db_methods.recently_added(ranch_id)
+      
 
-        for cow in recently_added:
-            cow['Weight'] = float( cow['Weight'])
-
-        
-        cowJson = jsonify(recently_added)
-        """
-
-
-        return render_template("MyCattle.html",name = ranch_name,id = ranch_id,totalCows = count['Global'],totalAngus = count['Angus'],totalBrangus = count['Brangus'],totalCharolais = count['Charolais'],totalHereford = count['Hereford'],totalSalers = count['Salers'])
+        return render_template("MyCattle.html",name = ranch_name,id = ranch_id,totalCows = count['Global'],totalAngus = count['Angus'],totalBrangus = count['Brangus'],totalCharolais = count['Charolais'],totalHereford = count['Hereford'],totalSalers = count['Salers'], totalSick = count['Sick'] )
     else:
         print('NO eres dueño')
         return redirect(url_for('myranch_render'))
@@ -205,8 +200,9 @@ def add_cow():
     age = cow_data['age']
     breed = cow_data['breed']
     weight = cow_data['weight']
+    status = cow_data['status']
 
-    new_cow = db_methods.add_cow(name,age,breed,weight,session['user']['ranchId'])
+    new_cow = db_methods.add_cow(name,age,breed,weight,session['user']['ranchId'],status)
    
     return jsonify(new_cow)
 
@@ -256,6 +252,36 @@ def get_ranchs_data():
     ranch_data = db_methods.select_ranch(uid)
 
     return jsonify(ranch_data)
+
+
+@app.route('/update_ranch_contador',methods = ['POST','GET'])
+def update_ranch_contador():
+    contadores = request.json
+
+    total_cows = contadores['totalCows']
+    total_sick = contadores['totalSick']
+    ranch_id = session['user']['ranchId']
+
+    db_methods.update_ranch_contador(total_cows,total_sick,ranch_id)
+
+    return jsonify(),201
+
+
+"""
+@app.route('/get_ranch_contador',methods = ['POST','GET'])
+def update_ranch_contador():
+    ranch = request.json
+
+    total_cows = contadores['totalCows']
+    total_sick = contadores['totalSick']
+    ranch_id = session['user']['ranchId']
+
+    db_methods.update_ranch_contador(total_cows,total_sick,ranch_id)
+
+    return jsonify(),201"""
+
+
+
 
 @app.route('/transfer_cow', methods = ['POST'])
 def transfer_cow():

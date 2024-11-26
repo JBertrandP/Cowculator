@@ -2,11 +2,22 @@
 
 async function addCow() {
 
+  let name =  document.getElementById("name").value
+  let age = document.getElementById("age").value
+  let breed = document.getElementById("breed").value
+  let weight =  document.getElementById("weight").value
+
+  let status = genStatus(breed,weight)
+
+  console.log(status)
+
     const inputData = {
-      name: document.getElementById("name").value,
-      age: document.getElementById("age").value,
-      breed: document.getElementById("breed").value,
-      weight: document.getElementById("weight").value
+      name: name,
+      age:age,
+      breed: breed,
+      weight: weight,
+      status : status
+
     };
 
   
@@ -25,12 +36,15 @@ async function addCow() {
 
     const cowDisplay = document.getElementById('addCowDisplay')
    
-
+    let isSick = false
+    if(status == 'Sick'){
+      isSick = true
+    }
 
 
     breed = inputData.breed
 
-    updateContador(breed)
+    updateContador(breed,isSick)
     getRecentlyAddedCows()
     
     //cowDisplay.innerHTML += newCowDisplay
@@ -40,6 +54,73 @@ async function addCow() {
       console.log(error)
     }
     
+}
+
+/*
+
+
+Charolais: 700 - 900 kg
+Angus: 550 - 700 kg
+Brangus: 500 - 700 kg
+Hereford: 600 - 800 kg
+Salers-Limousin: 650 - 850 kg
+
+
+*/
+
+
+// mierda
+
+function genStatus(breed, weight) {
+  switch (breed) {
+    case 'Charolais':
+      if (weight > 700 && weight < 800) {
+        return 'Healthy';
+      } else if (weight > 650 && weight < 850) {
+        return 'At Risk';
+      } else {
+        return 'Sick';
+      }
+
+    case 'Angus':
+      if (weight > 550 && weight < 700) {
+        return 'Healthy';
+      } else if (weight > 500 && weight < 750) {
+        return 'At Risk';
+      } else {
+        return 'Sick';
+      }
+
+    case 'Brangus':
+      if (weight > 500 && weight < 700) {
+        return 'Healthy';
+      } else if (weight > 450 && weight < 750) {
+        return 'At Risk';
+      } else {
+        return 'Sick';
+      }
+
+    case 'Hereford':
+      if (weight > 600 && weight < 800) {
+        return 'Healthy';
+      } else if (weight > 550 && weight < 850) {
+        return 'At Risk';
+      } else {
+        return 'Sick';
+      }
+
+    case 'Salers Limousin':
+      if (weight > 650 && weight < 850) {
+        return 'Healthy';
+      } else if (weight > 600 && weight < 900) {
+        return 'At Risk';
+      } else {
+        return 'Sick';
+      }
+
+    default:
+      return 'Breed not recognized';
+  }
 }
 
 
@@ -172,7 +253,7 @@ async function dbUpdateCow(cowId) {
 
 
 
-async function updateContador(breed) {
+async function updateContador(breed,isSick) {
 
   let breeds = {'Angus': 'contadorAngus','Brangus': "contadorBrangus"   ,'Charolais': "contadorCharolais" ,'Hereford': "contadorHereford" ,'Salers Limousin': "contadorSalers"}
   
@@ -180,6 +261,15 @@ async function updateContador(breed) {
   let contadorInt = parseInt(contadorGlobal.innerText)
 
   contadorInt += 1
+
+  if(isSick){
+    let contadorSick = document.getElementById('contadorSick')
+    let contadorSickInt = parseInt(contadorSick.innerText)
+
+    contadorSickInt += 1
+
+    contadorSick.innerText = contadorSickInt
+  }
 
   //for...in itera los indices
   //for...of itera los valores
@@ -250,7 +340,7 @@ catch(error){
 async function displaySearchedCow(cowInfo,output){
 
   let showSearch = document.getElementById(output)
-  
+  console.log(cowInfo)
   let showCow = 
     `   <div class="search-cow">
             <h2>${cowInfo[0].CowID}</h2>
@@ -259,7 +349,7 @@ async function displaySearchedCow(cowInfo,output){
             <p>Breed: ${cowInfo[0].Breed}</p>
             <p>Age: ${cowInfo[0].Age}</p>
             <p>Weight: ${cowInfo[0].Weight}</p>
-            <p>Date Added: ${cowInfo[0].Date}</p> 
+            <p>Date Added: ${cowInfo[0].InsertionDate}</p> 
         </div> `;
 
 
@@ -423,18 +513,18 @@ renderAddedCows(cowData)
 
 async function renderAddedCows(cowData){
 
-
 let display = document.getElementById('showRecentCows')
 let tempDisplay = ""
-let fechaXD ='fechaXD'
+
                                                       //id,name,age,breed,weight,date
 for(let cowInfo of cowData){
   let newDisplay = `
-          <div class="search-cow" onclick="showCowInfo(${cowInfo.CowID},'${cowInfo.CowName}',${cowInfo.Age},'${cowInfo.Breed}',${cowInfo.Weight},'${fechaXD}'), displayContent('content6')">
+          <div class="search-cow" onclick="showCowInfo(${cowInfo.CowID},'${cowInfo.CowName}',${cowInfo.Age},'${cowInfo.Breed}',${cowInfo.Weight},'${cowInfo.InsertionDate}','${cowInfo.Status}'), displayContent('content6')">
             <h2>${cowInfo.CowName}</h2>
             <p>ID: ${cowInfo.CowID}</p>
             <p>Name: ${cowInfo.CowName}</p>
             <p>Breed: ${cowInfo.Breed}</p>
+            <p>Status: ${cowInfo.Status}</p>
             
         </div> `;
 
@@ -446,12 +536,13 @@ display.innerHTML = tempDisplay
 }
 
 
-function showCowInfo(id,name,age,breed,weight,date){
+function showCowInfo(id,name,age,breed,weight,date,status){
 
 
 
 
 document.getElementById('selectedCowId').innerText= id
+document.getElementById('selectedCowStatus').innerText = status
 document.getElementById('selectedCowName').innerText = name
 document.getElementById('selectedCowAge').innerText = age
 document.getElementById('selectedCowBreed').innerText = breed
@@ -473,7 +564,7 @@ function renderUpdateCowForm(){
                             <input type="number" placeholder="Enter a valid Cow Id" id="updateCowId" required>
                         
                             <button type="button" onclick="updateCow()"> Search</button>
-                        </form>
+                        </form> 
 
                         <div id = 'showResult'></div>   
                 </div>
@@ -600,6 +691,41 @@ async function killCow(cowId) {
   document.getElementById('killCowContainer').innerHTML = "<h2>Vaca eliminada con exito</h2>"
 
   getRecentlyAddedCows()
+  
+}
+
+
+window.addEventListener('beforeunload',updateContadorRancho())
+
+
+
+async function updateContadorRancho() {
+
+  totalCows = document.getElementById('contadorGlobal').innerText
+  totalSick = document.getElementById('contadorSick').innerText
+
+  
+  let contadores = {
+    totalCows : totalCows,
+    totalSick : totalSick
+  }
+
+  console.log(contadores)
+
+
+  let promesa = await fetch('/update_ranch_contador',{
+
+    method : 'POST',
+    headers : {
+      'Content-Type': 'application/json'
+    },
+    body : JSON.stringify(contadores)
+
+  })
+
+  let respuesta = await promesa.json
+
+  console.log(respuesta)
   
 }
 
