@@ -159,7 +159,18 @@ header {
 }
 
 footer {
-    background-image: linear-gradient(rgba(84, 173, 70, 0.7), rgba(84, 173, 70, 0.7)), url(/static/images/coow.jpg);
-    color: black;
+    background-image: url(/static/images/tierra.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40%;
+    background-color: black;
+    color: rgb(252, 252, 252);
     padding: 20px;
 }
+.center-image {
+    display: block;
+    margin: 0 auto;
+    width: 700px;
+}
+
+
