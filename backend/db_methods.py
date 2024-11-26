@@ -220,6 +220,32 @@ def add_cow(name,age,breed,weight,ranch_id):
         return dictionarify(columns,rows)
     except Exception as e:
         print(e)
+        
+def update_cow(cow_info):
+    try:
+
+        print('UpdateCow  db_methods')
+        print(cow_info)
+
+        name = cow_info['name']
+        age = cow_info['age']
+        breed = cow_info['breed']
+        weight = cow_info['weight']
+        cow_id = cow_info['cowId']
+
+        conn = db_connect()
+        cursor = conn.cursor()
+
+        query = (f"  update Cows set CowName = ?, age = ?, Breed = ?, Weight = ? where  CowID = ?")
+        cursor.execute(query,(name, age , breed , weight,cow_id))
+
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+    except Exception as e:
+        print(e)
 
 
 
