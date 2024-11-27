@@ -19,73 +19,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"    rel="stylesheet">
     <script src="{{ url_for('static', filename = 'js/ScriptMyCattle.js')}}" defer> </script>
 
-       <!-- MODIFICACION AXEL -->
-    <style>
-    .dropdown {
-        position: relative;
-        display: inline-block;
-        margin-top: 20px;
-        left: -20px;
-    }
-
-    .dropdown-button {
-        padding: 10px 20px;
-        font-size: 16px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-
-    .dropdown-button:hover {
-        background-color: #0056b3;
-    }
-
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: white;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        margin-top: 5px;
-        padding: 10px;
-        border-radius: 5px;
-        z-index: 1;
-        width: 100%;
-    }
-
-    .dropdown-content .icon {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 10px;
-        cursor: pointer;
-        transition: transform 0.3s;
-    }
-
-    .dropdown-content .icon img {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        border: 2px solid #ccc;
-    }
-
-    .dropdown-content .icon:hover {
-        transform: scale(1.1);
-    }
-
-    .dropdown-content .counter {
-        display: none;
-        font-size: 14px;
-        font-weight: bold;
-    }
-
-    .dropdown-content .icon:hover .counter {
-        display: block;
-    }
-
-</style>
 </head>
 <body>
     <header>
@@ -120,47 +53,63 @@
         </div>
 
 
-               <!-- MODIFICACION AXEL -->
-         <!-- Dropdown para mostrar razas -->
-        <div class="dropdown">
-            <button id="toggle-dropdown" class="dropdown-button">Mostrar Razas</button>
-            <div id="icon-container" class="dropdown-content">
-                <div class="icon" data-name="Angus">
-                    <img src="https://via.placeholder.com/80?text=Angus" alt="Angus">
-                    <p>Angus</p>
-                    <span class="counter">0</span>
-                </div>
-                <div class="icon" data-name="Brangus">
-                    <img src="https://via.placeholder.com/80?text=Brangus" alt="Brangus">
-                    <p>Brangus</p>
-                    <span class="counter">0</span>
-                </div>
-                <div class="icon" data-name="Charolais">
-                    <img src="https://via.placeholder.com/80?text=Charolais" alt="Charolais">
-                    <p>Charolais</p>
-                    <span class="counter">0</span>
-                </div>
-                <div class="icon" data-name="Hereford">
-                    <img src="https://via.placeholder.com/80?text=Hereford" alt="Hereford">
-                    <p>Hereford</p>
-                    <span class="counter">0</span>
-                </div>
-                <div class="icon" data-name="Limousin">
-                    <img src="https://via.placeholder.com/80?text=Limousin" alt="Limousin">
-                    <p>Limousin</p>
-                    <span class="counter">0</span>
-                </div>
+        <!--  AXEL MOD-->
+        <!-- Estilos CSS -->
+<style>
+    /* Estilo para el botón que abre el dropdown */
+    .dropdown-button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        width: 100%;
+        text-align: left;
+    }
 
+    .dropdown-button:hover {
+        background-color: #0056b3;
+    }
 
+    /* Estilo para el contenido del dropdown */
+    .dropdown-content {
+        display: none; /* Inicialmente está oculto */
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 5px;
+        width: 100%;
+    }
 
+    /* Estilo para el contenedor del dropdown */
+    .Contador {
+        width: 100%;
+        margin-top: 20px;
+    }
+</style>
 
+<!-- Script JavaScript -->      <!--  AXEL MOD-->
+<script>
+    // Mostrar u ocultar los contadores al hacer clic en el botón
+    const toggleContador = document.getElementById('toggle-contador');
+    const contadorDropdown = document.getElementById('contador-dropdown');
 
+    toggleContador.addEventListener('click', () => {
+        if (contadorDropdown.style.display === 'none' || contadorDropdown.style.display === '') {
+            contadorDropdown.style.display = 'block';
+            toggleContador.textContent = 'Ocultar Total de Vacas'; // Cambiar texto
+        } else {
+            contadorDropdown.style.display = 'none';
+            toggleContador.textContent = 'Mostrar Total de Vacas'; // Cambiar texto
+        }
+    });
+</script>
 
-
-
-
-
-
+              
 
         <div class="center">
             <div id = 'showRecentCows'></div>
@@ -307,22 +256,7 @@
 }
     </script>
     
-    <!-- MODIFICACION AXEL -->
-    <script>
-        // Mostrar/ocultar los íconos al hacer clic en el botón del dropdown
-        const iconContainer = document.getElementById('icon-container');
-        const toggleDropdown = document.getElementById('toggle-dropdown');
-
-        toggleDropdown.addEventListener('click', () => {
-            if (iconContainer.style.display === 'none' || iconContainer.style.display === '') {
-                iconContainer.style.display = 'block';
-                toggleDropdown.textContent = 'Ocultar Razas';
-            } else {
-                iconContainer.style.display = 'none';
-                toggleDropdown.textContent = 'Mostrar Razas';
-            }
-        });
-    </script>
+   
 
 
 
