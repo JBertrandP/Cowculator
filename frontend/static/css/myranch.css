@@ -3,7 +3,7 @@
 }
 
 body {
-    background-image: url(/static/images/myranch.jpg); 
+    background-image: linear-gradient(rgba(54, 113, 34, 0.279), rgba(54, 151, 22, 0.279)), url(/static/images/myranch.jpg); 
     background-size: cover;
     background-position: center; 
     background-repeat: no-repeat; 
@@ -35,7 +35,6 @@ body {
 
     display: block; /* Use block to stack elements vertically */
     margin: -10px 0;  /*Adjust margin as needed */
-
     font-size: 73%;
     border-radius: 20px;
     display: inline-block;
@@ -47,7 +46,7 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease;
     width: 320px;
-    height: 220px;
+    height: auto;
 }
 
 .ImgBtn:hover {
@@ -72,40 +71,41 @@ body {
     align-items: center; /* Center elements horizontally */
 }
 
-.AddR {
-    display: flex; /* Use flexbox for centering */
-    justify-content: center; /* Center the content horizontally */
-    align-items: center; /* Center the content vertically */
-    height: 50px; /* Height of the button */
-    width: auto; /* Adjust width as needed */
-    background: rgba(254, 164, 62, 0.749);
-    text-decoration: none;
-    padding: 12px 34px;
-    font-size: 13px;
+#AddR {
+    margin-left: 50px;
+    font-size: 150%;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: rgba(254, 164, 62, 0.749);
+    color: white;
+    text-align: left;
+    border: none;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: auto;
+    height: auto;
 }
 
-.AddR:hover {
-    background: rgba(251, 147, 27, 0.749);
-    transition: 1s;
-}
-
-.AddR a {
-    color: white; /* Make text white for better contrast */
-    text-decoration: none; /* Remove underline */
-}
-
-.AddR a:hover {
-    text-decoration: underline; /* Underline text on hover */
+#AddR a {
+    color: azure;
 }
 
 .SO {
-    margin-top: 20px;
+    margin: 30px 0 0 30px;
     position: absolute;
     top: 10px;
     left: 10px;
+
+    border-radius: 20px;
+    padding: 20px;
+    background-color: rgba(247, 27, 27, 0.749);
+    text-align: center;
+    border: none;
+    transition: background-color 0.3s ease;
+    width: auto;
+    height: auto;
 }
 
 .SO a {
-    color: darkgoldenrod;
+    color: white;
 }

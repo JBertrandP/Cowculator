@@ -21,13 +21,13 @@
 </head>
 <body>
     <header>
-        <h1 class="logo">Bienvenido a MyCattle Id:  {{id}} </h1>
+        <h1 class="logo">Welcome to My Cattle Id:  {{id}} </h1>
         <ul class="navlist">
             <li><a href="/myranch">My Ranch</a></li>
-            <li><a href="#" onclick="displayContent('content1')">Add Cows</a></li>
             <li><a href="#" onclick="displayContent('content3')">Transfer Cows</a></li>
-            <li><a href="#" onclick="displayContent('content2')">Search Cows</a></li>
+            <li><a href="#" onclick="displayContent('content1')">Add Cows</a></li>
             <li><a href="#" onclick="renderUpdateCowForm(),displayContent('content4')">Update Cows</a></li>
+            <li><a href="#" onclick="displayContent('content2')">Search Cows</a></li>
             <li><a href="#" onclick="renderDeleteCowForm(),displayContent('content5')">Remove Cows</a></li>
         </ul>
 
@@ -39,7 +39,7 @@
         <div class="model-text">
             <p>{{name}}</p>
             <div class="Contador">
-                <h4 id = "h4">Total de Vacas: <span id = "contadorGlobal"> {{totalCows}}</span>
+                <h4 id = "h4">Total Cows: <span id = "contadorGlobal"> {{totalCows}}</span>
                 Angus: <span id = "contadorAngus">{{totalAngus}}</span>
                 Brangus: <span id = "contadorBrangus">{{totalBrangus}}</span>
                 Charolais: <span id = "contadorCharolais">{{totalCharolais}}</span>
@@ -47,7 +47,7 @@
                 Salers: <span id = "contadorSalers">{{totalSalers}}</span>
                 </h4>
                 
-                <h6>Vacas enfermas <span id = "contadorSick"> {{totalSick}}</span></h6>
+                <h6>Sick Cows <span id = "contadorSick"> {{totalSick}}</span></h6>
             </div>
         </div>
 
@@ -57,7 +57,13 @@
 <!-- Content for Right Side -->
             <!-- Add Cow Formulario-->
         <div class="right">
-            <div id="content1" class="content">
+            <div id="content" class="content">
+                <form id="Nun">
+                    <img src="/static/images/CowFiller.png">
+                    <h2>No Selection</h2>
+                </form>
+            </div>
+            <div id="content1" class="content" style="display:none;">
                 <form id = "cow_form">
                     <h2>Add Cow</h2>
                     <input type="text" placeholder="Name" id="name">

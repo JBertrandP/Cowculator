@@ -343,9 +343,8 @@ async function displaySearchedCow(cowInfo,output){
   console.log(cowInfo)
   let showCow = 
     `   <div class="search-cow">
-            <h2>${cowInfo[0].CowID}</h2>
+            <h2>${cowInfo[0].CowName}</h2>
             <p>ID: ${cowInfo[0].CowID}</p>
-            <p>Name: ${cowInfo[0].CowName}</p>
             <p>Breed: ${cowInfo[0].Breed}</p>
             <p>Age: ${cowInfo[0].Age}</p>
             <p>Weight: ${cowInfo[0].Weight}</p>

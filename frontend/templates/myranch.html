@@ -18,6 +18,7 @@
             </div>
                 {%  for ranch in ranch_data %}
 
+
                 <div class="button-container">
                     
                     <div class="ImgBtn" onclick="handleClick('{{ranch.FarmName}}','{{ranch.FarmID}}')">
@@ -28,19 +29,18 @@
                         <p>Sick Cows: {{ranch.TotalSickCows}}</p>                       
                     </div>
 
-                    
+                <div class="AddR">
                     {%  if (ranch_data | length ) < 3 and loop.index0 == (ranch_data | length) -1 %}
-                    <div class="AddR"><a href="/formmyranch">+AddRanch</a></div>
+                    <div class="ImgBtn" id="AddR"><a href="/formmyranch">+AddRanch</a></div>
                     {%  endif %}
                 
                     {% endfor %}
 
                     {% if not ranch_data %}
-                    <div class="AddR"><a href="/formmyranch">+AddRanch</a></div>
+                    <div class="ImgBtn" id="AddR"><a href="/formmyranch">+AddRanch</a></div>
                     {%  endif %}
-
                 </div>
-                
+            </div>
     </div>
     <script src="{{ url_for('static', filename = 'js/scriptMyRanch.js')}}"> </script>
 </body>
