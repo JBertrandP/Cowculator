@@ -23,10 +23,17 @@
                     
                     <div class="ImgBtn" onclick="handleClick('{{ranch.FarmName}}','{{ranch.FarmID}}')">
                         <h1 >{{ranch.FarmName}}</h1>
-                        <img src="data:image/jpeg;base64,{{ ranch.FarmImage }}"  />  
-                        <p>Location: {{ranch.Location}}</p>    
-                        <p>Total Cows: {{ranch.TotalCows}}</p>  
-                        <p>Sick Cows: {{ranch.TotalSickCows}}</p>                       
+                        {% if ranch.FarmImage %}
+                        <img src="data:image/jpeg;base64,{{ ranch.FarmImage }}" alt="" />  
+                        {%else %}
+                        <img src="{{ url_for('static', filename = 'images/StolkImage1.jpeg')}}" alt="" /> 
+                        {%  endif %}
+
+                        <p>Location: {{ranch.Location}}</p> 
+                        {%if ranch.TotalCows  != 0 %}
+                        <p>Total Cows:  <span id = "{{ranch.FarmID}}">{{ranch.TotalCows}}</span></p>  
+                        <p>Sick Cows: <span id = "{{ranch.FarmID+1}}">{{ranch.TotalSickCows}}   </span></p> 
+                        {% endif %}                      
                     </div>
 
                 <div class="AddR">
