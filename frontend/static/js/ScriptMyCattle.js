@@ -695,7 +695,7 @@ async function killCow(cowId) {
 }
 
 
-window.addEventListener('beforeunload',updateContadorRancho())
+window.addEventListener('beforeunload',updateContadorRancho)
 
 
 
