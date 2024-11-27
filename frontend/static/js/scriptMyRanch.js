@@ -3,36 +3,28 @@ function handleClick(FarmName,FarmID) {
     }
 
 
-window.addEventListener('DOMContentLoaded')
-
-
+window.addEventListener('popstate',updateContadorRancho)
 
 async function updateContadorRancho() {
 
-    totalCows = document.getElementById('contadorGlobal').innerText
-    totalSick = document.getElementById('contadorSick').innerText
-  
     
-    let contadores = {
-      totalCows : totalCows,
-      totalSick : totalSick
-    }
-  
+    console.log('Hola papu Jalo el popstate')
+    let promesa = await fetch('/get_ranch_contador')
+
+    let contadores = await promesa.json()
     console.log(contadores)
-  
-  
-    let promesa = await fetch('/update_ranch_contador',{
-  
-      method : 'POST',
-      headers : {
-        'Content-Type': 'application/json'
-      },
-      body : JSON.stringify(contadores)
-  
-    })
-  
-    let respuesta = await promesa.json
-  
-    console.log(respuesta)
+
+
+    for (ranch of contadores){
+        console.log(ranch.FarmID)
+
+        document.getElementById(`${ranch.FarmID}`).innerText = ranch.TotalCows
+        document.getElementById(`${ranch.FarmID+1}`).innerText = ranch.TotalSickCows
+
+
+    }
+
+
+
     
   }

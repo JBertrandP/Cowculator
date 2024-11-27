@@ -196,25 +196,24 @@ def update_ranch_contador(total_cows,total_sick,farm_id):
 
 
 
-def get_ranch_contador(farm_id):
+def get_ranch_contador(user_id):
     try:
         conn = db_connect()
         cursor = conn.cursor()
 
 
-        query = (f"select TotalCows,TotalSickCows from MyRanch where FarmID = ?")
-        cursor.execute(query,(farm_id))
+        query = (f"  select FarmID,TotalCows,TotalSickCows from MyRanch where OwnerID = ?")
+        cursor.execute(query,(user_id))
 
         columns = [column[0] for column in cursor.description]
-        rows = [cursor.fetchone()]
-
+        row = cursor.fetchall()
 
 
         conn.commit()
         cursor.close()
         conn.close()
 
-        return dictionarify(columns,rows)
+        return dictionarify(columns,row)
         
 
 

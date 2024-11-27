@@ -267,18 +267,14 @@ def update_ranch_contador():
     return jsonify(),201
 
 
-"""
 @app.route('/get_ranch_contador',methods = ['POST','GET'])
-def update_ranch_contador():
-    ranch = request.json
+def get_ranch_contador():
+    
+    contadores = db_methods.get_ranch_contador(session['user']['user_id'])
 
-    total_cows = contadores['totalCows']
-    total_sick = contadores['totalSick']
-    ranch_id = session['user']['ranchId']
+    print(contadores)
 
-    db_methods.update_ranch_contador(total_cows,total_sick,ranch_id)
-
-    return jsonify(),201"""
+    return jsonify(contadores),201
 
 
 
