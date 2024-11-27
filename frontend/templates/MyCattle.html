@@ -18,6 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com"     crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"    rel="stylesheet">
     <script src="{{ url_for('static', filename = 'js/ScriptMyCattle.js')}}" defer> </script>
+
 </head>
 <body>
     <header>
@@ -39,6 +40,8 @@
         <div class="model-text">
             <p>{{name}}</p>
             <div class="Contador">
+                <button id="toggle-contador" class="dropdown-button">Total de Vacas</button>
+                <div id="contador-dropdown" class="dropdown-content">
                 <h4 id = "h4">Total de Vacas: <span id = "contadorGlobal"> {{totalCows}}</span>
                 Angus: <span id = "contadorAngus">{{totalAngus}}</span>
                 Brangus: <span id = "contadorBrangus">{{totalBrangus}}</span>
@@ -50,6 +53,65 @@
                 <h6>Vacas enfermas <span id = "contadorSick"> {{totalSick}}</span></h6>
             </div>
         </div>
+
+
+        <!--  AXEL MOD-->
+        <!-- Estilos CSS -->
+<style>
+    /* Estilo para el botón que abre el dropdown */
+    .dropdown-button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        width: 100%;
+        text-align: left;
+    }
+
+    .dropdown-button:hover {
+        background-color: #0056b3;
+    }
+
+    /* Estilo para el contenido del dropdown */
+    .dropdown-content {
+        display: none; /* Inicialmente está oculto */
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 5px;
+        width: 100%;
+    }
+
+    /* Estilo para el contenedor del dropdown */
+    .Contador {
+        width: 100%;
+        margin-top: 20px;
+    }
+</style>
+
+<!-- Script JavaScript -->      <!--  AXEL MOD-->
+<script>
+    // Mostrar u ocultar los contadores al hacer clic en el botón
+    const toggleContador = document.getElementById('toggle-contador');
+    const contadorDropdown = document.getElementById('contador-dropdown');
+
+    toggleContador.addEventListener('click', () => {
+        if (contadorDropdown.style.display === 'none' || contadorDropdown.style.display === '') {
+            contadorDropdown.style.display = 'block';
+            toggleContador.textContent = 'Ocultar Total de Vacas'; // Cambiar texto
+        } else {
+            contadorDropdown.style.display = 'none';
+            toggleContador.textContent = 'Mostrar Total de Vacas'; // Cambiar texto
+        }
+    });
+</script>
+
+              
 
         <div class="center">
             <div id = 'showRecentCows'></div>
@@ -196,5 +258,12 @@
 }
     </script>
     
+   
+
+
+
+
+
+
 </body>
 </html>
