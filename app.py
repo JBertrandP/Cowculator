@@ -121,7 +121,7 @@ def formmyranch_post():
     image = request.files['image']
 
 
-
+    
     if image is None:
         image = url_for('static', filename = 'images/dogallemand.jpg')
     else:
