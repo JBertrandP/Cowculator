@@ -485,7 +485,20 @@ async function moveCow(age,breed,cowId,cowName,farmId,weight,ranchId) {
 
   let response = promesa.status
 
+  //generar nueva pantalla de transferido con exito
+
+  let newDisplay = ` <h1>Cow Number ${cowData.CowID} transferred to ${ranchId} with success!</h1>
+
+  `;
+
+  document.getElementById('transferCowContainer').innerHTML = newDisplay
+
   getRecentlyAddedCows()
+  
+}
+
+
+function genTranferCowDisplay(){
   
 }
 
