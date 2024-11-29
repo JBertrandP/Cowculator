@@ -173,7 +173,7 @@ async function updateCow() {
                     </select>
                     <input type="number" placeholder = "${cowInfo[0].Weight}" id="updateWeight">
 
-                        <button type="button" onclick="dbUpdateCow(${cowInfo[0].CowID})">Add Cow</button>
+                        <button type="button" onclick="dbUpdateCow(${cowInfo[0].CowID})">Update Cow</button>
 
                 </form>
      
@@ -234,7 +234,8 @@ async function dbUpdateCow(cowId) {
 
     newDisplay = ` 
 
-                    <h2>Actualizada con exito!</h2>
+                    <h2>Updated successfully!</h2>
+                    <p>Refresh Page</p>
                 
     `
     display.innerHTML = newDisplay  
@@ -521,7 +522,7 @@ for(let cowInfo of cowData){
           <div class="search-cow" onclick="showCowInfo(${cowInfo.CowID},'${cowInfo.CowName}',${cowInfo.Age},'${cowInfo.Breed}',${cowInfo.Weight},'${cowInfo.InsertionDate}','${cowInfo.Status}'), displayContent('content6')">
             <h2>${cowInfo.CowName}</h2>
             <p>ID: ${cowInfo.CowID}</p>
-            <p>Name: ${cowInfo.CowName}</p>
+            <p>Age: ${cowInfo.Age}</p>
             <p>Breed: ${cowInfo.Breed}</p>
             <p>Status: ${cowInfo.Status}</p>
             
@@ -633,10 +634,10 @@ async function deleteCow() {
                 <p>Date Added: ${cowInfo[0].Date}</p> 
             </div> 
             
-            <h2>¿Estas seguro que quieres eliminar a ${cowInfo[0].CowID}</h2>
+            <h2>Are you sure you want to remove  ${cowInfo[0].CowID}?</h2>
 
             <button type="button" onclick="killCow()"> Yes</button>
-            <button type="button" onclick="displayContent('content5')"> No</button>
+            <button type="button" onclick="renderDeleteCowForm(),displayContent('content5')"> No</button>
 
 
 
@@ -687,7 +688,7 @@ async function killCow(cowId) {
   console.log(response)
 
   
-  document.getElementById('killCowContainer').innerHTML = "<h2>Vaca eliminada con exito</h2>"
+  document.getElementById('killCowContainer').innerHTML = "<h2>Cow removed successfully</h2> <p>Refresh Page</p>"
 
   getRecentlyAddedCows()
   

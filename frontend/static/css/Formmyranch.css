@@ -1,19 +1,38 @@
-
-* * {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
 
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f4f4f9;
+    background-image: linear-gradient(#886e214f, #d4ac334f), url(/static/images/StolkImage3.jpeg);
 }
 
+.Back {
+    margin: 30px 0 0 30px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+
+    border-radius: 20px;
+    padding: 20px;
+    background-color: rgba(247, 27, 27, 0.747);
+    text-align: center;
+    border: none;
+    transition: background-color 0.3s ease;
+    width: 100px;
+    height: auto;
+}
+
+.Back a {
+    color: white;
+}
 
 h1 {
     text-align: center;
@@ -21,8 +40,9 @@ h1 {
     color: #333;
 }
 
+
 form {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -37,6 +57,7 @@ label {
     font-weight: bold;
     color: #555;
 }
+
 
 input[type="text"] {
     width: 100%;
@@ -61,7 +82,7 @@ button {
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: #218838;
 }
 
 @media (max-width: 500px) {

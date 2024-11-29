@@ -821,6 +821,10 @@ transform: translateY(-5px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
 }
 
+#updateCowContainer p {
+    text-align: center;
+}
+
 #killCowContainer {
     max-width: 400px; /* Ancho máximo */
     margin: 20px auto; /* Centrar vertical y horizontalmente */
@@ -829,6 +833,10 @@ transform: translateY(-5px);
     border: 2px solid #bb8e1b; 
     border-radius: 10px; /* Bordes redondeados */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+#killCowContainer p{
+    text-align: center;
 }
 
 #displayCowContainer {
