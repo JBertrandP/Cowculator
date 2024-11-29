@@ -935,3 +935,12 @@ sr.reveal('.scroll-down', {delay:500, origin: 'right'});
      
     `;
     */
+   // Al hacer clic en el botón, muestra u oculta el menú dropdown
+   document.getElementById("dropdownMenuButton").addEventListener("click", function() {
+    var dropdownMenu = document.getElementById("dropdownMenu");
+    if (dropdownMenu.style.display === "none" || dropdownMenu.style.display === "") {
+        dropdownMenu.style.display = "block"; // Muestra el dropdown
+    } else {
+        dropdownMenu.style.display = "none"; // Oculta el dropdown
+    }
+});

@@ -24,6 +24,7 @@ header {
     font-size: 29px;
     font-weight: 700;
     color: white;
+    font-family: 'Poppins', sans-serif;
 }
 
 .navlist {
@@ -113,8 +114,8 @@ header {
     position: fixed;
     right: 0;
     top: 0;
-    height: 100%;
-    width: 30%;
+    
+
     overflow-y: auto;
 }
 /* New */
@@ -151,9 +152,10 @@ section {
 
 .model-text p {
     color: white;
-    font-size: 25px;
+    font-size: 43px;
     line-height: 1.9;
     margin-bottom: 40px;
+    font-family: 'Permanent Marker', cursive;
 }
 
 .model-img img {
@@ -162,7 +164,6 @@ section {
 }
 
 .model-text a {
-    display: inline-block;
     color: white;
     background: #4d9559;
     border: 1px solid transparent;
@@ -202,6 +203,11 @@ margin-left: 20px;
 .Contador span {
     padding: 10px 20px;
     border-radius: 10px;
+}
+
+.Contador h4{
+   font-size: 22px;
+   
 }
 /* Pop up */
 /* Modal styles */
@@ -484,16 +490,17 @@ transform: translateY(-5px);
 /* Estilo general del formulario */
 #Nun {
     width: 300px;
-    margin: 150px  auto;
+    margin: 50px  auto;
     padding: 20px;
     text-align: center;
     border-radius: 30px;
+    display: flex;
 }
 
 #Nun image {
     position: relative;
-    width: 200px;
-    height: auto;
+    width: 100px;
+    height: 80px;
 }
 
 #cow_form {
@@ -535,7 +542,7 @@ transform: translateY(-5px);
     padding: 10px;
     font-size: 16px;
     color: white;
-    background-color: #f1c041 ;
+    background-color: #ad5215ce ;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -648,14 +655,14 @@ transform: translateY(-5px);
 /* si esto no es conveniente, lo eliminamos, ya que papuKevin hizo algo bien intento dificil (tryhard) ;) */
 
 #showRecentCows {
-    display: flex;
+    
     flex-direction: column; /* Stack children vertically */
     align-items: center;
 }
 
 .search-cow {
     display: block; /* Use block to stack elements vertically */
-    margin: 5px 0;  /*Adjust margin as needed */
+    margin: 45px ;  /*Adjust margin as needed */
     font-size: 73%;
     border-radius: 20px;
     display: inline-block;
@@ -716,16 +723,16 @@ transform: translateY(-5px);
 
 /* Botón de búsqueda */
 #searchCowForm button {
-    width: 100%; /* Botón del ancho completo */
-    padding: 10px;
+    width: 25%; /* Botón de ancho completo */
+    padding: 5px;
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
     color: #fff; /* Texto blanco */
-    background-color: #f1c041; 
+    background-color: #ad5215ce; 
     border: none; /* Sin borde */
     border-radius: 5px; /* Bordes redondeados */
-    cursor: pointer; /* Manita al pasar el ratón */
-    transition: background-color 0.3s ease; /* Efecto de transición */
+    cursor: pointer; /* Manita para interacción */
+    transition: background-color 0.3s ease; /* Efecto suave */
 }
 
 /* Hover del botón */
@@ -788,7 +795,7 @@ transform: translateY(-5px);
     padding: 10px;
     font-size: 16px;
     color: #fff; /* Texto blanco */
-    background-color: #28a745; /* Verde vibrante */
+    background-color: #ad5215ce; /* Verde vibrante */
     border: none; /* Sin borde */
     border-radius: 5px; /* Bordes redondeados */
     cursor: pointer; /* Manita para interacción */
@@ -823,7 +830,31 @@ transform: translateY(-5px);
 
 #updateCowContainer p {
     text-align: center;
+   
 }
+#updateCowContainer button{
+    width: 20%; /* Botón de ancho completo */
+    padding: 5px;
+    font-size: 16px;
+    color: #fff; /* Texto blanco */
+    background-color: #ad5215ce; /* Verde vibrante */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Manita para interacción */
+    transition: background-color 0.3s ease; /* Efecto suave */
+}
+
+#updateCowContainer input{
+    width: 100%; /* Ajusta el ancho */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc; /* Borde claro */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+
 
 #killCowContainer {
     max-width: 400px; /* Ancho máximo */
@@ -839,6 +870,28 @@ transform: translateY(-5px);
     text-align: center;
 }
 
+#killCowContainer input {
+    width: 100%; /* Ajusta el ancho */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc; /* Borde claro */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+#killCowContainer button {
+    width: 20%; /* Botón de ancho completo */
+    padding: 5px;
+    font-size: 16px;
+    color: #fff; /* Texto blanco */
+    background-color: #ca1717; /* Verde vibrante */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Manita para interacción */
+    transition: background-color 0.3s ease; /* Efecto suave */
+}
+
 #displayCowContainer {
     max-width: 400px; /* Ancho máximo */
     margin: 20px auto; /* Centrar vertical y horizontalmente */
@@ -848,3 +901,79 @@ transform: translateY(-5px);
     border-radius: 10px; /* Bordes redondeados */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
 }
+
+
+    
+
+
+ 
+
+
+
+
+
+
+.dropdown-item {
+    display: flex; /* Usamos flexbox para alinear imagen y texto */
+    align-items: center; /* Centra verticalmente el contenido */
+    padding: 8px 16px;
+}
+
+.dropdown-item img {
+    width: 30px; /* Tamaño pequeño de las imágenes */
+    height: auto;
+    border-radius: 50%; /* Hace que las imágenes sean circulares */
+    margin-right: 10px; /* Espacio entre la imagen y el texto */
+}
+
+.dropdown-item span {
+    font-size: 14px; /* Tamaño de la fuente */
+}
+
+.custom-btn {
+    background-color: #2e6d30;
+    color: white;               /* Texto blanco */
+    border: none;               /* Eliminar el borde predeterminado */
+    padding: 10px 20px;         /* Espaciado dentro del botón */
+    font-size: 16px;            /* Tamaño de la fuente */
+    border-radius: 5px;         /* Bordes redondeados */
+    transition: background-color 0.3s ease; /* Efecto de transición para el cambio de color */
+}
+
+.custom-btn:hover {
+    background-color: #45a049;  /* Color ligeramente más oscuro al pasar el mouse */
+}
+
+.dropdown-menu {
+   
+    display: none; /* Inicialmente oculta el contenido */
+}
+
+.dropdown-item {
+    display: flex; /* Usamos flexbox para alinear imagen y texto */
+    align-items: center; /* Centra verticalmente el contenido */
+    padding: 8px 16px;
+}
+
+.dropdown-item img {
+    width: 30px; /* Tamaño pequeño de las imágenes */
+    height: auto;
+    border-radius: 50%; /* Hace que las imágenes sean circulares */
+    margin-right: 10px; /* Espacio entre la imagen y el texto */
+}
+
+.dropdown-item span {
+    font-size: 14px; /* Tamaño de la fuente */
+}
+
+.contador-wrapper {
+    display: flex;
+    justify-content: space-between;  /* Coloca los elementos en los extremos con espacio entre ellos */
+    align-items: center;  /* Alinea verticalmente los elementos */
+    gap: 20px;  /* Agrega un espacio entre los elementos */
+}
+
+h4 {
+    margin: 0;  /* Elimina márgenes predeterminados */
+}
+
