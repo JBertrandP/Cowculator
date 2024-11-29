@@ -28,7 +28,7 @@
                         {%else %}
                         <img src="{{ url_for('static', filename = 'images/StolkImage1.jpeg')}}" alt="" /> 
                         {%  endif %}
-
+                        
                         <p>Location: {{ranch.Location}}</p> 
                         {%if ranch.TotalCows  != 0 %}
                         <p>Total Cows:  <span id = "{{ranch.FarmID}}">{{ranch.TotalCows}}</span></p>  
